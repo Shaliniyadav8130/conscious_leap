@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "899206670728",
+    "project_id": "conscious-leap",
+    "storage_bucket": "conscious-leap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899206670728:android:110bcf3090a6713b7fb23d",
+        "android_client_info": {
+          "package_name": "com.example.consciousleap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899206670728-cei1kuusfka3mhlv7df696pt7r0neo18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfWZ4WZhMHeEx_0nfTBnVMgOh-Bzhr4Cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899206670728-cei1kuusfka3mhlv7df696pt7r0neo18.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
