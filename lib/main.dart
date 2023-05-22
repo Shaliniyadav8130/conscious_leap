@@ -12,10 +12,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-void main() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+void main () async{
+      await Firebase.initializeApp(
+          options: DefaultFirebaseOptions.currentPlatform,
+    );
   runApp(const MyApp());
 }
 
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Sign_up(),
+      home: Oneness(),
     );
   }
 }
@@ -44,8 +44,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  // void initState() {
-  //   // TODO: implement initState
+   //void initState() {
+  //   TODO: implement initState
   //   super.initState();
   //   Timer(Duration(seconds:4),(){
   //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Oneness(),
