@@ -1,4 +1,5 @@
 import 'package:consciousleap/Activity_page2.dart';
+import 'package:consciousleap/Activity_page23.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
@@ -52,7 +53,9 @@ class Activity_page1 extends StatelessWidget{
                 child:TextButton(
                   child:Text("I am a Therapist",style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
                   onPressed: (){
-
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>Activity_page23()
+                        ));
                   },
                 ),
               ),

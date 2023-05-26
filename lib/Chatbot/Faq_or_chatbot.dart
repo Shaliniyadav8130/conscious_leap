@@ -1,12 +1,12 @@
-import 'package:consciousleap/Activity_page21.dart';
-import 'package:consciousleap/Activity_page3.dart';
-import 'package:consciousleap/Sign_up.dart';
-import 'package:consciousleap/login.dart';
+import 'package:consciousleap/Activity_page22.dart';
+import 'package:consciousleap/Chatbot/faq.dart';
+import 'package:consciousleap/Chatbot/oneness_screen.dart';
+import 'package:consciousleap/Infographic_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 
-class Activity_page2 extends StatelessWidget{
+class Faq_or_chatbot extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +33,10 @@ class Activity_page2 extends StatelessWidget{
                     borderRadius: BorderRadius.circular(12)),
 
                 child:TextButton(
-                  child: Text("I am a New Member",style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
+                  child: Text("FAQ's",style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
                   onPressed:(){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>SignupView()
+                        MaterialPageRoute(builder: (context) =>faq()
                         ));
                   },
                 ),
@@ -53,10 +53,10 @@ class Activity_page2 extends StatelessWidget{
                     ),
                     borderRadius: BorderRadius.circular(12)),
                 child:TextButton(
-                  child:Text("I am an Existing Member" ,style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
+                  child:Text("Oneness Chatbot" ,style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
                   onPressed: (){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>login()
+                        MaterialPageRoute(builder: (context) =>oneness_screen()
                         ));
                   },
                 ),

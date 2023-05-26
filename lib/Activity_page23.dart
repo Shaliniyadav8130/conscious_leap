@@ -1,12 +1,13 @@
 import 'package:consciousleap/Activity_page21.dart';
 import 'package:consciousleap/Activity_page3.dart';
-import 'package:consciousleap/Sign_up.dart';
 import 'package:consciousleap/login.dart';
+import 'package:consciousleap/therapist/login_therapist.dart';
+import 'package:consciousleap/therapist/signup_therapist.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 
-class Activity_page2 extends StatelessWidget{
+class Activity_page23 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,10 +34,10 @@ class Activity_page2 extends StatelessWidget{
                     borderRadius: BorderRadius.circular(12)),
 
                 child:TextButton(
-                  child: Text("I am a New Member",style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
+                  child: Text("Registered Therapist",style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
                   onPressed:(){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>SignupView()
+                        MaterialPageRoute(builder: (context) =>login_therapist()
                         ));
                   },
                 ),
@@ -53,10 +54,10 @@ class Activity_page2 extends StatelessWidget{
                     ),
                     borderRadius: BorderRadius.circular(12)),
                 child:TextButton(
-                  child:Text("I am an Existing Member" ,style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
+                  child:Text("New Therapist" ,style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
                   onPressed: (){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>login()
+                        MaterialPageRoute(builder: (context) =>Signup_therapist()
                         ));
                   },
                 ),

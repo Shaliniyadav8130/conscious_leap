@@ -54,6 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:899206670728:android:110bcf3090a6713b7fb23d',
     messagingSenderId: '899206670728',
     projectId: 'conscious-leap',
+    databaseURL: 'https://conscious-leap-default-rtdb.firebaseio.com',
     storageBucket: 'conscious-leap.appspot.com',
   );
 
@@ -62,6 +63,7 @@ class DefaultFirebaseOptions {
     appId: '1:899206670728:ios:2186299d589d41da7fb23d',
     messagingSenderId: '899206670728',
     projectId: 'conscious-leap',
+    databaseURL: 'https://conscious-leap-default-rtdb.firebaseio.com',
     storageBucket: 'conscious-leap.appspot.com',
     iosClientId: '899206670728-ek47qtu739vts54786i1m8t352etfm5i.apps.googleusercontent.com',
     iosBundleId: 'com.example.consciousleap',

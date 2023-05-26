@@ -3,7 +3,7 @@ import 'package:consciousleap/Activity_page21.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 
-class login extends StatelessWidget {
+class login_therapist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +18,7 @@ class login extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(bottom: 55.0),
-                child:Text("Tele-Therapy Login" ,style: TextStyle(color: Colors.blueAccent, fontSize: 25,fontFamily:'Comforta'),),
+                child:Text("Therapist Login" ,style: TextStyle(color: Colors.blueAccent, fontSize: 25,fontFamily:'Comforta'),),
               ),
 
               Row(

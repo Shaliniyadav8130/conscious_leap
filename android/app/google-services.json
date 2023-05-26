@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "899206670728",
+    "firebase_url": "https://conscious-leap-default-rtdb.firebaseio.com",
     "project_id": "conscious-leap",
     "storage_bucket": "conscious-leap.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "899206670728-cei1kuusfka3mhlv7df696pt7r0neo18.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "899206670728-ek47qtu739vts54786i1m8t352etfm5i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.consciousleap"
+              }
             }
           ]
         }

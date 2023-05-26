@@ -1,4 +1,6 @@
 import 'package:consciousleap/Activity_page1.dart';
+import 'package:consciousleap/Chatbot/Faq_or_chatbot.dart';
+import 'package:consciousleap/Chatbot/oneness_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
@@ -62,6 +64,7 @@ class Oneness extends StatelessWidget{
                               SizedBox(
                                width:70,
                               height:70,
+                                child:Image.asset('assets/images/Therapy.png'),
                           ),
                               Text("Therapy",style: TextStyle(fontSize: 14,fontFamily: "Comforta"),),
                         ],
@@ -91,7 +94,8 @@ class Oneness extends StatelessWidget{
                         children: [
                           SizedBox(
                             height:70,
-                            width:70
+                            width:70,
+                            child:Image.asset('assets/images/Handshake.png'),
                           ),
                           Text("consciousleap for Business",style:TextStyle(fontFamily: "Comforta",fontSize: 13,),textAlign:TextAlign.center,),
                         ],
@@ -122,7 +126,7 @@ class Oneness extends StatelessWidget{
                           SizedBox(
                             width:70,
                             height:70,
-                            child:Image.asset('assets/images/oneness_avatar.png'),
+                            child:Image.asset('assets/images/Shop-1.png'),
                           ),
                           Text("Conscious Store",style:TextStyle(fontFamily: "Comforta",fontSize:13 )),
                         ],
@@ -145,11 +149,17 @@ class Oneness extends StatelessWidget{
                         ),
                         borderRadius: BorderRadius.circular(12)),
 
-                    child:Container(
+                      child:InkWell(
+                       onTap: (){
+                         Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>Faq_or_chatbot()
+                          ));
+                         },
+                        child:Container(
 
-                      child:Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                         child:Column(
+                             mainAxisAlignment: MainAxisAlignment.center,
+                             children: [
                           SizedBox(
                             height:70,
                             width:70,
@@ -159,6 +169,7 @@ class Oneness extends StatelessWidget{
                         ],
                       ),
                     ),
+                  ),
                   ),
                 ],
               ),
