@@ -1,4 +1,4 @@
-import 'package:consciousleap/models/user_model.dart';
+import 'package:consciousleap/models/UserModel.dart';
 import 'package:consciousleap/repository/authentication_repository.dart';
 import 'package:consciousleap/repository/user_repository.dart';
 import 'package:flutter/material.dart';

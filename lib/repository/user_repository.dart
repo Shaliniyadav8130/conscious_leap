@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:consciousleap/models/user_model.dart';
+import 'package:consciousleap/models/UserModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
