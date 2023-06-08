@@ -12,7 +12,7 @@ class UserModel {
     required this.lastName,
     required this.email,
     required this.password,
-});
+  });
 
   toJson(){
     return{

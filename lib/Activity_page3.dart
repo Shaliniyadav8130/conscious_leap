@@ -1,7 +1,12 @@
 import 'package:consciousleap/Activity_page21.dart';
-import 'package:consciousleap/Activity_page4.dart';
+import 'package:consciousleap/Questionnarie/Activity_page4.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:consciousleap/widgets/Text_button.dart';
+
+// Select the option
+// Recommended Questionnarie or
+// Skip to Tele-Therapy
 
 class Activity_page3 extends StatelessWidget{
   @override
@@ -23,27 +28,12 @@ class Activity_page3 extends StatelessWidget{
                 padding: EdgeInsets.only(bottom: 20.0),
                 child:Text("Recommended",style: TextStyle(fontFamily:'Comforta'),),
               ),
-              Container(
-
-                width:300,
-                margin: EdgeInsets.only(bottom: 20.0),
-                decoration: BoxDecoration(
-                    border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [ Colors.blueAccent,Colors.deepOrange,Colors.cyanAccent]),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(12)),
-
-                child:TextButton(
-                  child: Text("Questionnarie",style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
-                  onPressed:(){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>Activity_page4()
-                        ));
-                  },
-                ),
-
-              ),
+              GradientBorderButton(btnName: "Questionnaire",
+                callBack: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>Activity_page4()
+                      ));
+                },),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,7 +43,7 @@ class Activity_page3 extends StatelessWidget{
                     width:130,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Colors.blueAccent,Colors.deepOrange,  Colors.cyanAccent],
+                        colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),
@@ -70,7 +60,7 @@ class Activity_page3 extends StatelessWidget{
                     width:130,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent],
+                        colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                       ),
@@ -79,26 +69,16 @@ class Activity_page3 extends StatelessWidget{
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 20.0),
+                padding: EdgeInsets.only(bottom: 20.0,top: 10.0),
 
                 child:Text("Skip to a Tele-Therapy",style: TextStyle(fontFamily:'Comforta'),),
               ),
-              Container(
-                width:300,
-                margin: EdgeInsets.only(bottom: 10.0),
-                decoration: BoxDecoration(
-                    border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [ Colors.blueAccent,Colors.deepOrange,Colors.cyanAccent]),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(12)),
-                child:TextButton(
-                  child:Text("Connect with a Therapist",style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
-                  onPressed: (){
-
-                  },
-                ),
-              ),
+              GradientBorderButton(btnName: "Connect with a Therapist",
+                callBack: (){
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) =>SignupView()
+                  //     ));
+                },),
 
             ],
           )

@@ -46,7 +46,7 @@ class Oneness extends StatelessWidget{
                     margin: EdgeInsets.only(bottom: 20.0),
                     decoration: BoxDecoration(
                         border: const GradientBoxBorder(
-                          gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                          gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(12)),
@@ -66,7 +66,7 @@ class Oneness extends StatelessWidget{
                               height:70,
                                 child:Image.asset('assets/images/Therapy.png'),
                           ),
-                              Text("Therapy",style: TextStyle(fontSize: 14,fontFamily: "Comforta"),),
+                              Text("Tele-Therapy",style: TextStyle(fontSize: 14,fontFamily: "Comforta",color: Color(0xff4961AC)),),
                         ],
                       ),
                     ),
@@ -83,7 +83,7 @@ class Oneness extends StatelessWidget{
                     margin: EdgeInsets.only(bottom: 20.0),
                     decoration: BoxDecoration(
                         border: const GradientBoxBorder(
-                          gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                          gradient: LinearGradient(colors: [Color(0xff4961AC),Color(0xffF2685D),Color(0xff4EC1BA)]),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(12)),
@@ -97,7 +97,7 @@ class Oneness extends StatelessWidget{
                             width:70,
                             child:Image.asset('assets/images/Handshake.png'),
                           ),
-                          Text("consciousleap for Business",style:TextStyle(fontFamily: "Comforta",fontSize: 13,),textAlign:TextAlign.center,),
+                          Text("consciousleap for Business",style:TextStyle(color: Color(0xff4961AC),fontFamily: "Comforta",fontSize: 13,),textAlign:TextAlign.center,),
                         ],
                       ),
                     ),
@@ -114,7 +114,7 @@ class Oneness extends StatelessWidget{
                     margin: EdgeInsets.only(bottom: 20.0),
                     decoration: BoxDecoration(
                         border: const GradientBoxBorder(
-                          gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                          gradient: LinearGradient(colors: [Color(0xff4961AC),Color(0xffF2685D),Color(0xff4EC1BA)]),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(12)),
@@ -128,7 +128,7 @@ class Oneness extends StatelessWidget{
                             height:70,
                             child:Image.asset('assets/images/Shop-1.png'),
                           ),
-                          Text("Conscious Store",style:TextStyle(fontFamily: "Comforta",fontSize:13 )),
+                          Text("Conscious Store",style:TextStyle(color: Color(0xff4961AC),fontFamily: "Comforta",fontSize:13 )),
                         ],
                       ),
                     ),
@@ -144,7 +144,7 @@ class Oneness extends StatelessWidget{
                     margin: EdgeInsets.only(bottom: 20.0),
                     decoration: BoxDecoration(
                         border: const GradientBoxBorder(
-                          gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                          gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(12)),
@@ -165,7 +165,7 @@ class Oneness extends StatelessWidget{
                             width:70,
                             child:Image.asset('assets/images/oneness_avatar.png')
                           ),
-                          Text("oneness",style: TextStyle(fontSize: 14,fontFamily: "Comforta"),),
+                          Text("oneness",style: TextStyle(color: Color(0xff4961AC),fontSize: 14,fontFamily: "Comforta"),),
                         ],
                       ),
                     ),
@@ -173,8 +173,6 @@ class Oneness extends StatelessWidget{
                   ),
                 ],
               ),
-
-
 
 
             ],

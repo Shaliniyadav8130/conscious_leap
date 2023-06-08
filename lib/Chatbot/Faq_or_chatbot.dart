@@ -27,7 +27,7 @@ class Faq_or_chatbot extends StatelessWidget{
                 margin: EdgeInsets.only(bottom: 20.0),
                 decoration: BoxDecoration(
                     border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.deepOrange, Colors.blueAccent,Colors.cyanAccent]),
+                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(12)),
@@ -48,7 +48,7 @@ class Faq_or_chatbot extends StatelessWidget{
                 margin: EdgeInsets.only(bottom: 10.0),
                 decoration: BoxDecoration(
                     border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.deepOrange, Colors.blueAccent,Colors.cyanAccent]),
+                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(12)),

@@ -14,16 +14,16 @@ class UserRepository extends GetxController{
 
   createUser(UserModel user) async{
     await _db.collection("Users").add(user.toJson()).whenComplete(() =>
-    Get.snackbar("Success", "Your account has been created",
-    snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.green.withOpacity(0.1),
-      colorText: Colors.green),
+        Get.snackbar("Success", "Your account has been created",
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.green.withOpacity(0.1),
+            colorText: Colors.green),
     )
         .catchError((error, stackTrace){
-          Get.snackbar("Error", "Something went wrong. Try again",
+      Get.snackbar("Error", "Something went wrong. Try again",
           snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: Colors.redAccent.withOpacity(0.1),
-            colorText: Colors.red);
+          backgroundColor: Colors.redAccent.withOpacity(0.1),
+          colorText: Colors.red);
       print(error.toString());
     });
   }

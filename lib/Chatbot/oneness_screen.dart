@@ -43,7 +43,7 @@ class oneness_screen extends StatelessWidget{
 
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blueAccent,
+                    primary: Color(0xff4961AC),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),

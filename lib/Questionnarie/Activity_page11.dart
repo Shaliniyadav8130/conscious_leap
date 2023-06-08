@@ -1,11 +1,12 @@
-import 'package:consciousleap/Activity_page6.dart';
-import 'package:consciousleap/Activity_page9.dart';
-import 'package:consciousleap/Analysis_Report.dart';
+import 'package:consciousleap/widgets/Text_button.dart';
+import 'package:consciousleap/Questionnarie/Activity_page12.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
+// I often feel overwhelmed by my responsibilities Page
 
-class Activity_page20 extends StatelessWidget{
+
+class Activity_page11 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +23,7 @@ class Activity_page20 extends StatelessWidget{
                 padding: EdgeInsets.only(bottom: 55.0),
                 child:SizedBox(
                     width:300,
-                    child:Text("I often feel lonely because I have few close friends to share my concerns with.",style:TextStyle(fontSize:16,fontFamily:'Comforta'),textAlign: TextAlign.center,)
+                    child:Text("I often feel overwhelmed by my responsibilities.",style:TextStyle(fontSize:16,fontFamily:'Comforta'),textAlign: TextAlign.center,)
                 ),
 
 
@@ -34,7 +35,7 @@ class Activity_page20 extends StatelessWidget{
                 margin: EdgeInsets.only(bottom: 20.0),
                 decoration: BoxDecoration(
                     border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(12)),
@@ -43,7 +44,7 @@ class Activity_page20 extends StatelessWidget{
                   child: Text("Strongly Agree",style:TextStyle(fontSize:12,color: Colors.black,fontFamily:'Comforta')),
                   onPressed:(){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>Analysis_Report()
+                        MaterialPageRoute(builder: (context) =>Activity_page12()
                         ));
                   },
                 ),
@@ -55,7 +56,7 @@ class Activity_page20 extends StatelessWidget{
                 margin: EdgeInsets.only(bottom: 20.0),
                 decoration: BoxDecoration(
                     border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(12)),
@@ -63,7 +64,7 @@ class Activity_page20 extends StatelessWidget{
                   child:Text("Somewhat Agree" ,style:TextStyle(fontSize:12,color: Colors.black,fontFamily:'Comforta')),
                   onPressed: (){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>Analysis_Report()
+                        MaterialPageRoute(builder: (context) =>Activity_page12()
                         ));
                   },
                 ),
@@ -74,7 +75,7 @@ class Activity_page20 extends StatelessWidget{
                 margin: EdgeInsets.only(bottom: 20.0),
                 decoration: BoxDecoration(
                     border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(12)),
@@ -82,7 +83,7 @@ class Activity_page20 extends StatelessWidget{
                   child:Text("A Little Agree" ,style:TextStyle(fontSize:12,color: Colors.black,fontFamily:'Comforta')),
                   onPressed: (){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>Analysis_Report()
+                        MaterialPageRoute(builder: (context) =>Activity_page12()
                         ));
                   },
                 ),
@@ -92,7 +93,7 @@ class Activity_page20 extends StatelessWidget{
                 margin: EdgeInsets.only(bottom: 20.0),
                 decoration: BoxDecoration(
                     border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(12)),
@@ -100,7 +101,7 @@ class Activity_page20 extends StatelessWidget{
                   child:Text("Neither Agree Nor Disagree" ,style:TextStyle(fontSize:12,color: Colors.black,fontFamily:'Comforta')),
                   onPressed: (){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>Analysis_Report()
+                        MaterialPageRoute(builder: (context) =>Activity_page12()
                         ));
                   },
                 ),
@@ -111,7 +112,7 @@ class Activity_page20 extends StatelessWidget{
                 margin: EdgeInsets.only(bottom: 20.0),
                 decoration: BoxDecoration(
                     border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(12)),
@@ -119,7 +120,7 @@ class Activity_page20 extends StatelessWidget{
                   child:Text("A Little Disagree" ,style:TextStyle(fontSize:12,color: Colors.black,fontFamily:'Comforta')),
                   onPressed: (){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>Analysis_Report()
+                        MaterialPageRoute(builder: (context) =>Activity_page12()
                         ));
                   },
                 ),
@@ -130,7 +131,7 @@ class Activity_page20 extends StatelessWidget{
                 margin: EdgeInsets.only(bottom: 20.0),
                 decoration: BoxDecoration(
                     border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(12)),
@@ -138,7 +139,7 @@ class Activity_page20 extends StatelessWidget{
                   child:Text("Somewhat Disagree" ,style:TextStyle(fontSize:12,color: Colors.black,fontFamily:'Comforta')),
                   onPressed: (){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>Analysis_Report()
+                        MaterialPageRoute(builder: (context) =>Activity_page12()
                         ));
                   },
                 ),
@@ -149,7 +150,7 @@ class Activity_page20 extends StatelessWidget{
                 margin: EdgeInsets.only(bottom: 20.0),
                 decoration: BoxDecoration(
                     border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.deepOrange,Colors.cyanAccent]),
+                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(12)),
@@ -157,7 +158,7 @@ class Activity_page20 extends StatelessWidget{
                   child:Text("Strongly Disagree" ,style:TextStyle(fontSize:12,color: Colors.black,fontFamily:'Comforta')),
                   onPressed: (){
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>Analysis_Report()
+                        MaterialPageRoute(builder: (context) =>Activity_page12()
                         ));
                   },
                 ),

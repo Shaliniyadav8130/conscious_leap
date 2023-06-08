@@ -1,5 +1,6 @@
 import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page21.dart';
+import 'package:consciousleap/Activity_page3.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
@@ -10,126 +11,119 @@ class login extends StatefulWidget {
 }
 
 class _loginState extends State<login> {
+  //final controller = Get.put(SignUpController());
   final email = TextEditingController();
   final phone = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String Email="";
   String Phone="";
 
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(),
-      body:Form(
-        key: _formKey,
-        child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+        appBar: AppBar(),
+        body:Form(
+          key: _formKey,
+          child: ListView(
+            padding: EdgeInsets.all(16.0),
             children: [
-              Padding(
-                padding: EdgeInsets.only(bottom: 55.0),
-                child:Text("Tele-Therapy Login" ,style: TextStyle(color: Colors.blueAccent, fontSize: 25,fontFamily:'Comforta'),),
-              ),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Email",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                  SizedBox(
-                    width: 44,
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 55.0),
+                    child:Text("Tele-Therapy Login" ,style: TextStyle(color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
                   ),
-                  Container(
-                    width:250,
-                    height:50,
-                    margin: EdgeInsets.only(bottom: 10.0),
-                    decoration: BoxDecoration(
-                        border: const GradientBoxBorder(
-                          gradient: LinearGradient(colors: [Colors.deepOrange, Colors.blueAccent,Colors.cyanAccent]),
-                          width: 2,
-                        ),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: TextField(
-                      controller: email,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
 
-                        hintStyle: TextStyle(color: Colors.black),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                  Row(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Email",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
+                      SizedBox(
+                        width: 22,
                       ),
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Mobile",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                  SizedBox(
-                    width: 40,
-                  ),
-                  Container(
-                    width:250,
-                    height: 50,
-                    margin: EdgeInsets.only(bottom: 10.0),
-                    decoration: BoxDecoration(
-                        border: const GradientBoxBorder(
-                          gradient: LinearGradient(colors: [Colors.deepOrange, Colors.blueAccent,Colors.cyanAccent]),
-                          width: 2,
+                      Expanded(
+                        child: TextFormField(
+                          controller: email,
+                          decoration: InputDecoration(
+                            border: GradientOutlineInputBorder(
+                              gradient: LinearGradient(
+                                colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                           validator: (value) {
+                             if (value == null || value.isEmpty) {
+                               return 'Please enter your email';
+                             }
+                             return null;
+                           },
                         ),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: TextField(
-                      controller: phone,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-
-                        hintStyle: TextStyle(color: Colors.black),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
                       ),
-                      style: TextStyle(color: Colors.black),
-                    ),
+
+                    ],
+                  ),
+                  SizedBox(height:20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Mobile",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
+                      SizedBox(
+                        width: 18,
+                      ),
+                         Expanded(
+                           child:TextFormField(
+                          controller: phone,
+                           decoration: InputDecoration(
+
+                             border: GradientOutlineInputBorder(
+                               gradient: LinearGradient(
+                                 colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                               ),
+                               borderRadius: BorderRadius.circular(8.0),
+                             ),
+
+                           ),
+                           validator: (value) {
+                             if (value == null || value.isEmpty) {
+                               return 'Please enter your mobile';
+                             }
+                             return null;
+                           },
+                        ),
+                 ),
+                    ],
                   ),
 
-                ],
-              ),
 
 
+                  Container(
+                    width:340,
+                    margin: EdgeInsets.only(top: 20.0),
+                    child:ElevatedButton(
+                      child:Text("Login" ,style:TextStyle(fontSize:12,color: Colors.white,fontFamily:'Comforta')),
+                      onPressed: (){
+                        if(_formKey.currentState!.validate()){
+                          setState(() {
+                            Email=email.text.trim();
+                            Phone=phone.text.trim();
 
-              Container(
-                width:340,
-                margin: EdgeInsets.only(top: 20.0),
-                child:ElevatedButton(
-                  child:Text("Login" ,style:TextStyle(fontSize:12,color: Colors.white,fontFamily:'Comforta')),
-                  onPressed: (){
-                    if(_formKey.currentState!.validate()){
-                      setState(() {
-                        Email=email.text.trim();
-                        Phone=phone.text.trim();
-                        
-                      });
-                      signinUser();
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blueAccent,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                          });
+                          signinUser();
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xff4961AC),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
 
             ],
           ),
-        ],
-      ),
-      )
+        )
 
     );
   }
@@ -140,7 +134,9 @@ class _loginState extends State<login> {
       UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Phone);
       print(userCredential);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfully")));
-
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Activity_page3()));
+      //controller.email.clear();
+      //controller.password.clear();
       // String? id = FirebaseAuth.instance.currentUser?.uid;
       // UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password);
       // db.collection("doctor").doc(password).set(userModel.toJson());
@@ -164,4 +160,3 @@ class _loginState extends State<login> {
   }
 
 }
-
