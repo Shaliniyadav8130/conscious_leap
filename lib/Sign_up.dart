@@ -56,8 +56,8 @@ class _SignupViewState extends State<SignupView> {
     //final controller = Get.put(SignUpController());
     //final _formKey = GlobalKey<FormState>();
     return Scaffold(
-      appBar: AppBar(
-      ),
+      // appBar: AppBar(
+      // ),
       body:Form(
           key: _formKey,
             child: ListView(

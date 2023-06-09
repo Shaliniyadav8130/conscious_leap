@@ -1,5 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:consciousleap/widgets/CustomInputBorder.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -89,7 +90,7 @@ scroll(){
                 ),
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: 7),
+                    padding: EdgeInsets.only(bottom: 10),
                     child: Text(
                       "Counselling Psychologist, M.A", style: TextStyle(
                         fontSize: 14,
@@ -97,12 +98,44 @@ scroll(){
                         fontFamily: 'Comforta'), textAlign: TextAlign.center,),
                   ),
                 ),
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height:20,
+                          width: 20,
+                          child:Image.asset("assets/images/Group 1.png"),
+                        ),
+                        SizedBox(
+                          width:10,
+                        ),
+                        SizedBox(
+                          height:20,
+                          width: 20,
+                          child:Image.asset("assets/images/Group 2.png"),
+                        ),
+                        SizedBox(width: 10,),
+                        SizedBox(
+                          height:20,
+                          width: 20,
+                          child:Image.asset("assets/images/Group 3.png"),
+                        ),
+
+
+                      ],
+                  ),
+                ),
+                ),
                 Container(
                   //width: MediaQuery.of(context).size.width,
                   //color: Colors.deepOrangeAccent,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+
                       Container(
                         width: 100,
                         height: 90,

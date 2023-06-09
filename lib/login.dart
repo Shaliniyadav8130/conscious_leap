@@ -1,6 +1,7 @@
 import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page21.dart';
 import 'package:consciousleap/Activity_page3.dart';
+import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
@@ -134,7 +135,7 @@ class _loginState extends State<login> {
       UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Phone);
       print(userCredential);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfully")));
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Activity_page3()));
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => TherapistList()));
       //controller.email.clear();
       //controller.password.clear();
       // String? id = FirebaseAuth.instance.currentUser?.uid;
