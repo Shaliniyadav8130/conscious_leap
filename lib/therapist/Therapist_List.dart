@@ -131,10 +131,8 @@ class _TherapistListState extends State<TherapistList> {
                                               fontFamily: 'Comforta',
                                               color: Colors.black),),
                                         );
-
                                   }
                                   )
-
                                 ],
                               ),
                             ),
@@ -175,7 +173,7 @@ class _TherapistListState extends State<TherapistList> {
                               onPressed: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(
-                                      builder: (context) => DoctorProfile(),
+                                      builder: (context) => DoctorProfile(id:index),
                                     ));
                               },
                             ),
