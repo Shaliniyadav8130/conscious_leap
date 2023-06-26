@@ -47,6 +47,7 @@ class _loginState extends State<login> {
                           controller: email,
                           decoration: InputDecoration(
                             border: GradientOutlineInputBorder(
+                              width: 2,
                               gradient: LinearGradient(
                                 colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                               ),
@@ -78,6 +79,7 @@ class _loginState extends State<login> {
                            decoration: InputDecoration(
 
                              border: GradientOutlineInputBorder(
+                               width: 2,
                                gradient: LinearGradient(
                                  colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                                ),
@@ -135,7 +137,7 @@ class _loginState extends State<login> {
       UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Phone);
       print(userCredential);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfully")));
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => TherapistList()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => TherapistList()));
       //controller.email.clear();
       //controller.password.clear();
       // String? id = FirebaseAuth.instance.currentUser?.uid;

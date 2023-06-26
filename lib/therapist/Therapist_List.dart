@@ -1,4 +1,4 @@
-
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:consciousleap/therapist/doctorProfile.dart';
 import 'package:flutter/material.dart';
@@ -72,8 +72,11 @@ class _TherapistListState extends State<TherapistList> {
                             CircleAvatar(
                               radius: 60,
                               // Adjust the radius to set the size of the avatar
-                              backgroundImage: AssetImage(
-                                  'assets/images/doctor.jpg'), // Set the image for the avatar         // Alternatively, you can use `backgroundColor` and `child` properties to customize the appearance of the avatar
+                              //backgroundImage: AssetImage(
+                                  //'assets/images/doctor.jpg'),
+                              backgroundImage: NetworkImage(docs[index]["images"]),
+                              backgroundColor: Colors.transparent,
+                              // Set the image for the avatar         // Alternatively, you can use `backgroundColor` and `child` properties to customize the appearance of the avatar
                             ),
                           ),
 

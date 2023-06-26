@@ -24,4 +24,11 @@ class SignUpController extends GetxController{
     await userRepo.createUser(user);
   }
 
+  void clearFields() {
+    firstName.clear();
+    lastName.clear();
+    email.clear();
+    password.clear();
+  }
+
 }

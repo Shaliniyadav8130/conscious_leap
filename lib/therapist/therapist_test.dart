@@ -2,6 +2,8 @@ import 'package:consciousleap/Activity_page22.dart';
 import 'package:consciousleap/Infographic_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:consciousleap/widgets/Text_button.dart';
+
 
 
 class therapist_call extends StatelessWidget{
@@ -19,42 +21,18 @@ class therapist_call extends StatelessWidget{
             crossAxisAlignment: CrossAxisAlignment.center,
 
             children: [
-              Container(
-
-                width:300,
-                margin: EdgeInsets.only(bottom: 20.0),
-                decoration: BoxDecoration(
-                    border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.deepOrange, Colors.blueAccent,Colors.cyanAccent]),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(12)),
-
-                child:TextButton(
-                  child: Text("Upload your Resume",style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
-                  onPressed:(){
-
-                  },
-                ),
-
-
-              ),
-              Container(
-                width:300,
-                margin: EdgeInsets.only(bottom: 10.0),
-                decoration: BoxDecoration(
-                    border: const GradientBoxBorder(
-                      gradient: LinearGradient(colors: [Colors.deepOrange, Colors.blueAccent,Colors.cyanAccent]),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(12)),
-                child:TextButton(
-                  child:Text("Schedule a Call" ,style:TextStyle(color: Colors.black,fontFamily:'Comforta')),
-                  onPressed: (){
-
-                  },
-                ),
-              ),
+              GradientBorderButton(btnName: "Upload Your Resume",
+                callBack: (){
+                //   Navigator.push(context,
+                //       MaterialPageRoute(builder: (context) =>login_therapist()
+                //       ));
+                 },),
+              GradientBorderButton(btnName: "Schedule a Call",
+                callBack: (){
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) =>login_therapist()
+                  //     ));
+                },),
 
             ],
           )

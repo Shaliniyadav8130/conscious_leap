@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:consciousleap/SplashScreen.dart';
+import 'package:consciousleap/conscious_store/Conscious_Categories.dart';
 import 'package:consciousleap/login.dart';
 import 'package:consciousleap/therapist/login_therapist.dart';
 import 'package:flutter_gif/flutter_gif.dart';
@@ -27,7 +28,6 @@ void main () async{
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
 
-
       await Firebase.initializeApp(
            options: DefaultFirebaseOptions.currentPlatform,
        );
@@ -42,11 +42,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        useMaterial3: true,
-      ),
+      title: 'consciousleap',
+      theme: ThemeData
+         (
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+         useMaterial3: true,
+       ),
       home: MyHomePage(),
     );
   }
@@ -62,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //TODO: implement initState
       super.initState();
       Timer(Duration(seconds: 5),(){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TherapistList(),
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Oneness(),
         ));
       });
    }
@@ -71,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         //backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
        body: Center(

@@ -1,5 +1,6 @@
 import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page21.dart';
+import 'package:consciousleap/therapist/therapist_dash_option.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
@@ -43,6 +44,7 @@ class _login_therapistState extends State<login_therapist> {
                       controller: email,
                       decoration: InputDecoration(
                         border: GradientOutlineInputBorder(
+                          width: 2,
                           gradient: LinearGradient(
                             colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                           ),
@@ -74,6 +76,7 @@ class _login_therapistState extends State<login_therapist> {
                       decoration: InputDecoration(
 
                         border: GradientOutlineInputBorder(
+                          width: 2,
                           gradient: LinearGradient(
                             colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                           ),
@@ -131,7 +134,7 @@ class _login_therapistState extends State<login_therapist> {
       UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Phone);
       print(userCredential);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfully")));
-
+      Navigator.push(context, MaterialPageRoute(builder: (context) => therapist_dash_option()));
       // String? id = FirebaseAuth.instance.currentUser?.uid;
       // UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password);
       // db.collection("doctor").doc(password).set(userModel.toJson());

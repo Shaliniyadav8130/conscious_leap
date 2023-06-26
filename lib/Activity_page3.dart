@@ -1,5 +1,6 @@
 import 'package:consciousleap/Activity_page21.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
+import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
@@ -75,9 +76,9 @@ class Activity_page3 extends StatelessWidget{
               ),
               GradientBorderButton(btnName: "Connect with a Therapist",
                 callBack: (){
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) =>SignupView()
-                  //     ));
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) =>TherapistList()
+                       ));
                 },),
 
             ],

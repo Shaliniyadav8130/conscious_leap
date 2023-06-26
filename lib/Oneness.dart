@@ -93,8 +93,8 @@ class Oneness extends StatelessWidget{
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(
-                            height:70,
-                            width:70,
+                            height:60,
+                            width:60,
                             child:Image.asset('assets/images/Handshake.png'),
                           ),
                           Text("consciousleap for Business",style:TextStyle(color: Color(0xff4961AC),fontFamily: "Comforta",fontSize: 13,),textAlign:TextAlign.center,),
@@ -124,10 +124,11 @@ class Oneness extends StatelessWidget{
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(
-                            width:70,
-                            height:70,
+                            width:50,
+                            height:50,
                             child:Image.asset('assets/images/Shop-1.png'),
                           ),
+                          SizedBox(height:4),
                           Text("Conscious Store",style:TextStyle(color: Color(0xff4961AC),fontFamily: "Comforta",fontSize:13 )),
                         ],
                       ),

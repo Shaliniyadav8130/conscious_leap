@@ -31,9 +31,9 @@ class Activity_page23 extends StatelessWidget{
                 },),
               GradientBorderButton(btnName: "New Therapist",
                 callBack: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>SignupTherapist()
-                      ));
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) =>SignupTherapist()
+                       ));
                 },),
 
             ],

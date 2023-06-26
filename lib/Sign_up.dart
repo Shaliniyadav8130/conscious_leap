@@ -25,46 +25,28 @@ class SignupView extends StatefulWidget {
 }
 
 class _SignupViewState extends State<SignupView> {
-
   final controller = Get.put(SignUpController());
-  final _formKey = GlobalKey<FormState>();
-  var db = FirebaseFirestore.instance;
   String email = "";
   String firstname = "";
   String lastname = "";
+  var db = FirebaseFirestore.instance;
   String password = "";
-
-  // @override
-  // void dispose() {
-  //   // Dispose the controllers to avoid memory leaks
-  //   controller.firstName.dispose();
-  //   controller.lastName.dispose();
-  //   controller.email.dispose();
-  //   controller.password.dispose();
-  //   super.dispose();
-  // }
-  // String email="";
-  // String firstname="";
-  // String lastname="";
-  // var db = FirebaseFirestore.instance;
-  // String password="";
-
 
 
   @override
   Widget build(BuildContext context) {
-    //final controller = Get.put(SignUpController());
-    //final _formKey = GlobalKey<FormState>();
+
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
-      // appBar: AppBar(
-      // ),
+       appBar: AppBar(
+       ),
       body:Form(
           key: _formKey,
             child: ListView(
               padding: EdgeInsets.all(16.0),
               children: [
                         Padding(
-                          padding: EdgeInsets.only(bottom: 55.0),
+                          padding: EdgeInsets.only(bottom: 55.0,top:55.0),
                           child:Text("Tele-Therapy Sign-up" ,style: TextStyle(color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
                         ),
 
@@ -81,6 +63,7 @@ class _SignupViewState extends State<SignupView> {
                                 controller: controller.firstName,
                                 decoration: InputDecoration(
                                   border: GradientOutlineInputBorder(
+                                    width: 2,
                                     gradient: LinearGradient(
                                       colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                                     ),
@@ -115,6 +98,7 @@ class _SignupViewState extends State<SignupView> {
                                 controller:controller.lastName,
                                 decoration: InputDecoration(
                                   border: GradientOutlineInputBorder(
+                                    width: 2,
                                     gradient: LinearGradient(
                                       colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                                     ),
@@ -141,7 +125,7 @@ class _SignupViewState extends State<SignupView> {
                           children: [
                             Text("Email",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
                             SizedBox(
-                              width: 44,
+                              width: 47,
                             ),
                             Expanded(
 
@@ -149,6 +133,7 @@ class _SignupViewState extends State<SignupView> {
                                 controller: controller.email,
                                 decoration: InputDecoration(
                                   border: GradientOutlineInputBorder(
+                                    width: 2,
                                     gradient: LinearGradient(
                                       colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                                     ),
@@ -185,6 +170,7 @@ class _SignupViewState extends State<SignupView> {
                                 controller: controller.password,
                                 decoration: InputDecoration(
                                   border: GradientOutlineInputBorder(
+                                    width: 2,
                                     gradient: LinearGradient(
                                       colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                                     ),
@@ -255,10 +241,7 @@ class _SignupViewState extends State<SignupView> {
       UserCredential userCredential=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
       print(userCredential);
       addUserData();
-      controller.firstName.clear();
-      controller.lastName.clear();
-      controller.email.clear();
-      controller.password.clear();
+      controller.clearFields();
       // String? id = FirebaseAuth.instance.currentUser?.uid;
       // UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password);
       // db.collection("doctor").doc(password).set(userModel.toJson());
@@ -283,6 +266,7 @@ class _SignupViewState extends State<SignupView> {
       db.collection("User").doc(password).set(userModel.toJson());
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Registered succesfully")));
       Navigator.push(context, MaterialPageRoute(builder: (context) => Activity_page3()));
+      controller.clearFields();
     }
     catch (e){
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Network Issue")));

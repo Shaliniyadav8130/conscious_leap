@@ -5,59 +5,40 @@ import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
 class GradientBorderCard extends StatelessWidget{
 
-  final String cardName;
-  //final VoidCallback? callBack;
+  final String btnNames;
+  final VoidCallback? callBack;
 
 
   GradientBorderCard({
-    required this.cardName,
-    //this.callBack
+    required this.btnNames,
+    this.callBack
   });
 
   @override
   Widget build(BuildContext context){
     return Container(
-      width: 100,
-      height: 90,
+
+      width:200,
+      height: 200,
+      margin: EdgeInsets.only(bottom: 20.0),
       decoration: BoxDecoration(
           border: const GradientBoxBorder(
-            gradient: LinearGradient(colors: [
-              Color(0xff4961AC),
-              Color(0xffF2685D),
-              Color(0xff4EC1BA)
-            ]),
+            gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
             width: 2,
           ),
-          borderRadius: BorderRadius.circular(10)),
+          borderRadius: BorderRadius.circular(12)),
 
-      child: Column(
-        children: [
-          Text(cardName, style: TextStyle(
-              fontFamily: 'Comforta',
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: Color(0xff4961AC)),),
-
-          Container(
-            width: 100,
-            height: 2,
-            decoration: BoxDecoration(
-              border: const GradientBoxBorder(
-                gradient: LinearGradient(colors: [
-                  Color(0xff4961AC),
-                  Color(0xffF2685D),
-                  Color(0xff4EC1BA)
-                ]),
-                width: 2,
-              ),
-              //borderRadius: BorderRadius.circular(10)
-            ),
-          ),
-
-
-        ],
+      child:TextButton(
+        style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all(Colors.transparent), // Set overlay color to transparent to remove the ripple effect
+        ),
+        child: Text(btnNames,style: TextStyle(fontSize:12,color: Colors.black,fontFamily:'Comforta'),textAlign: TextAlign.center,),
+        onPressed:(){
+          callBack!();
+        },
       ),
-    );
 
+
+    );
   }
 }

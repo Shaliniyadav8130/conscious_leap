@@ -4,6 +4,7 @@ import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page3.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
 import 'package:consciousleap/controllers/signup_controllers.dart';
+import 'package:consciousleap/therapist/therapist_test.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,36 +26,19 @@ class SignupTherapist extends StatefulWidget {
 }
 
 class _SignupTherapistState extends State<SignupTherapist> {
-
   final controller = Get.put(SignUpController());
-  final _formKey = GlobalKey<FormState>();
-  var db = FirebaseFirestore.instance;
   String email = "";
   String firstname = "";
   String lastname = "";
+  var db = FirebaseFirestore.instance;
   String password = "";
 
-  // @override
-  // void dispose() {
-  //   // Dispose the controllers to avoid memory leaks
-  //   controller.firstName.dispose();
-  //   controller.lastName.dispose();
-  //   controller.email.dispose();
-  //   controller.password.dispose();
-  //   super.dispose();
-  // }
-  // String email="";
-  // String firstname="";
-  // String lastname="";
-  // var db = FirebaseFirestore.instance;
-  // String password="";
 
 
 
   @override
   Widget build(BuildContext context) {
-    //final controller = Get.put(SignUpController());
-    //final _formKey = GlobalKey<FormState>();
+    final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
       ),
@@ -64,7 +48,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
           padding: EdgeInsets.all(16.0),
           children: [
             Padding(
-              padding: EdgeInsets.only(bottom: 55.0),
+              padding: EdgeInsets.only(bottom: 55.0,top:55.0),
               child:Text("Therapist Sign-up" ,style: TextStyle(color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
             ),
 
@@ -81,6 +65,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
                     controller: controller.firstName,
                     decoration: InputDecoration(
                       border: GradientOutlineInputBorder(
+                        width: 2,
                         gradient: LinearGradient(
                           colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                         ),
@@ -115,6 +100,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
                     controller:controller.lastName,
                     decoration: InputDecoration(
                       border: GradientOutlineInputBorder(
+                        width: 2,
                         gradient: LinearGradient(
                           colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                         ),
@@ -149,6 +135,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
                     controller: controller.email,
                     decoration: InputDecoration(
                       border: GradientOutlineInputBorder(
+                        width: 2,
                         gradient: LinearGradient(
                           colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                         ),
@@ -185,6 +172,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
                     controller: controller.password,
                     decoration: InputDecoration(
                       border: GradientOutlineInputBorder(
+                        width: 2,
                         gradient: LinearGradient(
                           colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                         ),
@@ -255,10 +243,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
       UserCredential userCredential=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
       print(userCredential);
       addUserData();
-      controller.firstName.clear();
-      controller.lastName.clear();
-      controller.email.clear();
-      controller.password.clear();
+      controller.clearFields();
       // String? id = FirebaseAuth.instance.currentUser?.uid;
       // UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password);
       // db.collection("doctor").doc(password).set(userModel.toJson());
@@ -280,9 +265,10 @@ class _SignupTherapistState extends State<SignupTherapist> {
     try{
       String? id = FirebaseAuth.instance.currentUser?.uid;
       UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password);
-      db.collection("Therapist").doc(password).set(userModel.toJson());
+      db.collection("doctor").doc(password).set(userModel.toJson());
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Registered succesfully")));
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Activity_page3()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => therapist_call()));
+      controller.clearFields();
     }
     catch (e){
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Network Issue")));

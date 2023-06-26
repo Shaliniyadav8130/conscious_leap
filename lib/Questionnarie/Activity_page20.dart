@@ -1,3 +1,4 @@
+import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
 import 'package:consciousleap/Analysis_Report.dart';
 import 'package:flutter/material.dart';
@@ -32,43 +33,43 @@ class Activity_page20 extends StatelessWidget{
               GradientBorderButton(btnName: "Strongly Agree",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Analysis_Report()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
               GradientBorderButton(btnName: "Somewhat Agree",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Analysis_Report()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
               GradientBorderButton(btnName: "A Little Agree",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Analysis_Report()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
               GradientBorderButton(btnName: "Neither Agree nor Disagree",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Analysis_Report()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
               GradientBorderButton(btnName: "A Little Disagree",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Analysis_Report()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
               GradientBorderButton(btnName: "Somewhat Disagree",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Analysis_Report()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
               GradientBorderButton(btnName: "Strongly Disagree",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Analysis_Report()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
             ],
