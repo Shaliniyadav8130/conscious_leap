@@ -27,6 +27,7 @@ class QuestionnaireScreen extends StatefulWidget {
 class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
   int currentCategoryIndex = 0;
   int currentQuestionIndex = 0;
+  int currentRatingIndex=0;
   int totalCategories = 2;
   List<int> totalQuestionsPerCategory = [4, 3];
   List<List<int>> categoryRatings = [[0, 0, 0, 0], [0, 0, 0]];
@@ -56,8 +57,8 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
       {'option': 'Option 7', 'rating': 7},
     ],
     [
-      {'option': 'Option 1', 'rating': 1},
-      {'option': 'Option 2', 'rating': 2},
+      {'option': 'Option 11', 'rating': 1},
+      {'option': 'Option 12', 'rating': 2},
       {'option': 'Option 3', 'rating': 3},
       {'option': 'Option 4', 'rating': 4},
       {'option': 'Option 5', 'rating': 5},
@@ -74,10 +75,10 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
       {'option': 'Option 7', 'rating': 1},
     ],
     [
-      {'option': 'Option 1', 'rating': 1},
+      {'option': 'Option 331', 'rating': 1},
       {'option': 'Option 2', 'rating': 2},
       {'option': 'Option 3', 'rating': 3},
-      {'option': 'Option 4', 'rating': 4},
+      {'option': 'Option 334', 'rating': 4},
       {'option': 'Option 5', 'rating': 5},
       {'option': 'Option 6', 'rating': 6},
       {'option': 'Option 7', 'rating': 7},
@@ -87,7 +88,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
       {'option': 'Option 2', 'rating': 2},
       {'option': 'Option 3', 'rating': 3},
       {'option': 'Option 4', 'rating': 4},
-      {'option': 'Option 5', 'rating': 5},
+      {'option': 'Option 335','rating': 5},
       {'option': 'Option 6', 'rating': 6},
       {'option': 'Option 7', 'rating': 7},
     ],
@@ -176,10 +177,12 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
 
       if (currentQuestionIndex < totalQuestionsPerCategory[currentCategoryIndex] - 1) {
         currentQuestionIndex++;
+        currentRatingIndex++;
       } else {
         if (currentCategoryIndex < totalCategories - 1) {
           currentCategoryIndex++;
           currentQuestionIndex = 0;
+          currentRatingIndex++;
         } else {
           List<double> categoryPercentages = [];
 
@@ -229,7 +232,8 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
   Widget buildQuestion() {
     String category = categories[currentCategoryIndex][0];
     String question = categories[currentCategoryIndex][currentQuestionIndex + 1];
-    List<Map<String, dynamic>> options = ratings[currentCategoryIndex];
+    List<Map<String, dynamic>> options = ratings[currentRatingIndex].toList();
+    // print(ratings[currentRatingIndex]);
 
     return Scaffold(
       appBar: AppBar(
@@ -277,6 +281,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                     ),
                     onPressed: () {
                       updateRating(option['rating']);
+                      print(option['rating']);
                     },
                   ),
                 );
