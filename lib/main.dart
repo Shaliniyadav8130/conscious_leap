@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:consciousleap/Questionnarie/Analysis_Report.dart';
+import 'package:consciousleap/Questionnarie/questionnarie.dart';
 import 'package:consciousleap/SplashScreen.dart';
 import 'package:consciousleap/conscious_store/Conscious_Categories.dart';
 import 'package:consciousleap/login.dart';
@@ -63,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //TODO: implement initState
       super.initState();
       Timer(Duration(seconds: 5),(){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Oneness(),
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => QuestionnaireScreen(),
         ));
       });
    }

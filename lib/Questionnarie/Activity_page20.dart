@@ -1,6 +1,6 @@
 import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
-import 'package:consciousleap/Analysis_Report.dart';
+import 'package:consciousleap/Questionnarie/Analysis_Report.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
