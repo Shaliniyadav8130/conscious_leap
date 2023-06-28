@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
+import 'package:consciousleap/Questionnarie/Analysis_Report.dart';
 import 'dart:math';
 
 void main() {
@@ -176,6 +177,14 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
       {'option': 'Option 7', 'rating': 1},
     ],
   ];
+  void navigateToResultScreen(BuildContext context,List<double> categoryPercentages) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Analysis_Report(categoryPercentages),
+      ),
+    );
+  }
 
   void updateRating(int rating) {
     setState(() {
@@ -196,48 +205,49 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
             int categoryRatingSum = categoryRatings[i].reduce((value, element) => value + element);
             double categoryPercentage = (categoryRatingSum / (totalQuestionsPerCategory[i] * 7)) * 100;
             categoryPercentages.add(categoryPercentage);
+            navigateToResultScreen(context,categoryPercentages);
           }
 
 
 
           // Show dialog with questionnaire results
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text('Questionnaire Complete'),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-
-                    //Text("Rating: ${categoryRatings[1].reduce((value, element) => value + element)}")
-                    for (int i = 0; i < totalCategories; i++)
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Category ${i + 1} Rating: ${categoryRatings[i].reduce((value, element) => value + element)}'),
-                          Text('Category ${i + 1} Percentage: ${categoryPercentages[i].toStringAsFixed(2)}%'),
-                          SizedBox(height: 16),
-                        ],
-                      ),
-                  ],
-                ),
-                actions: [
-                  TextButton(
-                    child: Text('Close'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              );
-            },
-          );
-        }
-      }
-    });
-  }
+  //         showDialog(
+  //           context: context,
+  //           builder: (BuildContext context) {
+  //             return AlertDialog(
+  //               title: Text('Questionnaire Complete'),
+  //               content: Column(
+  //                 mainAxisSize: MainAxisSize.min,
+  //                 crossAxisAlignment: CrossAxisAlignment.start,
+  //                 children: [
+  //
+  //                   //Text("Rating: ${categoryRatings[1].reduce((value, element) => value + element)}")
+  //                   for (int i = 0; i < totalCategories; i++)
+  //                     Column(
+  //                       crossAxisAlignment: CrossAxisAlignment.start,
+  //                       children: [
+  //                         Text('Category ${i + 1} Rating: ${categoryRatings[i].reduce((value, element) => value + element)}'),
+  //                         Text('Category ${i + 1} Percentage: ${categoryPercentages[i].toStringAsFixed(2)}%'),
+  //                         SizedBox(height: 16),
+  //                       ],
+  //                     ),
+  //                 ],
+  //               ),
+  //               actions: [
+  //                 TextButton(
+  //                   child: Text('Close'),
+  //                   onPressed: () {
+  //                     Navigator.of(context).pop();
+  //                   },
+  //                 ),
+  //               ],
+  //             );
+  //           },
+  //         );
+         }
+       }
+     });
+   }
 
   Widget buildQuestion() {
     String category = categories[currentCategoryIndex][0];
