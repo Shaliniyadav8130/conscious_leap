@@ -1,3 +1,4 @@
+import 'package:consciousleap/therapist/doctorProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:consciousleap/Questionnarie/Analysis_Report.dart';
@@ -177,7 +178,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
       {'option': 'Option 7', 'rating': 1},
     ],
   ];
-  void navigateToResultScreen(BuildContext context,List<double> categoryPercentages) {
+  void navigateToResultScreen(BuildContext context, List<double> categoryPercentages) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -189,65 +190,20 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
   void updateRating(int rating) {
     setState(() {
       categoryRatings[currentCategoryIndex][currentQuestionIndex] = rating;
+    });
+  }
 
-      if (currentQuestionIndex < totalQuestionsPerCategory[currentCategoryIndex] - 1) {
-        currentQuestionIndex++;
-        currentRatingIndex++;
-      } else {
-        if (currentCategoryIndex < totalCategories - 1) {
-          currentCategoryIndex++;
-          currentQuestionIndex = 0;
-          currentRatingIndex++;
-        } else {
-          List<double> categoryPercentages = [];
+  void calculateCategoryPercentagesAndNavigate() {
+    List<double> categoryPercentages = [];
 
-          for (int i = 0; i < totalCategories; i++) {
-            int categoryRatingSum = categoryRatings[i].reduce((value, element) => value + element);
-            double categoryPercentage = (categoryRatingSum / (totalQuestionsPerCategory[i] * 7)) * 100;
-            categoryPercentages.add(categoryPercentage);
-            navigateToResultScreen(context,categoryPercentages);
-          }
+    for (int i = 0; i < totalCategories; i++) {
+      int categoryRatingSum = categoryRatings[i].reduce((value, element) => value + element);
+      double categoryPercentage = (categoryRatingSum / (totalQuestionsPerCategory[i] * 7)) * 100;
+      categoryPercentages.add(categoryPercentage);
+    }
 
-
-
-          // Show dialog with questionnaire results
-  //         showDialog(
-  //           context: context,
-  //           builder: (BuildContext context) {
-  //             return AlertDialog(
-  //               title: Text('Questionnaire Complete'),
-  //               content: Column(
-  //                 mainAxisSize: MainAxisSize.min,
-  //                 crossAxisAlignment: CrossAxisAlignment.start,
-  //                 children: [
-  //
-  //                   //Text("Rating: ${categoryRatings[1].reduce((value, element) => value + element)}")
-  //                   for (int i = 0; i < totalCategories; i++)
-  //                     Column(
-  //                       crossAxisAlignment: CrossAxisAlignment.start,
-  //                       children: [
-  //                         Text('Category ${i + 1} Rating: ${categoryRatings[i].reduce((value, element) => value + element)}'),
-  //                         Text('Category ${i + 1} Percentage: ${categoryPercentages[i].toStringAsFixed(2)}%'),
-  //                         SizedBox(height: 16),
-  //                       ],
-  //                     ),
-  //                 ],
-  //               ),
-  //               actions: [
-  //                 TextButton(
-  //                   child: Text('Close'),
-  //                   onPressed: () {
-  //                     Navigator.of(context).pop();
-  //                   },
-  //                 ),
-  //               ],
-  //             );
-  //           },
-  //         );
-         }
-       }
-     });
-   }
+    navigateToResultScreen(context, categoryPercentages);
+  }
 
   Widget buildQuestion() {
     String category = categories[currentCategoryIndex][0];
@@ -257,59 +213,86 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Questionnaire App'),
+        title: Text('Questionnaire '),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                category,
-                style: TextStyle(fontSize: 24),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  question,
+                  style: TextStyle(fontSize: 16,fontFamily: 'Comforta'),textAlign: TextAlign.center,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                question,
-                style: TextStyle(fontSize: 20),
-              ),
-            ),
-            Column(
-              children: options.map((option) {
-                return Container(
-                  width: 300,
-                  margin: EdgeInsets.only(bottom: 20.0),
-                  decoration: BoxDecoration(
-                    border: const GradientBoxBorder(
-                      gradient: LinearGradient(
-                        colors: [Color(0xff4961AC), Color(0xffF2685D), Color(0xff4EC1BA)],
+              Column(
+                children: options.map((option) {
+                  return Container(
+                    width: 300,
+                    margin: EdgeInsets.only(bottom: 20.0),
+                    decoration: BoxDecoration(
+                      border: const GradientBoxBorder(
+                        gradient: LinearGradient(
+                          colors: [Color(0xff4961AC), Color(0xffF2685D), Color(0xff4EC1BA)],
+                        ),
+                        width: 2,
                       ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TextButton(
+                      style: ButtonStyle(
+                        overlayColor: MaterialStateProperty.all(Colors.transparent),
+                      ),
+                      child: Text(
+                        '${option['option']} (Rating: ${option['rating']})',
+                        style: TextStyle(fontSize: 12, color: Colors.black, fontFamily: 'Comforta'),
+                      ),
+                      onPressed: () {
+                        updateRating(option['rating']);
+                        print(option['rating']);
+                      },
+                    ),
+                  );
+                }).toList(),
+              ),
+              Container(
+                width: 100,
+                height: 50,
+                decoration: BoxDecoration(
+                    border: const GradientBoxBorder(
+                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
                       width: 2,
                     ),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: TextButton(
-                    style: ButtonStyle(
-                      overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),
-                    child: Text(
-                      '${option['option']} (Rating: ${option['rating']})',
-                      style: TextStyle(fontSize: 12, color: Colors.black, fontFamily: 'Comforta'),
-                    ),
-                    onPressed: () {
-                      updateRating(option['rating']);
-                      print(option['rating']);
-                    },
-                  ),
-                );
-              }).toList(),
-            ),
-          ],
+                    borderRadius: BorderRadius.circular(12)),
+                child: TextButton(
+                  onPressed: () {
+                    if (currentQuestionIndex < totalQuestionsPerCategory[currentCategoryIndex] - 1) {
+                      setState(() {
+                        currentQuestionIndex++;
+                      });
+                    } else {
+                      if (currentCategoryIndex < totalCategories - 1) {
+                        setState(() {
+                          currentCategoryIndex++;
+                          currentQuestionIndex = 0;
+                          currentRatingIndex++;
+                        });
+                      } else {
+                        calculateCategoryPercentagesAndNavigate();
+                      }
+                    }
+                  },
+                  child: Text('Next',style: TextStyle(fontFamily: 'Comforta',color: Color(0xff4961AC)),),
+                ),
+              ),
+
+            ],
+          ),
         ),
       ),
+
     );
   }
 

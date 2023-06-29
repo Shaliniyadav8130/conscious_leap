@@ -1,3 +1,4 @@
+import 'package:consciousleap/Questionnarie/questionnarie.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
 import 'package:consciousleap/Questionnarie/Activity_page7.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class Activity_page6 extends StatelessWidget{
               GradientBorderButton(btnName: "I'm happy to take the Questionnaire",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Activity_page7()
+                      MaterialPageRoute(builder: (context) =>QuestionnaireScreen()
                       ));
                 },),
             ],
