@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //TODO: implement initState
       super.initState();
       Timer(Duration(seconds: 5),(){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Oneness(),
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => QuestionnaireScreen(),
         ));
       });
    }
