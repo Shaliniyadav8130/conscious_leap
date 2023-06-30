@@ -33,27 +33,27 @@ class Analysis_Report extends StatelessWidget{
                    categoryImage = 'assets/images/ic1.png';
                    // Environmental Mastery category
                    if (percentage <= 30) {
-                     categoryText = 'You have difficulty in managing everyday affairs; feel unable to change or improve surrounding contexts; are unaware of surrounding opportunities; and lack a sense of control over the external world.';
+                     categoryText = 'You have difficulty managing everyday affairs; feel unable to change or improve surrounding contexts; are unaware of surrounding opportunities; and lack a sense of control over the external world.';
                    } else if (percentage >= 31 && percentage <= 50) {
-                     categoryText = 'You are committed to improving your ability to manage everyday affairs, and  open to exploring new opportunities. Although you may have previously felt a lack of control over the external world, you remain optimistic and proactive in your efforts to create positive change in your environment.';
+                     categoryText = 'You are committed to improving your ability to manage everyday affairs and are open to exploring new opportunities that can positively impact your surroundings. You may have previously felt a lack.';
                    } else if (percentage >=51 && percentage <=70){
-                     categoryText = 'You have a good sense of mastery & competence in managing environment; control complex external activities; make effective use of surrounding opportunities';
+                     categoryText = 'You have a good sense of mastery & competence in managing the environment;and you control complex external activities; and you make effective use of your surrounding opportunities very well.';
                    }else{
-                     categoryText = "You have a high sense of mastery & competence in managing environment; control complex external activities; make effective use of surrounding opportunities.";
+                     categoryText = 'You have a high sense of mastery & competence in managing the environment; and you control complex external activities; and you make effective use of your surrounding opportunitiesvery well.';
                    }
                  } else if (index == 1) {
                    categoryName = "Purpose in Life";
                    categoryImage = 'assets/images/ic2.png';
                    // Purpose category
                    if (percentage <= 30) {
-                     categoryText = 'You lack a sense of meaning in life; have few goals or aims; lacks a sense of direction; do not see purpose of your past life; and have no outlook or beliefs that give life meaning.';
+                     categoryText = 'You lack a sense of meaning in life; have few goals or aims, lack a sense of direction; do not see purpose of your past life; and you have no outlook or beliefs that give life meaning.';
                    } else if (percentage >= 31 && percentage <= 50) {
-                     categoryText = 'You are in process of discovering your sense of purpose and creating meaningful goals for yourself. While you may have felt directionless in the past,you are now exploring different outlooks and beliefs that bring a sense of fulfillment and purpose to your life.';
+                     categoryText = 'You are in the process of discovering your sense of purpose and creating meaningful goals for yourself. While you may have felt directionless in the past, you are now exploring different outlooks.';
                    } else if(percentage >=51 && percentage <=70){
-                     categoryText = 'You depict good sense of directedness; feel there is meaning to your present and past life; hold beliefs that give life purpose; and have aims and objectives for living.';
+                     categoryText = 'You depict good sense of directedness;and you  feel there is meaning to your present and past life;and you hold your beliefs that give life purpose; and you have aims and objectives for living.';
                    }
                    else{
-                     categoryText = 'You depict high sense of directedness; feel there is meaning to your present and past life; hold beliefs that give life purpose; and have aims and objectives for living.';
+                     categoryText = 'You depict high sense of directedness; and you feel there is meaning to your present and past life; and you hold beliefs that give life purpose; and  you have aims and objectives for living.';
                    }
                  }
                  else if (index == 2) {
@@ -61,14 +61,14 @@ class Analysis_Report extends StatelessWidget{
                    categoryImage = 'assets/images/ic3.png';
                    // Self Acceptance Category
                    if (percentage <= 30) {
-                     categoryText = 'You feel dissatisfied with yourself; are disappointed with what has occured in your past life; are are troubled about certain personal qualities; and wish to be different than what you are.';
+                     categoryText = 'You feel dissatisfied with yourself; are disappointed with what has occurred in your past life; are troubled about certain personal qualities; and wish to be different than what you are.';
                    } else if (percentage >= 31 && percentage <= 50) {
-                     categoryText = 'You possess a low level of self-awareness and are actively working towards personal growth and development. While acknowledge your past experiences and personal traits,you strike to improve and become the best version of yourself. You are motivated and optimistic about the potential for positive change in your life.';
+                     categoryText = 'You possess a low level of self-awareness and are actively working towards personal growth and development. While acknowledging your past experiences and  your personal own traits.';
                    } else if(percentage >=51 && percentage <=70){
-                     categoryText = 'You possess a positive attitude toward yourself; acknowledge and accept multiple aspects of yourself including both good and bad qualities; and feel positive about your past life.';
+                     categoryText = 'You possess a positive attitude toward yourself;and you  acknowledge the facts and accept multiple aspects of yourself including both good and bad qualities; and feel positive about your past life.';
                    }
                    else{
-                     categoryText = "You possess a highly positive attitude toward yourself; acknowledge and accept multiple aspects of yourself including both good and bad qualities; and feel positive about your past life.";
+                     categoryText = 'You possess a highly positive attitude toward yourself; acknowledge and accept multiple aspects of yourself including both good and bad qualities; and feel positive about your past life.';
                    }
                  }
                  else if (index == 3) {
@@ -76,14 +76,14 @@ class Analysis_Report extends StatelessWidget{
                    categoryImage = 'assets/images/ic4.png';
                    // Purpose category
                    if (percentage <= 30) {
-                     categoryText = 'You have few close,trusting relationships with others; find it difficult to be warm,open,and concerned about others; are isolated and frustrated in interpersonal relationships.';
+                     categoryText = 'You have few close, trusting relationships with others; find it difficult to be warm, open, and you are concerned about others; and you are isolated and frustrated in interpersonal relationships.';
                    } else if (percentage >= 31 && percentage <= 50) {
-                     categoryText = 'You cherish your close relationships and we are working towards improving your ability to show warmth,openess,and concerns towards others.While feeling some isolation and frustration in interpersonal relationships,you remain hopeful and committed to building fulfilling connections with others.';
+                     categoryText = 'You cherish your close relationships and are working towards improving your ability to show warmth, openness, and concern towards others,feeling isolation and frustration in interpersonal relationships.';
                    } else if(percentage >=31 && percentage <=70){
-                     categoryText = 'You have warm,satisfying,trusting relationship with others; are connected about the welfare of others;are capable of strong empathy, affection, and intimacy; and understand the give and take of human relationships.';
+                     categoryText = 'You have warm, satisfying, trusting relationships with others; are concerned about the welfare of others; are capable of strong empathy, affection, and intimacy; and understand  relationships.';
                    }
                    else{
-                     categoryText = 'You have very warm, satisfying, trusting relationships with others; are concerned about the welfare of others; are capable of strong empathy, affection, and intimacy; and understand the give and take of human relationships.';
+                     categoryText = 'You have very warm, satisfying, trusting relationships with others; are concerned about the welfare of others; are capable of strong empathy, affection, and intimacy; and understand  human relationships.';
                    }
                  }
                  else {

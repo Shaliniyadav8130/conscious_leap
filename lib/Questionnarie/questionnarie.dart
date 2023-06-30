@@ -27,6 +27,8 @@ class QuestionnaireScreen extends StatefulWidget {
 }
 
 class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
+  bool isOptionSelected = false;
+
   int currentCategoryIndex = 0;
   int currentQuestionIndex = 0;
   int currentRatingIndex=0;
@@ -190,8 +192,10 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
   void updateRating(int rating) {
     setState(() {
       categoryRatings[currentCategoryIndex][currentQuestionIndex] = rating;
+      isOptionSelected = true;
     });
   }
+
 
   void calculateCategoryPercentagesAndNavigate() {
     List<double> categoryPercentages = [];
@@ -261,37 +265,57 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                   );
                 }).toList(),
               ),
-              Container(
-                width: 100,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Color(0xff4961AC),
-                    // border: const GradientBoxBorder(
-                    //   gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
-                    //   width: 2,
-                    //),
-                    borderRadius: BorderRadius.circular(12)),
-                child: TextButton(
-                  onPressed: () {
-                    if (currentQuestionIndex < totalQuestionsPerCategory[currentCategoryIndex] - 1) {
-                      setState(() {
-                        currentQuestionIndex++;
-                      });
-                    } else {
-                      if (currentCategoryIndex < totalCategories - 1) {
+              Padding(
+                padding:EdgeInsets.all(20),
+                child: Container(
+                  height: 50,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20), // Set the border radius here
+                  ),
+
+                  child:ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                            (Set<MaterialState> states) {
+                          // if (states.contains(MaterialState.pressed)) {
+                          //   return Colors.red; // Background color when the button is pressed
+                          // }
+                          if (states.contains(MaterialState.disabled)) {
+                            return Colors.grey; // Background color when the button is disabled
+                          }
+                          return Color(0xff4961AC); // Default background color
+                        },
+                      ),
+                    ),
+                    onPressed: isOptionSelected
+                        ? () {
+                      if (currentQuestionIndex < totalQuestionsPerCategory[currentCategoryIndex] - 1) {
                         setState(() {
-                          currentCategoryIndex++;
-                          currentQuestionIndex = 0;
-                          currentRatingIndex++;
+                          currentQuestionIndex++;
+                          isOptionSelected = false; // Reset the option selection for the next question
                         });
                       } else {
-                        calculateCategoryPercentagesAndNavigate();
+                        if (currentCategoryIndex < totalCategories - 1) {
+                          setState(() {
+                            currentCategoryIndex++;
+                            currentQuestionIndex = 0;
+                            currentRatingIndex++;
+                            isOptionSelected = false; // Reset the option selection for the next question
+                          });
+                        } else {
+                          calculateCategoryPercentagesAndNavigate();
+                        }
                       }
                     }
-                  },
-                  child: Text('Next',style: TextStyle(fontFamily: 'Comforta',color: Colors.white),),
+                        : null, // Disable the button when no option is selected
+                    child: Text('Next', style: TextStyle(fontFamily: 'Comforta', color: Colors.white)),
+                  ),
                 ),
+
               ),
+
+
 
             ],
           ),
