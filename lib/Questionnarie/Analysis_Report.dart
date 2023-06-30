@@ -18,7 +18,7 @@ class Analysis_Report extends StatelessWidget{
          child:Column(
            children: [
              Padding(
-               padding: EdgeInsets.only(bottom:20),
+               padding: EdgeInsets.only(bottom:30),
                child:Text("Initial Analysis",style: TextStyle(decoration: TextDecoration.underline,fontSize: 24,fontFamily: 'Comforta',fontWeight: FontWeight.bold),),
              ),
              Column(
@@ -98,7 +98,7 @@ class Analysis_Report extends StatelessWidget{
                      Column(
                        children: [
                          Padding(
-                           padding: EdgeInsets.only(bottom:20),
+                           padding: EdgeInsets.only(bottom:30),
                            child: ConstrainedBox(
                              constraints: BoxConstraints(
                                maxWidth: 370,
@@ -117,8 +117,8 @@ class Analysis_Report extends StatelessWidget{
                                  children: [
                                    Padding(padding:EdgeInsets.all(6),
                                      child: SizedBox(
-                                       height:48,
-                                       width: 48,
+                                       height:45,
+                                       width: 45,
                                        child: Image.asset(categoryImage),
                                      ),
                                    ),
@@ -134,16 +134,19 @@ class Analysis_Report extends StatelessWidget{
                                      ),
                                      child:Padding(
                                        padding: EdgeInsets.only(top:40),
-                                       child: Text('${percentage.toStringAsFixed(2)}%',style: TextStyle(fontSize: 18,fontFamily: 'Comforta',color:Color(0xff4961AC) ,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
+                                       child: Text('${percentage.toStringAsFixed(2)}%',style: TextStyle(fontSize: 22,fontFamily: 'Comforta',color:Color(0xff4961AC) ,fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
                                      ),
 
+                                   ),
+                                   SizedBox(
+                                     width: 3,
                                    ),
                                    Column(
                                      mainAxisAlignment: MainAxisAlignment.start,
                                      children: [
                                        Center(
                                          child:Padding(
-                                           padding: EdgeInsets.all(6),
+                                           padding: EdgeInsets.all(10),
                                            child:Text("${categoryName}",style: TextStyle(fontSize: 10,fontFamily: 'Comforta',fontWeight: FontWeight.bold),),
                                          ),
 
@@ -156,7 +159,6 @@ class Analysis_Report extends StatelessWidget{
 
                                        ),
 
-
                                      ],
                                    ),
                                  ],
@@ -166,6 +168,9 @@ class Analysis_Report extends StatelessWidget{
                          ),
 
                        ],
+                     ),
+                     SizedBox(
+                       width: 3,
                      ),
                    ],
                  );

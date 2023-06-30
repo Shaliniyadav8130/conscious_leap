@@ -2,6 +2,9 @@ import 'package:consciousleap/therapist/doctorProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:consciousleap/Questionnarie/Analysis_Report.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'dart:math';
 
 void main() {
@@ -239,7 +242,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                 children: options.map((option) {
                   return Container(
                     width: 300,
-                    margin: EdgeInsets.only(bottom: 20.0),
+                    margin: EdgeInsets.only(top: 20.0),
                     decoration: BoxDecoration(
                       border: const GradientBoxBorder(
                         gradient: LinearGradient(
@@ -266,15 +269,15 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                 }).toList(),
               ),
               Padding(
-                padding:EdgeInsets.all(20),
+                padding:EdgeInsets.only(top:35),
                 child: Container(
                   height: 50,
-                  width: 120,
+                  width: 150,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20), // Set the border radius here
+                    borderRadius: BorderRadius.circular(2), // Set the border radius here
                   ),
 
-                  child:ElevatedButton(
+                  child:TextButton(
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.resolveWith<Color>(
                             (Set<MaterialState> states) {
