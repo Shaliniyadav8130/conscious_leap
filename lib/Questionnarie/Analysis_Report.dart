@@ -1,16 +1,43 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:consciousleap/Questionnarie/questionnarie.dart';
 
 // Analysis Report of Questionnarie Page
 
-class Analysis_Report extends StatelessWidget{
-  final List<double> categoryPercentages;
+class Analysis_Report extends StatefulWidget{
+  final List<double> categoryPercentage;
 
-  Analysis_Report(this.categoryPercentages);
+  Analysis_Report(this.categoryPercentage);
+
+  @override
+  State<Analysis_Report> createState() => _Analysis_ReportState();
+}
+
+class _Analysis_ReportState extends State<Analysis_Report> {
+  var db = FirebaseFirestore.instance;
+  var categoryPercentages=[0.0,0.0,0.0,0.0];
+  void getData() async{
+    String? id = FirebaseAuth.instance.currentUser?.uid;
+    var refrence=db.collection("userReport").doc("id");
+    refrence.get().then((query){
+      var data = query.data()!;
+      var abc=data['report'];
+      for(int i=0;i<4;i++){
+        categoryPercentages[i]=abc[i];
+      }
+      print(categoryPercentages);
+
+    },
+        onError: (e) => print("Error completing: $e")
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    getData();
     return Scaffold(
       appBar: AppBar(
       ),
@@ -191,7 +218,7 @@ class Analysis_Report extends StatelessWidget{
                    borderRadius: BorderRadius.circular(12)),
                child: TextButton(
                  onPressed: () {
-
+                    getData();
                  },
                  child: Text('Reset',style: TextStyle(fontFamily: 'Comforta',color: Colors.white),),
                ),
@@ -203,5 +230,4 @@ class Analysis_Report extends StatelessWidget{
 
     );
   }
-
 }

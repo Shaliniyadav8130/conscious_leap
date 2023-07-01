@@ -1,4 +1,5 @@
 import 'package:consciousleap/therapist/doctorProfile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:consciousleap/Questionnarie/Analysis_Report.dart';
@@ -31,7 +32,8 @@ class QuestionnaireScreen extends StatefulWidget {
 
 class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
   bool isOptionSelected = false;
-
+  var db = FirebaseFirestore.instance;
+  List<double> categoryPercentages = [];
   int currentCategoryIndex = 0;
   int currentQuestionIndex = 0;
   int currentRatingIndex=0;
@@ -199,16 +201,28 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
     });
   }
 
+  void addToDatabase() async{
+    try{
+      String? id = FirebaseAuth.instance.currentUser?.uid;
+      db.collection("userReport").doc("id").set({"report":categoryPercentages});
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Report added succesfully")));
+    }
+    catch (e){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Network Issue \n"+e.toString())));
+
+    }
+
+  }
 
   void calculateCategoryPercentagesAndNavigate() {
-    List<double> categoryPercentages = [];
+
 
     for (int i = 0; i < totalCategories; i++) {
       int categoryRatingSum = categoryRatings[i].reduce((value, element) => value + element);
       double categoryPercentage = (categoryRatingSum / (totalQuestionsPerCategory[i] * 7)) * 100;
       categoryPercentages.add(categoryPercentage);
     }
-
+    addToDatabase();
     navigateToResultScreen(context, categoryPercentages);
   }
 
