@@ -8,22 +8,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'dart:math';
 
-void main() {
-  runApp(QuestionnaireApp());
-}
+// void main() {
+//   runApp(QuestionnaireApp());
+// }
 
-class QuestionnaireApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Questionnaire App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: QuestionnaireScreen(),
-    );
-  }
-}
+// class QuestionnaireApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Questionnaire App',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: QuestionnaireScreen(),
+//     );
+//   }
+// }
 
 class QuestionnaireScreen extends StatefulWidget {
   @override
@@ -189,7 +189,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Analysis_Report(categoryPercentages),
+        builder: (context) => Analysis_Report(),
       ),
     );
   }
@@ -201,18 +201,30 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
     });
   }
 
-  void addToDatabase() async{
-    try{
+  void addToDatabase() async {
+    try {
       String? id = FirebaseAuth.instance.currentUser?.uid;
-      db.collection("userReport").doc("id").set({"report":categoryPercentages});
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Report added succesfully")));
-    }
-    catch (e){
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Network Issue \n"+e.toString())));
 
-    }
+      if (id != null) {
+        await db.collection("userReport").doc(id).set({
+          "report": categoryPercentages,
+        });
 
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Report added successfully")),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("User not logged in")),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Network Issue \n" + e.toString())),
+      );
+    }
   }
+
 
   void calculateCategoryPercentagesAndNavigate() {
 

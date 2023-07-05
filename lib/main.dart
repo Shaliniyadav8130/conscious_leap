@@ -51,41 +51,35 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
          useMaterial3: true,
        ),
-      home: MyHomePage(),
+      home: SplashScreen(),
     );
   }
 }
- class MyHomePage extends StatefulWidget {
-   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+//  class MyHomePage extends StatefulWidget {
+//    @override
+//   State<MyHomePage> createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-    void initState() {
-      //TODO: implement initState
-      super.initState();
-      Timer(Duration(seconds: 5),(){
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => QuestionnaireScreen(),
-        ));
-      });
-   }
+//class _MyHomePageState extends State<MyHomePage> {
+  // @override
+  //   void initState() {
+  //     //TODO: implement initState
+  //     super.initState();
+  //     Timer(Duration(seconds: 5),(){
+  //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Oneness(),
+  //       ));
+  //     });
+  //  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        //backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-       body: Center(
-        child: Container(
-
-          child:const Image(image: AssetImage("assets/images/App splash.gif"),),
-          ),
-        ),
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Container(
+  //         width: double.infinity,
+  //         height: double.infinity,
+  //         child:const Image(image: AssetImage("assets/images/App splash.gif"),),
+  //         );
 
       //This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
+
+ // }
+//}
