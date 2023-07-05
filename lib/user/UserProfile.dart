@@ -5,14 +5,10 @@ class SidebarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Sidebar'),
-      ),
-      drawer: Drawer(
-        // Sidebar content
-      ),
-      body: Center(
+    return Drawer(
+
+
+      child: Center(
         child: Text('Sidebar Content'),
       ),
     );

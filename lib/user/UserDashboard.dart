@@ -38,43 +38,76 @@ class _UserDashboardState extends State<UserDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white70,
+      appBar: AppBar(
+        title:  Text("Member",textAlign: TextAlign.center,style:TextStyle(fontSize:27,color: Color(0xff4961AC)),),
+        centerTitle:true,
+        leading:Container(),
+        actions: [
+          Builder(
+            builder: (context) => IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                icon:  Container(
+                  width:42,
+                  height:50,
+
+                  padding: EdgeInsets.all(2.0),
+                  decoration: BoxDecoration(
+                      border: const GradientBoxBorder(
+                        gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(55)),
+
+                  child:CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage('assets/images/doctor.jpg'),
+                  ),
+
+
+
+                )
+            ),
+          ),
+        ],
+      ),
+      endDrawer: SidebarScreen(),
       body: SingleChildScrollView(
         child:Column(
           children: [
-            Padding(padding: EdgeInsets.only(top:50),
-            child:Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(child: Container()),
-                Center(
-                  child: Text("Member",style:TextStyle(fontSize:27,color: Color(0xff4961AC)),),
-                ),
-                Expanded(child: Container()),
-                Padding(
-                  padding: EdgeInsets.only(right: 10),
-                    child:Container(
-                      width:55,
-                      height:55,
-                      padding: EdgeInsets.all(2.0),
-                      decoration: BoxDecoration(
-                          border: const GradientBoxBorder(
-                            gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
-                            width: 2,
-                          ),
-                          borderRadius: BorderRadius.circular(55)),
-
-                      child:CircleAvatar(
-                        radius: 50,
-                        backgroundImage: AssetImage('assets/images/doctor.jpg'),
-                      ),
-
-
-
-                ),
-                ),
-              ],
-            ),
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     Expanded(child: Container()),
+            //     Center(
+            //       child: Text("Member",style:TextStyle(fontSize:27,color: Color(0xff4961AC)),),
+            //     ),
+            //     Expanded(child: Container()),
+            //     Padding(
+            //       padding: EdgeInsets.only(right: 10),
+            //         child:Container(
+            //           width:55,
+            //           height:55,
+            //           padding: EdgeInsets.all(2.0),
+            //           decoration: BoxDecoration(
+            //               border: const GradientBoxBorder(
+            //                 gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
+            //                 width: 2,
+            //               ),
+            //               borderRadius: BorderRadius.circular(55)),
+            //
+            //           child:CircleAvatar(
+            //             radius: 50,
+            //             backgroundImage: AssetImage('assets/images/doctor.jpg'),
+            //           ),
+            //
+            //
+            //
+            //     ),
+            //     ),
+            //   ],
+            // ),
             Row(
               children: [
                 Heading(name: "Hi, Member, nice to see you again!"),
