@@ -37,7 +37,7 @@ class _UserDashboardState extends State<UserDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
+      backgroundColor: Color(0xffF0F0F0),
       appBar: AppBar(
         title:  Text("Member",textAlign: TextAlign.center,style:TextStyle(fontSize:27,color: Color(0xff4961AC)),),
         centerTitle:true,
@@ -126,21 +126,32 @@ class _UserDashboardState extends State<UserDashboard> {
               ),
             ),
                 const SizedBox(height:20),
-            Row(
-              children: [
-                Expanded(
-                    child: Container(
-                      width: 330,
-                      height: 380,
-                      //color: Colors.deepOrangeAccent,
-                      child:
-                      Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10),
-                        child: CalendarScreen(),
-                      ),
+            Container(
+              width:390,
+              height: 420,
+              decoration: BoxDecoration(
+                  borderRadius:
+                  BorderRadius.circular(8.0),
+                  color: Colors.white
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(child:  Container(
+                    width: 330,
+                    height: 380,
+                    //color: Colors.deepOrangeAccent,
+                    child:
+                    Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      child: CalendarScreen(),
                     ),
-                  ),
-              ],
+                  ),)
+
+
+                ],
+              ),
+
             ),
 
 

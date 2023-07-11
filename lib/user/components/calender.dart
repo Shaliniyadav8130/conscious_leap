@@ -21,83 +21,124 @@ class _CalendarScreenState extends State<CalendarScreen> {
     final DateTime lastDay = DateTime(now.year + 1, now.month, now.day);
 
     return Scaffold(
-      body:
-      Padding(
-        padding:EdgeInsets.only(left:15,right:15,top:15),
-      child:Expanded(
-        child: Container(
-          width: 400,
-          height:327,
-          decoration: BoxDecoration(
-           // color: Colors.indigoAccent,
-              border: const GradientBoxBorder(
-                gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
-                width: 2,
-              ),
-              borderRadius: BorderRadius.circular(12)),
-          child: Column(
-            children: [
-              Padding(
-                padding:EdgeInsets.only(top:5),
-                child:Text("My Calender",style:TextStyle(fontSize: 17,fontFamily: "Comforta",color:Color(0xff4961AC))),
-              ),
-
-              TableCalendar(
-                firstDay: firstDay,
-                lastDay: lastDay,
-                focusedDay: _focusedDay,
-                calendarFormat: _calendarFormat,
-                startingDayOfWeek: StartingDayOfWeek.monday,
-                rowHeight: 28,
-                daysOfWeekHeight: 60,
-                headerStyle: HeaderStyle(
-                  formatButtonVisible: false, // Hide the month changing option
-                ),
-                daysOfWeekStyle: const DaysOfWeekStyle(
-                  weekendStyle: TextStyle(color: Colors.red),
-                ),
-                calendarStyle: const CalendarStyle(
-                  weekendTextStyle: TextStyle(color: Colors.red),
-                  todayDecoration: BoxDecoration(
-                    color: Colors.amber,
-                    shape: BoxShape.circle,
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: EdgeInsets.only(left: 15, right: 15, top: 15),
+        child: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        width: 400,
+                        height: 328,
+                        decoration: BoxDecoration(
+                          border: const GradientBoxBorder(
+                            gradient: LinearGradient(
+                              colors: [Color(0xff4961AC), Color(0xffF2685D), Color(0xff4EC1BA)],
+                            ),
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12),
+                              topRight: Radius.circular(12)
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(top: 5),
+                              child: Text(
+                                "My Calendar",
+                                style: TextStyle(fontSize: 17, fontFamily: "Comforta", color: Color(0xff4961AC)),
+                              ),
+                            ),
+                            TableCalendar(
+                              firstDay: firstDay,
+                              lastDay: lastDay,
+                              focusedDay: _focusedDay,
+                              calendarFormat: _calendarFormat,
+                              startingDayOfWeek: StartingDayOfWeek.monday,
+                              rowHeight: 28,
+                              daysOfWeekHeight: 60,
+                              headerStyle: HeaderStyle(
+                                formatButtonVisible: false, // Hide the month changing option
+                              ),
+                              daysOfWeekStyle: const DaysOfWeekStyle(
+                                weekendStyle: TextStyle(color: Colors.red),
+                              ),
+                              calendarStyle: const CalendarStyle(
+                                weekendTextStyle: TextStyle(color: Colors.red),
+                                todayDecoration: BoxDecoration(
+                                  color: Colors.amber,
+                                  shape: BoxShape.circle,
+                                ),
+                                selectedDecoration: BoxDecoration(
+                                  color: Colors.teal,
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              onDaySelected: (selectedDay, focusedDay) {
+                                if (!isSameDay(_selectedDay, selectedDay)) {
+                                  // Call `setState()` when updating the selected day
+                                  setState(() {
+                                    _selectedDay = selectedDay;
+                                    _focusedDay = focusedDay;
+                                  });
+                                }
+                              },
+                              selectedDayPredicate: (day) {
+                                return isSameDay(_selectedDay, day);
+                              },
+                              onFormatChanged: (format) {
+                                if (_calendarFormat != format) {
+                                  // Call `setState()` when updating calendar format
+                                  setState(() {
+                                    _calendarFormat = format;
+                                  });
+                                }
+                              },
+                              onPageChanged: (focusedDay) {
+                                // No need to call `setState()` here
+                                _focusedDay = focusedDay;
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  selectedDecoration: BoxDecoration(
-                    color: Colors.teal,
-                    shape: BoxShape.circle,
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 324),
+                      child: Container(
+                        width: 250,
+                        height: 100,
+                        clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [Color(0xff4961AC), Color(0xffF2685D), Color(0xff4EC1BA)],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
+                          ),
+                        ),
+                        child: Center(child: Text("Upcoming events",style: TextStyle(color: Colors.white,fontSize: 15,fontFamily: "Comforta"),textAlign: TextAlign.center,),),
+                      ),
+                    ),
                   ),
-                ),
-                onDaySelected: (selectedDay, focusedDay) {
-                  if (!isSameDay(_selectedDay, selectedDay)) {
-                    // Call `setState()` when updating the selected day
-                    setState(() {
-                      _selectedDay = selectedDay;
-                      _focusedDay = focusedDay;
-                    });
-                  }
-                },
-                selectedDayPredicate: (day) {
-                  return isSameDay(_selectedDay, day);
-                },
-                onFormatChanged: (format) {
-                  if (_calendarFormat != format) {
-                    // Call `setState()` when updating calendar format
-                    setState(() {
-                      _calendarFormat = format;
-                    });
-                  }
-                },
-                onPageChanged: (focusedDay) {
-                  // No need to call `setState()` here
-                  _focusedDay = focusedDay;
-                },
+                ],
               ),
-
-            ],
-          ),
+            ),
+          ],
         ),
-
-      ),
       ),
     );
   }

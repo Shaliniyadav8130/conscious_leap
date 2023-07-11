@@ -32,7 +32,7 @@ class FeelingCheck extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: "Comforta",
-                      color: Colors.black,
+                      color: Color(0xff4961AC),
                     ),
                     textAlign: TextAlign.center,
                   ),

@@ -3,24 +3,10 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:consciousleap/Questionnarie/Analysis_Report.dart';
 import 'package:consciousleap/Questionnarie/questionnarie.dart';
 import 'package:consciousleap/SplashScreen.dart';
-import 'package:consciousleap/conscious_Business/businessOptions.dart';
-import 'package:consciousleap/conscious_store/Conscious_Categories.dart';
-import 'package:consciousleap/login.dart';
-import 'package:consciousleap/therapist/login_therapist.dart';
-import 'package:flutter_gif/flutter_gif.dart';
-import 'package:consciousleap/Activity_page21.dart';
-import 'package:consciousleap/Oneness.dart';
-import 'package:consciousleap/Sign_up.dart';
-import 'package:consciousleap/conscious_store/conscious_login.dart';
-import 'package:consciousleap/repository/authentication_repository.dart';
-import 'package:consciousleap/therapist/Therapist_List.dart';
-import 'package:consciousleap/therapist/doctorProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:flutter_gif/flutter_gif.dart';
-import 'package:get/get.dart';
 
 
 void main () async{

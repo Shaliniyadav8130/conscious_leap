@@ -1,4 +1,9 @@
 import 'package:consciousleap/Oneness.dart';
+import 'package:consciousleap/Therapist_Dashboard/TherapistDashboard.dart';
+import 'package:consciousleap/therapist/RequestCall.dart';
+import 'package:consciousleap/therapist/Thankyou.dart';
+import 'package:consciousleap/therapist/UploadResume.dart';
+import 'package:consciousleap/therapist/signup_therapist.dart';
 import 'package:consciousleap/user/UserDashboard.dart';
 import 'package:consciousleap/user/components/calender.dart';
 import 'package:consciousleap/userprofile.dart';

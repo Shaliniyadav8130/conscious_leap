@@ -29,7 +29,8 @@ class Blocks extends StatelessWidget{
               child:Container(
                 width: 130,
                 height: 130,
-                child: ClipRRect(
+                child:
+                ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
                     "assets/images/background.png",

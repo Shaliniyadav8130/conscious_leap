@@ -242,7 +242,7 @@ class _SignupViewState extends State<SignupView> {
       print(userCredential);
       addUserData();
       controller.clearFields();
-      // String? id = FirebaseAuth.instance.currentUser?.uid;
+       //String? id = FirebaseAuth.instance.currentUser?.uid;
       // UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password);
       // db.collection("doctor").doc(password).set(userModel.toJson());
     } on FirebaseAuthException catch (e){
@@ -274,7 +274,4 @@ class _SignupViewState extends State<SignupView> {
     }
   }
 }
-
-
-
 

@@ -21,7 +21,7 @@ class FeelingWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Container(
-        width: 70,
+        width: 80,
         height: 100,
         decoration: BoxDecoration(
             color:color,
@@ -30,19 +30,30 @@ class FeelingWidget extends StatelessWidget{
               width: 2,
             ),
             borderRadius: BorderRadius.circular(12)),
-        child:Column(
-          children: [
-            Padding(padding: EdgeInsets.only(top:10,bottom:8),
-              child:
-              SizedBox(
-                  width: 40,
-                  height:40,
-                  child:Image.asset(icons)
-              ),),
+        child:
+        Padding(
+          padding: EdgeInsets.all(5),
+          child: Container(
+              decoration: BoxDecoration(
+                  borderRadius:
+                  BorderRadius.circular(8.0),
+                  color: Color(0xffF0F0F0)
+              ),
+            child: Column(
+              children: [
+                Padding(padding: EdgeInsets.only(top:10,bottom:8),
+                  child:
+                  SizedBox(
+                      width: 45,
+                      height:45,
+                      child:Image.asset(icons)
+                  ),),
 
-            Text(Feelingname,style:TextStyle(fontSize:size,color:Color(0xff4961AC)))
-          ],
-        )
+                Text(Feelingname,style:TextStyle(fontSize:size,color:Color(0xff4961AC)))
+              ],
+            )
+          ),
+        ),
 
     );
 
