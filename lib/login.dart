@@ -16,10 +16,10 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
   //final controller = Get.put(SignUpController());
   final email = TextEditingController();
-  final phone = TextEditingController();
+  final password = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String Email="";
-  String Phone="";
+  String Password="";
 
 
   @override
@@ -71,13 +71,13 @@ class _loginState extends State<login> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Mobile",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
+                      Text("Password",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
                       SizedBox(
                         width: 18,
                       ),
                          Expanded(
                            child:TextFormField(
-                          controller: phone,
+                          controller: password,
                            decoration: InputDecoration(
 
                              border: GradientOutlineInputBorder(
@@ -111,7 +111,7 @@ class _loginState extends State<login> {
                         if(_formKey.currentState!.validate()){
                           setState(() {
                             Email=email.text.trim();
-                            Phone=phone.text.trim();
+                            Password=password.text.trim();
 
                           });
                           signinUser();
@@ -136,7 +136,7 @@ class _loginState extends State<login> {
     // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(""+Phone+Email)));
 
     try{
-      UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Phone);
+      UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Password);
       print(userCredential);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfully")));
       Navigator.push(context, MaterialPageRoute(builder: (context) => Analysis_Report()));
