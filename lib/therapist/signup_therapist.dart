@@ -32,6 +32,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
   String lastname = "";
   var db = FirebaseFirestore.instance;
   String password = "";
+  String phone="";
 
 
 
@@ -169,7 +170,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
                 Expanded(
 
                   child: TextFormField(
-                    controller: controller.password,
+                    controller: controller.phone,
                     decoration: InputDecoration(
                       border: GradientOutlineInputBorder(
                         width: 2,
@@ -205,6 +206,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
                       password=controller.password.text.trim();
                       firstname=controller.firstName.text.trim();
                       lastname=controller.lastName.text.trim();
+                      phone=controller.phone.text.trim();
                     });
                     signupUser();
                   }
@@ -264,7 +266,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
   void addUserData() async{
     try{
       String? id = FirebaseAuth.instance.currentUser?.uid;
-      UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password);
+      UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password,phone: phone);
       db.collection("doctor").doc(password).set(userModel.toJson());
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Registered succesfully")));
       Navigator.push(context, MaterialPageRoute(builder: (context) => therapist_call()));

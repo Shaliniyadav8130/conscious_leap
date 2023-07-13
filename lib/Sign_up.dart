@@ -4,6 +4,7 @@ import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page3.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
 import 'package:consciousleap/controllers/signup_controllers.dart';
+import 'package:consciousleap/customWidgets/CustomInput.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,6 +30,7 @@ class _SignupViewState extends State<SignupView> {
   String email = "";
   String firstname = "";
   String lastname = "";
+  String phone="";
   var db = FirebaseFirestore.instance;
   String password = "";
 
@@ -51,6 +53,7 @@ class _SignupViewState extends State<SignupView> {
                         ),
 
                         Row(
+
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("First Name",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
@@ -85,41 +88,40 @@ class _SignupViewState extends State<SignupView> {
                         SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Last Name",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Expanded(
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     Text("Last Name",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
+                        //     SizedBox(
+                        //       width: 10,
+                        //     ),
+                        //     Expanded(
+                        //
+                        //       child:
+                        //       TextFormField(
+                        //         controller:controller.lastName,
+                        //         decoration: InputDecoration(
+                        //           border: GradientOutlineInputBorder(
+                        //             width: 2,
+                        //             gradient: LinearGradient(
+                        //               colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                        //             ),
+                        //             borderRadius: BorderRadius.circular(8.0),
+                        //           ),
+                        //         ),
+                        //          validator: (value){
+                        //            if(value == null || value.isEmpty){
+                        //              return 'Please enter last name';
+                        //            }
+                        //            return null;
+                        //          },
+                        //
+                        //       ),
+                        //     ),
+                        //
+                        //   ],
+                        // ),
 
-                              child: TextFormField(
-                                controller:controller.lastName,
-                                decoration: InputDecoration(
-                                  border: GradientOutlineInputBorder(
-                                    width: 2,
-                                    gradient: LinearGradient(
-                                      colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
-                                 validator: (value){
-                                   if(value == null || value.isEmpty){
-                                     return 'Please enter last name';
-                                   }
-                                   return null;
-                                 },
-
-                              ),
-                            ),
-
-                          ],
-                        ),
-                SizedBox(
-                  height: 20,
-                ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -129,7 +131,8 @@ class _SignupViewState extends State<SignupView> {
                             ),
                             Expanded(
 
-                              child: TextFormField(
+                              child:
+                              TextFormField(
                                 controller: controller.email,
                                 decoration: InputDecoration(
                                   border: GradientOutlineInputBorder(
@@ -167,7 +170,7 @@ class _SignupViewState extends State<SignupView> {
                             Expanded(
 
                               child: TextFormField(
-                                controller: controller.password,
+                                controller: controller.phone,
                                 decoration: InputDecoration(
                                   border: GradientOutlineInputBorder(
                                     width: 2,
@@ -188,7 +191,83 @@ class _SignupViewState extends State<SignupView> {
 
                           ],
                         ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Password",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
 
+                      child:
+                      TextFormField(
+                        obscureText: true,
+                        controller:controller.password,
+                        decoration: InputDecoration(
+                          border: GradientOutlineInputBorder(
+                            width: 2,
+                            gradient: LinearGradient(
+                              colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                        validator: (value){
+                          password=value!;
+                          if(value == null || value.isEmpty){
+                            return 'Please enter password';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+
+                  ],
+                ),
+
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("ReType-\nPassword",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child:
+                      TextFormField(
+
+                        obscureText: true,
+                        controller: controller.reTypePassword,
+                        decoration: InputDecoration(
+                          border: GradientOutlineInputBorder(
+                            width: 2,
+                            gradient: LinearGradient(
+                              colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                        validator: (value){
+                          if(value == null || value.isEmpty){
+                            return 'Please enter password';
+                          }
+                          else if(value!=password){
+                            return 'Please enter same password \n $password value $value';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+
+                  ],
+                ),
 
 
                         Container(
@@ -200,9 +279,9 @@ class _SignupViewState extends State<SignupView> {
                               if(_formKey.currentState!.validate()){
                                 setState(() {
                                   email=controller.email.text.trim();
-                                  password=controller.password.text.trim();
+                                  password=controller.reTypePassword.text.trim();
                                   firstname=controller.firstName.text.trim();
-                                  lastname=controller.lastName.text.trim();
+                                  phone=controller.phone.text.trim();
                                 });
                                 signupUser();
                               }
@@ -262,8 +341,8 @@ class _SignupViewState extends State<SignupView> {
   void addUserData() async{
     try{
       String? id = FirebaseAuth.instance.currentUser?.uid;
-      UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password);
-      db.collection("User").doc(password).set(userModel.toJson());
+      UserModel userModel=UserModel(id:id,firstName: firstname, lastName: "lastname", email: email, password: password,phone: phone);
+      db.collection("User").doc(id).set(userModel.toJson());
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Registered succesfully")));
       Navigator.push(context, MaterialPageRoute(builder: (context) => Activity_page3()));
       controller.clearFields();
