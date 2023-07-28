@@ -1,3 +1,4 @@
+import 'package:consciousleap/therapist/ScheduleSession.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:consciousleap/therapist/doctorProfile.dart';
@@ -6,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 // List of the Therapist Page
 
@@ -23,13 +26,23 @@ class _TherapistListState extends State<TherapistList> {
   final Stream<QuerySnapshot> _usersStream =
   FirebaseFirestore.instance.collection("Therapists").snapshots();
 
+  void _launchURL(String url) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => InAppWebViewPage(url: url),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         child: StreamBuilder<QuerySnapshot>(
             stream: _usersStream,
-            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            builder: (BuildContext context,
+                AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.hasError) {
                 return const Text('Something went wrong');
               }
@@ -42,7 +55,7 @@ class _TherapistListState extends State<TherapistList> {
               print(docs[0]["expertise"].length);
               return ListView.builder(itemBuilder: (context, index) {
                 return Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   //width: double.infinity,
                   constraints: BoxConstraints(),
                   //color: Colors.deepOrange,
@@ -73,8 +86,9 @@ class _TherapistListState extends State<TherapistList> {
                               radius: 60,
                               // Adjust the radius to set the size of the avatar
                               //backgroundImage: AssetImage(
-                                  //'assets/images/doctor.jpg'),
-                              backgroundImage: NetworkImage(docs[index]["images"]),
+                              //'assets/images/doctor.jpg'),
+                              backgroundImage: NetworkImage(
+                                  docs[index]["images"]),
                               backgroundColor: Colors.transparent,
                               // Set the image for the avatar         // Alternatively, you can use `backgroundColor` and `child` properties to customize the appearance of the avatar
                             ),
@@ -97,25 +111,28 @@ class _TherapistListState extends State<TherapistList> {
                                   ListView.builder(
                                       shrinkWrap: true,
                                       physics: ClampingScrollPhysics(),
-                                      itemCount: docs[index]["qualification"].length,
-                                      itemBuilder: (context,subIndexed){
+                                      itemCount: docs[index]["qualification"]
+                                          .length,
+                                      itemBuilder: (context, subIndexed) {
                                         return
                                           Container(
-                                            child:Text(""+docs[index]["qualification"][subIndexed],
+                                            child: Text("" +
+                                                docs[index]["qualification"][subIndexed],
                                               style: TextStyle(fontSize: 13,
                                                   fontFamily: 'Comforta',
                                                   color: Colors.black),),
                                           );
-
                                       }
                                   ),
 
 
-                                  Text(""+docs[index]["experience"]+" of experience", style: TextStyle(
+                                  Text("" + docs[index]["experience"] +
+                                      " of experience", style: TextStyle(
                                       fontSize: 13,
                                       fontFamily: 'Comforta',
                                       color: Colors.black),),
-                                  Padding(padding: EdgeInsets.only(top: 3, bottom: 3),
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 3, bottom: 3),
                                     child: Text("Expertise", style: TextStyle(
                                         fontSize: 13,
                                         fontFamily: 'Comforta',
@@ -125,16 +142,19 @@ class _TherapistListState extends State<TherapistList> {
                                   ListView.builder(
                                       shrinkWrap: true,
                                       physics: ClampingScrollPhysics(),
-                                      itemCount: docs[index]["expertise"].length,
-                                      itemBuilder: (context,subIndexd){
+                                      itemCount: docs[index]["expertise"]
+                                          .length,
+                                      itemBuilder: (context, subIndexd) {
                                         return
                                           Container(
-                                          child: Text("\u2022 "+docs[index]["expertise"][subIndexd], style: TextStyle(
-                                              fontSize: 13,
-                                              fontFamily: 'Comforta',
-                                              color: Colors.black),),
-                                        );
-                                  }
+                                            child: Text("\u2022 " +
+                                                docs[index]["expertise"][subIndexd],
+                                              style: TextStyle(
+                                                  fontSize: 13,
+                                                  fontFamily: 'Comforta',
+                                                  color: Colors.black),),
+                                          );
+                                      }
                                   )
                                 ],
                               ),
@@ -176,7 +196,8 @@ class _TherapistListState extends State<TherapistList> {
                               onPressed: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(
-                                      builder: (context) => DoctorProfile(id:index),
+                                      builder: (context) =>
+                                          DoctorProfile(id: index),
                                     ));
                               },
                             ),
@@ -193,7 +214,14 @@ class _TherapistListState extends State<TherapistList> {
                                   color: Colors.white,
                                   fontFamily: 'Comforta')),
                               onPressed: () {
-
+                                String? ScheduleSession = docs[index]["ScheduleSession"];
+                                if (ScheduleSession != null &&
+                                    ScheduleSession.isNotEmpty) {
+                                  _launchURL(ScheduleSession);
+                                } else {
+                                  // Handle the case when the link is not available
+                                  // You can show a snackbar or dialog to inform the user
+                                }
                               },
 
 
@@ -231,16 +259,12 @@ class _TherapistListState extends State<TherapistList> {
 
 
                 itemCount: docs.length,);
-
             }
         ),
       ),
     );
-
-
   }
 }
-
 
 
 

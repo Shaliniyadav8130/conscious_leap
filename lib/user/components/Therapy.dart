@@ -7,44 +7,52 @@ class Therapy extends StatelessWidget{
 
   String name;
   String icon;
+  final VoidCallback? callBack;
 
 
   Therapy({
     required this.name,
-    required this.icon
+    required this.icon,
+    this.callBack
   });
 
   @override
   Widget build(BuildContext context){
-    return Expanded(child: Container(
-      width: 104,
-      height:104,
-      //color: Colors.white,
-      decoration: BoxDecoration(
-          borderRadius:
-          BorderRadius.circular(8.0),
-          color: Colors.white
-      ),
-      child:Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top:12),
-            child: SizedBox(
-              width: 55,
-              height: 55,
-              child: Image.asset(icon),
+    return Expanded(
+        child:InkWell(
+          onTap: (){
+            callBack!();
+          },
+          child: Container(
+            width: 104,
+            height:104,
+            //color: Colors.white,
+            decoration: BoxDecoration(
+                borderRadius:
+                BorderRadius.circular(8.0),
+                color: Colors.white
             ),
-          ),
-          SizedBox(
-              height:6
-          ),
+            child:Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top:12),
+                  child: SizedBox(
+                    width: 55,
+                    height: 55,
+                    child: Image.asset(icon),
+                  ),
+                ),
+                SizedBox(
+                    height:6
+                ),
 
-          Text(name,style: TextStyle(fontSize: 8,fontFamily: "Comforta"),)
-        ],
-      ),
-      //child:Text(name,style:TextStyle(fontSize: 12),textAlign: TextAlign.center,),
+                Text(name,style: TextStyle(fontSize: 8,fontFamily: "Comforta"),)
+              ],
+            ),
+            //child:Text(name,style:TextStyle(fontSize: 12),textAlign: TextAlign.center,),
 
-    ));
+          ))
 
+    );
   }
 }

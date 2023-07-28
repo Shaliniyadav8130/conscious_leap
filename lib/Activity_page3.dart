@@ -72,7 +72,7 @@ class Activity_page3 extends StatelessWidget{
               Padding(
                 padding: EdgeInsets.only(bottom: 20.0,top: 10.0),
 
-                child:Text("Skip to a Tele-Therapy",style: TextStyle(fontFamily:'Comforta'),),
+                child:Text("Skip to a Therapy",style: TextStyle(fontFamily:'Comforta'),),
               ),
               GradientBorderButton(btnName: "Connect with a Therapist",
                 callBack: (){

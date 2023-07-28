@@ -130,7 +130,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             bottomRight: Radius.circular(20),
                           ),
                         ),
-                        child: Center(child: Text("Upcoming events",style: TextStyle(color: Colors.white,fontSize: 15,fontFamily: "Comforta"),textAlign: TextAlign.center,),),
+                        child: Center(child: Text("Be Mindful",style: TextStyle(color: Colors.white,fontSize: 20,fontFamily: "Comforta"),textAlign: TextAlign.center,),),
                       ),
                     ),
                   ),

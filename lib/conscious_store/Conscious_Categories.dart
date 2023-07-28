@@ -18,45 +18,54 @@ class _ConsciousCategoriesState extends State<ConsciousCategories> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(padding: EdgeInsets.only(bottom: 15),
-            child: Text("Conscious Product Categories",style: TextStyle(color:Color(0xff4961AC),fontSize: 17),),),
+      body:SingleChildScrollView(
+        child: Center(
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(padding: EdgeInsets.only(bottom: 15),
+                child: Text("Conscious Product Categories",style: TextStyle(fontWeight:FontWeight.bold ,color:Color(0xff4961AC),fontSize: 17),),),
 
-            GridView.extent(
-              maxCrossAxisExtent: 200,
-              shrinkWrap: true,
-              padding: const EdgeInsets.all(20),
-              mainAxisSpacing: 20,
-              crossAxisSpacing: 20,
-              children: [
-                Padding(padding: EdgeInsets.only(bottom: 15,),
-                child:GradientBorderCard(btnNames: "consciousleap Vendibles"),
-                ),
-                Padding(padding: EdgeInsets.only(bottom: 15,),
-                  child:GradientBorderCard(btnNames: "Oneness Vendibles"),
-                ),
-                Padding(padding: EdgeInsets.only(bottom: 15,),
-                  child:GradientBorderCard(btnNames: "Conscious Being"),
-                ),
-                Padding(padding: EdgeInsets.only(bottom: 15,),
-                  child:GradientBorderCard(btnNames: "Conscious Living"),
-                ),
-                Padding(padding: EdgeInsets.only(bottom: 15,),
-                  child:GradientBorderCard(btnNames: "Conscious Eating"),
-                ),
-                Padding(padding: EdgeInsets.only(bottom: 15,),
-                  child:GradientBorderCard(btnNames: "Conscious Healing"),
-                ),
+              GridView.extent(
+                maxCrossAxisExtent: 200,
+                shrinkWrap: true,
+                padding: const EdgeInsets.all(20),
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 30,
+                children: [
+                  Padding(padding: EdgeInsets.only(bottom: 15,),
+                    child:GradientBorderCard(btnNames: "consciousleap Vendibles"),
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 15,),
+                    child:GradientBorderCard(btnNames: "Oneness Vendibles"),
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 15,),
+                    child:GradientBorderCard(btnNames: "Conscious Being"),
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 15,),
+                    child:GradientBorderCard(btnNames: "Conscious Living"),
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 15,),
+                    child:GradientBorderCard(btnNames: "Conscious Eating"),
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 15,),
+                    child:GradientBorderCard(btnNames: "Conscious Healing"),
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 15,),
+                    child:GradientBorderCard(btnNames: "Conscious Kids"),
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 15,),
+                    child:GradientBorderCard(btnNames: "Conscious Teens"),
+                  ),
 
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
+
       ),
-    );
+          );
   }
 }
 

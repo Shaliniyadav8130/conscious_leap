@@ -4,6 +4,7 @@ import 'package:consciousleap/Activity_page3.dart';
 import 'package:consciousleap/Questionnarie/Analysis_Report.dart';
 import 'package:consciousleap/Questionnarie/questionnarie.dart';
 import 'package:consciousleap/therapist/Therapist_List.dart';
+import 'package:consciousleap/user/UserDashboard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
@@ -16,10 +17,10 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
   //final controller = Get.put(SignUpController());
   final email = TextEditingController();
-  final password = TextEditingController();
+  final phone = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String Email="";
-  String Password="";
+  String Phone="";
 
 
   @override
@@ -34,20 +35,22 @@ class _loginState extends State<login> {
             children: [
                   Padding(
                     padding: EdgeInsets.only(bottom: 55.0),
-                    child:Text("Tele-Therapy Login" ,style: TextStyle(color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
+                    child:Text("Therapy Login" ,style: TextStyle(fontWeight: FontWeight.bold,color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
                   ),
 
                   Row(
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Email",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                      SizedBox(
-                        width: 22,
-                      ),
+
                       Expanded(
                         child: TextFormField(
                           controller: email,
                           decoration: InputDecoration(
+                            hintText: "Email",
+                            hintStyle: TextStyle(
+                              fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                              fontSize: 16.0,
+                            ),
                             border: GradientOutlineInputBorder(
                               width: 2,
                               gradient: LinearGradient(
@@ -71,15 +74,16 @@ class _loginState extends State<login> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Password",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                      SizedBox(
-                        width: 18,
-                      ),
+
                          Expanded(
                            child:TextFormField(
-                          controller: password,
+                          controller: phone,
                            decoration: InputDecoration(
-
+                             hintText: "Password",
+                             hintStyle: TextStyle(
+                               fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                               fontSize: 16.0,
+                             ),
                              border: GradientOutlineInputBorder(
                                width: 2,
                                gradient: LinearGradient(
@@ -91,7 +95,7 @@ class _loginState extends State<login> {
                            ),
                            validator: (value) {
                              if (value == null || value.isEmpty) {
-                               return 'Please enter your mobile';
+                               return 'Please enter your password';
                              }
                              return null;
                            },
@@ -111,7 +115,7 @@ class _loginState extends State<login> {
                         if(_formKey.currentState!.validate()){
                           setState(() {
                             Email=email.text.trim();
-                            Password=password.text.trim();
+                            Phone=phone.text.trim();
 
                           });
                           signinUser();
@@ -136,10 +140,10 @@ class _loginState extends State<login> {
     // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(""+Phone+Email)));
 
     try{
-      UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Password);
+      UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Phone);
       print(userCredential);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfully")));
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Analysis_Report()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => UserDashboard()));
       //controller.email.clear();
       //controller.password.clear();
       // String? id = FirebaseAuth.instance.currentUser?.uid;

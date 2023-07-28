@@ -107,6 +107,10 @@ class _UploadResumeState extends State<UploadResume> {
                   controller: _therapistNameController,
                   decoration: InputDecoration(
                     hintText: "Therapist Display Name",
+                    hintStyle: TextStyle(
+                      fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                      //fontSize: 16.0,
+                    ),
                     border: OutlineInputBorder(
                       borderSide: BorderSide(color: Color(0xff6D6D6D)),
                       borderRadius: BorderRadius.circular(5.0),

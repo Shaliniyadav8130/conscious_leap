@@ -29,12 +29,12 @@ class Activity_page23 extends StatelessWidget{
                       MaterialPageRoute(builder: (context) =>login_therapist()
                       ));
                 },),
-              // GradientBorderButton(btnName: "New Therapist",
-              //   callBack: (){
-              //      Navigator.push(context,
-              //          MaterialPageRoute(builder: (context) =>SignupTherapist()
-              //          ));
-              //   },),
+              GradientBorderButton(btnName: "New Therapist",
+                callBack: (){
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) =>SignupTherapist()
+                       ));
+                },),
 
             ],
           )

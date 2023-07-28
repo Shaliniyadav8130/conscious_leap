@@ -19,7 +19,7 @@ class GradientBorderCard extends StatelessWidget{
     return Container(
 
       width:200,
-      height: 200,
+      height: 250,
       margin: EdgeInsets.only(bottom: 20.0),
       decoration: BoxDecoration(
           border: const GradientBoxBorder(

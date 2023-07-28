@@ -4,9 +4,11 @@ import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page3.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
 import 'package:consciousleap/controllers/signup_controllers.dart';
+import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:consciousleap/user/UserProfile.dart';
 import 'package:consciousleap/user/components/Blocks.dart';
 import 'package:consciousleap/user/components/ConsciousStore.dart';
+import 'package:consciousleap/user/components/DailyAffirmation.dart';
 import 'package:consciousleap/user/components/FeelingCheck.dart';
 import 'package:consciousleap/user/components/Heading.dart';
 import 'package:consciousleap/user/components/JournalCorner.dart';
@@ -39,6 +41,7 @@ class _UserDashboardState extends State<UserDashboard> {
     return Scaffold(
       backgroundColor: Color(0xffF0F0F0),
       appBar: AppBar(
+        backgroundColor: Color(0xffF0F0F0) ,
         title:  Text("Member",textAlign: TextAlign.center,style:TextStyle(fontSize:27,color: Color(0xff4961AC)),),
         centerTitle:true,
         leading:Container(),
@@ -119,9 +122,17 @@ class _UserDashboardState extends State<UserDashboard> {
                 children: [
                   Therapy(icon:"assets/images/Asset 1@4x 3.png",name: "Therapist Review"),
                   SizedBox(width: 5,),
-                  Therapy(icon:"assets/images/Asset 1@4x 2.png",name: "Schedule a Session"),
+                  Therapy(icon:"assets/images/Asset 1@4x 2.png",name: "Schedule a Session",
+
+                  ),
                   SizedBox(width: 5,),
-                  Therapy(icon:"assets/images/Asset 1@4x 1.png",name: "Schedule a Session"),
+                  Therapy(icon:"assets/images/Asset 1@4x 1.png",name: "Find New Therapist",
+              callBack: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TherapistList()
+                    ));
+              }
+    ),
                 ],
               ),
             ),
@@ -181,7 +192,8 @@ class _UserDashboardState extends State<UserDashboard> {
 
              Row(
                children: [
-                 JournalCorner(name:"My Journal Corner")
+                 Expanded(child: DailyAffirmation(),)
+
                ],
              ),
 
