@@ -24,11 +24,11 @@ class Faq_or_chatbot extends StatelessWidget{
             children: [
               GradientBorderButton(btnName: "FAQ's",
                 callBack: (){
-                //   Navigator.push(context,
-                //       MaterialPageRoute(builder: (context) =>Infographic_dahboard()
-                //       ));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>FAQPage()
+                        ));
                  },),
-              GradientBorderButton(btnName: "FAQ's",
+              GradientBorderButton(btnName: "Oneness Chatbot",
                 callBack: (){
                      Navigator.push(context,
                          MaterialPageRoute(builder: (context) =>oneness_screen()

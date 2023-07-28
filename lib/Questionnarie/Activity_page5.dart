@@ -1,3 +1,4 @@
+import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
 import 'package:consciousleap/Questionnarie/Activity_page6.dart';
 import 'package:consciousleap/Questionnarie/Activity_page7.dart';
@@ -33,39 +34,39 @@ class Activity_page5 extends StatelessWidget{
               GradientBorderButton(btnName: "I am having difficulty sleeping",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Activity_page7()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
               GradientBorderButton(btnName: "I have been feeling constant sadness",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Activity_page7()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
               GradientBorderButton(btnName: "I feel lost in my goals and career",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Activity_page7()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
               GradientBorderButton(btnName: "I have feel anxious and overwhelmed",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Activity_page7()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
 
               GradientBorderButton(btnName: "I feel no motivation to complete my tasks",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Activity_page7()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
 
               GradientBorderButton(btnName: "I have been facing relationship issues",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>Activity_page7()
+                      MaterialPageRoute(builder: (context) =>TherapistList()
                       ));
                 },),
 

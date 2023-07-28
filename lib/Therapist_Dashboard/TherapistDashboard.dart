@@ -43,6 +43,7 @@ class _TherapistDashboardState extends State<TherapistDashboard> {
     return Scaffold(
         backgroundColor: Color(0xffF0F0F0),
         appBar: AppBar(
+          backgroundColor: Color(0xffF0F0F0) ,
           title:  Text("Therapist",textAlign: TextAlign.center,style:TextStyle(fontSize:27,color: Color(0xff4961AC)),),
           centerTitle:true,
           leading:Container(),
@@ -90,11 +91,30 @@ class _TherapistDashboardState extends State<TherapistDashboard> {
                 child:Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SessionDetails(TherapistIcon:"assets/images/TherapistNotes.png",name: "Therapist Notes"),
-                    SizedBox(width: 5,),
-                    SessionDetails(TherapistIcon:"assets/images/MyClients.png",name: "My Clients"),
-                    SizedBox(width: 5,),
-                    SessionDetails(TherapistIcon:"assets/images/MyEarnings.png",name: "My Earnings"),
+                Expanded(
+                    child: Container(
+                      width: 200,
+                      height:104,
+                  //color: Colors.white,
+                  decoration: BoxDecoration(
+                      borderRadius:
+                      BorderRadius.circular(8.0),
+                      color: Colors.white
+                  ),
+
+                      child:Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(width:30),
+                          SessionDetails(TherapistIcon:"assets/images/TherapistNotes.png",name: "Therapist Notes"),
+                          SizedBox(width: 30,),
+                          SessionDetails(TherapistIcon:"assets/images/MyEarnings.png",name: "My Earnings"),
+                           SizedBox(width: 30,),
+                          // SessionDetails(TherapistIcon:"assets/images/MyEarnings.png",name: "My Earnings"),
+                          ],
+                      ),
+                )),
+
                   ],
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page21.dart';
+import 'package:consciousleap/Therapist_Dashboard/TherapistDashboard.dart';
 import 'package:consciousleap/therapist/therapist_dash_option.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -29,20 +30,22 @@ class _login_therapistState extends State<login_therapist> {
             children: [
               Padding(
                 padding: EdgeInsets.only(bottom: 55.0),
-                child:Text("Therapist Login" ,style: TextStyle(color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
+                child:Text("Therapist Login" ,style: TextStyle(fontWeight: FontWeight.bold,color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
               ),
 
               Row(
                 //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Email",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                  SizedBox(
-                    width: 22,
-                  ),
+
                   Expanded(
                     child: TextFormField(
                       controller: email,
                       decoration: InputDecoration(
+                        hintText: "Email",
+                        hintStyle: TextStyle(
+                          fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                          fontSize: 16.0,
+                        ),
                         border: GradientOutlineInputBorder(
                           width: 2,
                           gradient: LinearGradient(
@@ -66,15 +69,16 @@ class _login_therapistState extends State<login_therapist> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Mobile",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                  SizedBox(
-                    width: 18,
-                  ),
+
                   Expanded(
                     child:TextFormField(
                       controller: phone,
                       decoration: InputDecoration(
-
+                        hintText: "Password",
+                        hintStyle: TextStyle(
+                          fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                          fontSize: 16.0,
+                        ),
                         border: GradientOutlineInputBorder(
                           width: 2,
                           gradient: LinearGradient(
@@ -86,7 +90,7 @@ class _login_therapistState extends State<login_therapist> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter your mobile';
+                          return 'Please enter your password';
                         }
                         return null;
                       },
@@ -125,6 +129,7 @@ class _login_therapistState extends State<login_therapist> {
           ),
         )
 
+
     );
   }
   void signinUser() async {
@@ -134,7 +139,7 @@ class _login_therapistState extends State<login_therapist> {
       UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Phone);
       print(userCredential);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfully")));
-      Navigator.push(context, MaterialPageRoute(builder: (context) => therapist_dash_option()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => TherapistDashboard()));
       // String? id = FirebaseAuth.instance.currentUser?.uid;
       // UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password);
       // db.collection("doctor").doc(password).set(userModel.toJson());

@@ -1,3 +1,4 @@
+import 'package:consciousleap/user/EditProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
@@ -81,6 +82,9 @@ class SidebarScreen extends StatelessWidget {
           ),
           child: Text("Edit Profile",style: TextStyle(fontSize:15,color: Color(0xff4961AC),fontFamily:'Comforta'),),
           onPressed:(){
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) =>EditProfile()
+                ));
           },
         ),
 

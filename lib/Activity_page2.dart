@@ -4,6 +4,8 @@ import 'package:consciousleap/login.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 // Select the option
 // I am a new member or
@@ -36,6 +38,7 @@ class Activity_page2 extends StatelessWidget{
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) =>login()
                       ));
+
                 },),
 
             ],
@@ -46,3 +49,4 @@ class Activity_page2 extends StatelessWidget{
   }
 
 }
+

@@ -1,10 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:consciousleap/therapist/ScheduleSession.dart';
 import 'package:consciousleap/widgets/CustomInputBorder.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+
 
 // Page of Doctor Profile
 
@@ -19,6 +23,8 @@ class DoctorProfile extends StatefulWidget {
 class _DoctorProfileState extends State<DoctorProfile> {
   final Stream<QuerySnapshot> _usersStream =
       FirebaseFirestore.instance.collection("Therapists").snapshots();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +50,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                   docs[widget.id]["images"],
                   ),
                   ),
-                  scroll(docs, widget.id),
+                  scroll(docs, widget.id,context),
                 ],
               );
             }),
@@ -53,12 +59,22 @@ class _DoctorProfileState extends State<DoctorProfile> {
   }
 }
 
-scroll(var docs, var id) {
+scroll(var docs, var id,BuildContext context) {
+
+  void _launchURL(String url) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => InAppWebViewPage(url: url),
+      ),
+    );
+  }
+
   print(docs[id]["name"]);
   return DraggableScrollableSheet(
-      initialChildSize: 0.7,
-      maxChildSize: 1.0,
-      minChildSize: 0.7,
+      initialChildSize: 0.6,
+      maxChildSize: 0.9,
+      minChildSize: 0.6,
       builder: (context, scrollController) {
         return Container(
           width: MediaQuery.of(context).size.width,
@@ -180,21 +196,28 @@ scroll(var docs, var id) {
                                           color: Color(0xff4961AC)),
                                     ),
                                   ),
-                                  Container(
-                                    width: 110,
-                                    height: 2,
-                                    decoration: BoxDecoration(
-                                      border: const GradientBoxBorder(
-                                        gradient: LinearGradient(colors: [
-                                          Color(0xff4961AC),
-                                          Color(0xffF2685D),
-                                          Color(0xff4EC1BA)
-                                        ]),
-                                        width: 2,
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child:Container(
+                                          width: 110,
+                                          height: 2,
+                                          decoration: BoxDecoration(
+                                            border: const GradientBoxBorder(
+                                              gradient: LinearGradient(colors: [
+                                                Color(0xff4961AC),
+                                                Color(0xffF2685D),
+                                                Color(0xff4EC1BA)
+                                              ]),
+                                              width: 2,
+                                            ),
+                                            //borderRadius: BorderRadius.circular(10)
+                                          ),
+                                        ),
                                       ),
-                                      //borderRadius: BorderRadius.circular(10)
-                                    ),
+                                    ],
                                   ),
+
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -238,20 +261,27 @@ scroll(var docs, var id) {
                                       style: TextStyle(fontFamily: 'Comforta', fontSize: 12, color: Color(0xff4961AC),),
                                     ),
                                   ),
-                                  Container(
-                                    width: 110,
-                                    height: 2,
-                                    decoration: BoxDecoration(
-                                      border: const GradientBoxBorder(
-                                        gradient: LinearGradient(colors: [
-                                          Color(0xff4961AC),
-                                          Color(0xffF2685D),
-                                          Color(0xff4EC1BA)
-                                        ]),
-                                        width: 2,
+                                  Row(
+                                    children: [
+                                      Expanded(child:
+                                      Container(
+                                        width: 110,
+                                        height: 2,
+                                        decoration: BoxDecoration(
+                                          border: const GradientBoxBorder(
+                                            gradient: LinearGradient(colors: [
+                                              Color(0xff4961AC),
+                                              Color(0xffF2685D),
+                                              Color(0xff4EC1BA)
+                                            ]),
+                                            width: 2,
+                                          ),
+                                          //borderRadius: BorderRadius.circular(10)
+                                        ),
                                       ),
-                                      //borderRadius: BorderRadius.circular(10)
-                                    ),
+
+                                      ),
+                                    ],
                                   ),
                                   Container(
                                     padding: EdgeInsets.only(left: 4,right: 4),
@@ -259,17 +289,20 @@ scroll(var docs, var id) {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Padding(
-                                          padding: EdgeInsets.only(top: 5),
+                                          padding: EdgeInsets.only(top: 5,left:4),
+                                          child:Text(
+                                            "\u2022 "+docs[id]["qualification"][0],
+                                            style: TextStyle(
+                                                fontSize: 10, fontFamily: 'Comforta'),
+                                          ),
                                         ),
-                                        Text(
-                                          "\u2022 "+docs[id]["qualification"][0],
-                                          style: TextStyle(
-                                              fontSize: 10, fontFamily: 'Comforta'),
-                                        ),
-                                        Text(
+                                        Padding(padding: EdgeInsets.only(left:4),
+                                        child:Text(
                                           "\u2022 "+docs[id]["qualification"][1],
                                           style: TextStyle(
                                               fontSize: 10, fontFamily: 'Comforta'),
+                                        )
+
                                         )
                                       ],
                                     ),
@@ -307,35 +340,45 @@ scroll(var docs, var id) {
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    width: 110,
-                                    height: 2,
-                                    decoration: BoxDecoration(
-                                      border: const GradientBoxBorder(
-                                        gradient: LinearGradient(colors: [
-                                          Color(0xff4961AC),
-                                          Color(0xffF2685D),
-                                          Color(0xff4EC1BA)
-                                        ]),
-                                        width: 2,
+                                  Row(
+                                    children: [
+                                      Expanded(child:
+                                      Container(
+                                        width: 110,
+                                        height: 2,
+                                        decoration: BoxDecoration(
+                                          border: const GradientBoxBorder(
+                                            gradient: LinearGradient(colors: [
+                                              Color(0xff4961AC),
+                                              Color(0xffF2685D),
+                                              Color(0xff4EC1BA)
+                                            ]),
+                                            width: 2,
+                                          ),
+                                          //borderRadius: BorderRadius.circular(10)
+                                        ),
                                       ),
-                                      //borderRadius: BorderRadius.circular(10)
+                                      ),
+                                    ],
+                                  ),
+
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 5,left:4),
+                                    child: Text(
+                                      "\u2022 Hindi",
+                                      style: TextStyle(
+                                          fontSize: 12, fontFamily: 'Comforta'),
+                                      textAlign: TextAlign.left,
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.only(top: 5),
-                                  ),
-                                  Text(
-                                    "\u2022 Hindi",
-                                    style: TextStyle(
-                                        fontSize: 12, fontFamily: 'Comforta'),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                  Text(
+                                  Padding(padding: EdgeInsets.only(left:4),
+                                  child:Text(
                                     "\u2022 English",
                                     style: TextStyle(
                                         fontSize: 12, fontFamily: 'Comforta'),
                                   ),
+                                  ),
+
                                   Expanded(
                                       child:SizedBox(
                                         width: 110,
@@ -590,14 +633,17 @@ scroll(var docs, var id) {
                               width: 2,
                             ),
                             borderRadius: BorderRadius.circular(10)),
-                        child: Center(
+                        child:Padding(padding: EdgeInsets.only(left:3,right:3,top:3,bottom:3),
+                        child:Center(
                           child: Text(
                             "" + docs[id]["expertise"][index],
                             style:
-                                TextStyle(fontFamily: 'Comforta', fontSize: 11),
+                            TextStyle(fontFamily: 'Comforta', fontSize: 11),
                             textAlign: TextAlign.center,
                           ),
                         ),
+                        )
+
                       );
                     }),
                 SizedBox(height: 30),
@@ -625,7 +671,15 @@ scroll(var docs, var id) {
                   child: Container(
                     width: 340,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        String? scheduleSession = docs[id]["ScheduleSession"];
+                        if (scheduleSession != null && scheduleSession.isNotEmpty) {
+                          _launchURL(scheduleSession);
+                        } else {
+                          // Handle the case when the link is not available
+                          // You can show a snackbar or dialog to inform the user
+                        }
+                      },
                       child: Text(
                         "Schedule Session",
                         style: TextStyle(

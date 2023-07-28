@@ -1,6 +1,8 @@
 import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Chatbot/Faq_or_chatbot.dart';
 import 'package:consciousleap/Chatbot/oneness_screen.dart';
+import 'package:consciousleap/conscious_Business/businessLogin.dart';
+import 'package:consciousleap/conscious_store/conscious_login.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
@@ -66,7 +68,7 @@ class Oneness extends StatelessWidget{
                               height:70,
                                 child:Image.asset('assets/images/Therapy.png'),
                           ),
-                              Text("Tele-Therapy",style: TextStyle(fontSize: 14,fontFamily: "Comforta",color: Color(0xff4961AC)),),
+                              Text("Therapy",style: TextStyle(fontSize: 14,fontFamily: "Comforta",color: Color(0xff4961AC)),),
                         ],
                       ),
                     ),
@@ -88,8 +90,17 @@ class Oneness extends StatelessWidget{
                         ),
                         borderRadius: BorderRadius.circular(12)),
 
-                    child:Container(
-                      child:Column(
+                    child:InkWell(
+                      onTap: (){
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) =>businessLogin()
+                            ));
+                      },
+
+
+                      child:Container(
+
+                          child:Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(
@@ -100,6 +111,7 @@ class Oneness extends StatelessWidget{
                           Text("consciousleap for Business",style:TextStyle(color: Color(0xff4961AC),fontFamily: "Comforta",fontSize: 13,),textAlign:TextAlign.center,),
                         ],
                       ),
+                        ),
                     ),
                   ),
                 ],
@@ -119,7 +131,15 @@ class Oneness extends StatelessWidget{
                         ),
                         borderRadius: BorderRadius.circular(12)),
 
-                    child:Container(
+                        child:InkWell(
+                        onTap: (){
+                        Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>consciousLogin()
+                        ));
+                        },
+
+
+                        child:Container(
                       child:Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -133,6 +153,7 @@ class Oneness extends StatelessWidget{
                         ],
                       ),
                     ),
+                  ),
                   ),
 
                   SizedBox(

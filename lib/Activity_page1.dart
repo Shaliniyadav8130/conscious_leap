@@ -1,12 +1,16 @@
 import 'package:consciousleap/Activity_page2.dart';
+import 'package:consciousleap/Activity_page21.dart';
 import 'package:consciousleap/Activity_page23.dart';
-import 'package:consciousleap/widgets/Text_button.dart';
+import 'package:consciousleap/Questionnarie/Activity_page4.dart';
+import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:consciousleap/widgets/Text_button.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-// I want to talk to a therapist
-// or
-// I am a Therapist Page
+// Select the option
+// Recommended Questionnarie or
+// Skip to Tele-Therapy
 
 class Activity_page1 extends StatelessWidget{
   @override
@@ -26,17 +30,20 @@ class Activity_page1 extends StatelessWidget{
             children: [
 
               GradientBorderButton(btnName: "I want to talk to a Therapist",
-              callBack: (){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>Activity_page2()
-                    ));
-              },),
+                callBack: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>Activity_page2()
+                      ));
+                },),
+
+              SizedBox(height:5),
               GradientBorderButton(btnName: "I am a Therapist",
                 callBack: (){
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) =>Activity_page23()
                       ));
-                },)
+                },),
+
             ],
           )
         ],
@@ -44,4 +51,40 @@ class Activity_page1 extends StatelessWidget{
     );
   }
 
+}
+
+class WebviewPage extends StatefulWidget {
+  final String url;
+
+  WebviewPage({required this.url});
+
+  @override
+  _WebviewPageState createState() => _WebviewPageState();
+}
+
+class _WebviewPageState extends State<WebviewPage> {
+  bool isLoading = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Stack(
+        children: [
+          InAppWebView(
+            initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
+            onLoadStop: (controller, url) {
+              setState(() {
+                isLoading = false;
+              });
+            },
+          ),
+          if (isLoading)
+            Center(
+              child: CircularProgressIndicator(),
+            ),
+        ],
+      ),
+    );
+  }
 }

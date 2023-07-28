@@ -49,33 +49,35 @@ class _SignupViewState extends State<SignupView> {
               children: [
                         Padding(
                           padding: EdgeInsets.only(bottom: 55.0,top:55.0),
-                          child:Text("Tele-Therapy Sign-up" ,style: TextStyle(color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
+                          child:Text("Therapy Sign-up" ,style: TextStyle(fontWeight:FontWeight.bold ,color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
                         ),
 
                         Row(
 
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("First Name",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                            SizedBox(
-                              width: 10,
-                            ),
+
                             Expanded(
 
                               child: TextFormField(
                                 controller: controller.firstName,
                                 decoration: InputDecoration(
+                                  hintText: "Name",
+                                  hintStyle: TextStyle(
+                                    fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                                    fontSize: 16.0,
+                                  ),
                                   border: GradientOutlineInputBorder(
                                     width: 2,
                                     gradient: LinearGradient(
                                       colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(5.0),
                                   ),
                                 ),
                                  validator: (value){
                                   if(value == null || value.isEmpty){
-                                     return 'Please enter first name';
+                                     return 'Please enter name';
                                    }
                                    return null;
                                  },
@@ -125,22 +127,24 @@ class _SignupViewState extends State<SignupView> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Email",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                            SizedBox(
-                              width: 47,
-                            ),
+
                             Expanded(
 
                               child:
                               TextFormField(
                                 controller: controller.email,
                                 decoration: InputDecoration(
+                                  hintText: "Email",
+                                  hintStyle: TextStyle(
+                                    fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                                    fontSize: 16.0,
+                                  ),
                                   border: GradientOutlineInputBorder(
                                     width: 2,
                                     gradient: LinearGradient(
                                       colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(5.0),
                                   ),
                                 ),
                                  validator: (value){
@@ -163,21 +167,22 @@ class _SignupViewState extends State<SignupView> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Mobile",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                            SizedBox(
-                              width: 40,
-                            ),
                             Expanded(
 
                               child: TextFormField(
                                 controller: controller.phone,
                                 decoration: InputDecoration(
+                                  hintText: "Mobile",
+                                  hintStyle: TextStyle(
+                                    fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                                    fontSize: 16.0,
+                                  ),
                                   border: GradientOutlineInputBorder(
                                     width: 2,
                                     gradient: LinearGradient(
                                       colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(5.0),
                                   ),
                                 ),
                                  validator: (value){
@@ -197,10 +202,7 @@ class _SignupViewState extends State<SignupView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Password",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                    SizedBox(
-                      width: 20,
-                    ),
+
                     Expanded(
 
                       child:
@@ -208,12 +210,17 @@ class _SignupViewState extends State<SignupView> {
                         obscureText: true,
                         controller:controller.password,
                         decoration: InputDecoration(
+                          hintText: "Password",
+                          hintStyle: TextStyle(
+                            fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                            fontSize: 16.0,
+                          ),
                           border: GradientOutlineInputBorder(
                             width: 2,
                             gradient: LinearGradient(
                               colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                         validator: (value){
@@ -235,10 +242,7 @@ class _SignupViewState extends State<SignupView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("ReType-\nPassword",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                    SizedBox(
-                      width: 20,
-                    ),
+
                     Expanded(
                       child:
                       TextFormField(
@@ -246,12 +250,17 @@ class _SignupViewState extends State<SignupView> {
                         obscureText: true,
                         controller: controller.reTypePassword,
                         decoration: InputDecoration(
+                          hintText: "Confirm Password",
+                          hintStyle: TextStyle(
+                            fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                            fontSize: 16.0,
+                          ),
                           border: GradientOutlineInputBorder(
                             width: 2,
                             gradient: LinearGradient(
                               colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                         validator: (value){
@@ -271,7 +280,7 @@ class _SignupViewState extends State<SignupView> {
 
 
                         Container(
-                          width:340,
+                          width:200,
                           margin: EdgeInsets.only(top: 20.0),
                           child:ElevatedButton(
                             child:Text("Sign-up" ,style:TextStyle(fontSize:12,color: Colors.white,fontFamily:'Comforta')),

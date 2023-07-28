@@ -1,4 +1,5 @@
 import 'package:consciousleap/Questionnarie/questionnarie.dart';
+import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
 import 'package:consciousleap/Questionnarie/Activity_page7.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +33,9 @@ class Activity_page6 extends StatelessWidget{
 
               GradientBorderButton(btnName: "Talk to a Tele-Therapist",
                 callBack: (){
-                  // Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) =>Activity_page7()
-                  //     ));
+                   Navigator.push(context,
+                       MaterialPageRoute(builder: (context) =>TherapistList()
+                       ));
                 },),
               GradientBorderButton(btnName: "I'm happy to take the Questionnaire",
                 callBack: (){
