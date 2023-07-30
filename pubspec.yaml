@@ -51,6 +51,8 @@ dependencies:
   table_calendar: ^3.0.9
   url_launcher: ^6.1.12
   webview_flutter: ^4.2.2
+  velocity_x: ^4.0.0
+
 
 dev_dependencies:
 

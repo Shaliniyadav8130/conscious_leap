@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-Widget ConsciousStoreCart(){
+Widget ConsciousStoreCard({child}){
   return Container(
     decoration: BoxDecoration(
         border: const GradientBoxBorder(
@@ -13,10 +13,6 @@ Widget ConsciousStoreCart(){
           width: 2,
         ),
         borderRadius: BorderRadius.circular(10)),
-        child: Row(
-          children: [
-            // Image.asset(name)
-          ],
-        ),
+        child: child
   );
 }
