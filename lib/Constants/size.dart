@@ -1,0 +1,1 @@
+var cartIconsSize=35.0;
