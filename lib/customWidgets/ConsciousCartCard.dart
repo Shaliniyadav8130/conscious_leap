@@ -7,7 +7,8 @@ Widget MyCartCard(){
   return Container(
     child: Padding(
       padding: const EdgeInsets.all(12.0),
-      child: Column(
+      child:
+      Column(
         children: [
           Row(
          children: [
