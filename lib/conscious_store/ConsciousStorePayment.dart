@@ -5,8 +5,8 @@ import 'package:velocity_x/velocity_x.dart';
 import '../Constants/images.dart';
 import '../customWidgets/ConsciosStoreElements.dart';
 
-class SummaryScreen extends StatelessWidget {
-  const SummaryScreen({Key? key}) : super(key: key);
+class PaymentScreen extends StatelessWidget {
+  const PaymentScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
