@@ -17,19 +17,56 @@ class SummaryScreen extends StatelessWidget {
           child: Column(
             children: [
               15.heightBox,
-              ConsciousStoreCheckoutElements(address: true,shipping:true,payment: false,complete: false),
+              ConsciousStoreCheckoutElements(address: true,shipping:true,payment: true,complete: false),
               30.heightBox,
-              Row(
-                  children: [
-                    Image.asset(catImg1,height: 50,width: 70, fit: BoxFit.cover,),
-                    "Cup White-Ghostwhite".text.size(21).gray400.make()
+              "Any Additional Info?".text.fontFamily('Comforta').black.semiBold.align(TextAlign.start).make(),
+              10.heightBox,
+              TextFormField(
+                textAlign: TextAlign.start,
+                decoration: InputDecoration(
+                  hintText: "Type your text..",
+                  hintStyle: TextStyle(
+                    fontFamily: 'Comforta',
+                  ),
+                  border: OutlineInputBorder(
 
-                  ]),
-              Divider(),
+                  )
+                ),
+              ),
+              20.heightBox,
+              "Select payment option".text.fontFamily('Comforta').black.semiBold.align(TextAlign.start).make(),
+              10.heightBox,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    child: "Stripe".text.fontFamily("Comforta").center.size(21).make(),
+                  ).box.border().height(80).width(context.screenWidth*.4).roundedSM.make(),
+                  Container(
+                    alignment: Alignment.center,
+                    child: "Stripe".text.fontFamily("Comforta").center.size(21).make(),
+                  ).box.border().height(80).width(context.screenWidth*.4).roundedSM.make()
+                ],
+              ),
+              10.heightBox,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    child: "Stripe".text.fontFamily("Comforta").center.size(21).make(),
+                  ).box.border().height(80).width(context.screenWidth*.4).roundedSM.make(),
+                  Container(
+                    alignment: Alignment.center,
+                    child: "Stripe".text.fontFamily("Comforta").center.size(21).make(),
+                  ).box.border().height(80).width(context.screenWidth*.4).roundedSM.make()
+                ],
+              ),
               30.heightBox,
-              
-              30.heightBox,
-              ElevatedButton(onPressed: (){}, child: "Continue to Payment".text.white.make(),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)).box.width(context.screenWidth*.8).make()
+              ElevatedButton(onPressed: (){}, child: "Proceed".text.white.make(),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)).box.width(context.screenWidth*.8).make()
 
 
             ],
