@@ -1,4 +1,5 @@
 import 'package:consciousleap/Activity_page1.dart';
+import 'package:consciousleap/Chatbot/chatbot.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
@@ -40,7 +41,9 @@ class oneness_screen extends StatelessWidget{
                 child:ElevatedButton(
                   child:Text("Start Chat" ,style:TextStyle(fontSize:12,color: Colors.white,fontFamily:'Comforta')),
                   onPressed: (){
-
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>ChatbotScreen()
+                        ));
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xff4961AC),

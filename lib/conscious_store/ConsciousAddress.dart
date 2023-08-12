@@ -1,3 +1,4 @@
+import 'package:consciousleap/conscious_store/ConsciousStoreDeliveryType.dart';
 import 'package:consciousleap/customWidgets/ConsciosStoreElements.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +89,11 @@ class ConsciousAddress extends StatelessWidget {
                   )
               ).box.border(color: Vx.gray500,width: 1).roundedSM.make(),
               10.heightBox,
-              ElevatedButton(onPressed: (){}, child: "Continue to delivery".text.white.make(),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)).box.width(context.screenWidth*.8).make()
+              ElevatedButton(onPressed: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DeliveryType()
+                    ));
+              }, child: "Continue to delivery".text.white.make(),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)).box.width(context.screenWidth*.8).make()
 
 
             ],

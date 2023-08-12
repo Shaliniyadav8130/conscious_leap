@@ -4,7 +4,7 @@ import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page3.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
 import 'package:consciousleap/controllers/signup_controllers.dart';
-import 'package:consciousleap/therapist/therapist_test.dart';
+import 'package:consciousleap/customWidgets/CustomInput.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,30 +15,29 @@ import 'package:consciousleap/models/UserModel.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 
 // Signup Page for a new User
-class SignupTherapist extends StatefulWidget {
+class ConsciousSignup extends StatefulWidget {
 
-  const SignupTherapist({
+  const ConsciousSignup({
     Key? key,
   }) : super(key:key);
 
   @override
-  State<SignupTherapist> createState() => _SignupTherapistState();
+  State<ConsciousSignup> createState() => _ConsciousSignupState();
 }
 
-class _SignupTherapistState extends State<SignupTherapist> {
+class _ConsciousSignupState extends State<ConsciousSignup> {
   final controller = Get.put(SignUpController());
   String email = "";
   String firstname = "";
   String lastname = "";
+  String phone="";
   var db = FirebaseFirestore.instance;
   String password = "";
-  String phone="";
-
-
 
 
   @override
   Widget build(BuildContext context) {
+
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
@@ -46,11 +45,11 @@ class _SignupTherapistState extends State<SignupTherapist> {
       body:Form(
         key: _formKey,
         child: ListView(
-          padding: EdgeInsets.only(left:16.0,right:16),
+          padding: EdgeInsets.all(16.0),
           children: [
             Padding(
-              padding: EdgeInsets.only(bottom: 50.0),
-              child:Text("Therapist Sign-up" ,style: TextStyle(fontWeight:FontWeight.bold ,color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
+              padding: EdgeInsets.only(bottom: 55.0,top:55.0),
+              child:Text("Conscious Store Sign-up" ,style: TextStyle(fontWeight:FontWeight.bold ,color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
             ),
 
             Row(
@@ -67,10 +66,6 @@ class _SignupTherapistState extends State<SignupTherapist> {
                       hintStyle: TextStyle(
                         fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                         fontSize: 16.0,
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 8.0, // Adjust the vertical padding
-                        horizontal: 16.0, // Adjust the horizontal padding
                       ),
                       border: GradientOutlineInputBorder(
                         width: 2,
@@ -144,10 +139,6 @@ class _SignupTherapistState extends State<SignupTherapist> {
                         fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                         fontSize: 16.0,
                       ),
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 8.0, // Adjust the vertical padding
-                        horizontal: 16.0, // Adjust the horizontal padding
-                      ),
                       border: GradientOutlineInputBorder(
                         width: 2,
                         gradient: LinearGradient(
@@ -186,10 +177,6 @@ class _SignupTherapistState extends State<SignupTherapist> {
                         fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                         fontSize: 16.0,
                       ),
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 8.0, // Adjust the vertical padding
-                        horizontal: 16.0, // Adjust the horizontal padding
-                      ),
                       border: GradientOutlineInputBorder(
                         width: 2,
                         gradient: LinearGradient(
@@ -227,10 +214,6 @@ class _SignupTherapistState extends State<SignupTherapist> {
                       hintStyle: TextStyle(
                         fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                         fontSize: 16.0,
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 8.0, // Adjust the vertical padding
-                        horizontal: 16.0, // Adjust the horizontal padding
                       ),
                       border: GradientOutlineInputBorder(
                         width: 2,
@@ -271,10 +254,6 @@ class _SignupTherapistState extends State<SignupTherapist> {
                       hintStyle: TextStyle(
                         fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                         fontSize: 16.0,
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 8.0, // Adjust the vertical padding
-                        horizontal: 16.0, // Adjust the horizontal padding
                       ),
                       border: GradientOutlineInputBorder(
                         width: 2,
@@ -341,6 +320,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
       ),
 
 
+
     );
   }
 
@@ -371,9 +351,9 @@ class _SignupTherapistState extends State<SignupTherapist> {
     try{
       String? id = FirebaseAuth.instance.currentUser?.uid;
       UserModel userModel=UserModel(id:id,firstName: firstname, lastName: "lastname", email: email, password: password,phone: phone);
-      db.collection("doctor").doc(id).set(userModel.toJson());
+      db.collection("User").doc(id).set(userModel.toJson());
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Registered succesfully")));
-      Navigator.push(context, MaterialPageRoute(builder: (context) => therapist_call()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Activity_page3()));
       controller.clearFields();
     }
     catch (e){

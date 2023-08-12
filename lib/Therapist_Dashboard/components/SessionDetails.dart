@@ -7,11 +7,13 @@ class SessionDetails extends StatelessWidget{
 
   String name;
   String TherapistIcon;
+  final VoidCallback? callBack;
 
 
   SessionDetails({
     required this.name,
-    required this.TherapistIcon
+    required this.TherapistIcon,
+    this.callBack
   });
 
   @override
@@ -26,24 +28,30 @@ class SessionDetails extends StatelessWidget{
       //     color: Colors.white
       // ),
       //child:
-    Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top:12),
-            child: SizedBox(
-              width: 55,
-              height: 55,
-              child: Image.asset(TherapistIcon),
-            ),
-          ),
-          SizedBox(
-              height:6
-          ),
+      InkWell(
+        onTap: (){
+          callBack!();
+        },
+          child:Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top:12),
+                child: SizedBox(
+                  width: 55,
+                  height: 55,
+                  child: Image.asset(TherapistIcon),
+                ),
+              ),
+              SizedBox(
+                  height:6
+              ),
 
-          Text(name,style: TextStyle(fontSize: 10,fontFamily: "Comforta"),)
-        ],
+              Text(name,style: TextStyle(fontSize: 10,fontFamily: "Comforta"),)
+            ],
+          )
+
       );
-      //child:Text(name,style:TextStyle(fontSize: 12),textAlign: TextAlign.center,),
+     //child:Text(name,style:TextStyle(fontSize: 12),textAlign: TextAlign.center,),
 
    // ));
 

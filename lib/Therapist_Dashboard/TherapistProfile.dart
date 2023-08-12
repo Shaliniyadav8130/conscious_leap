@@ -1,9 +1,20 @@
+import 'package:consciousleap/models/UserModel.dart';
 import 'package:consciousleap/user/EditProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class TherapistProfile extends StatelessWidget {
-  const TherapistProfile({Key? key}) : super(key: key);
+  //final UserModel user;
+  //const SidebarScreen({Key? key}) : super(key: key);
+  //const SidebarScreen({Key? key, required this.user}) : super(key: key);
+  final User? user;
+  final Map<String, dynamic> userData;
+
+  TherapistProfile({Key? key, required this.user, required this.userData})
+      : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +38,7 @@ class TherapistProfile extends StatelessWidget {
 
               child:CircleAvatar(
                 radius: 70,
-                backgroundImage: AssetImage('assets/images/doctor.jpg'),
+                backgroundImage: AssetImage('assets/images/default.jpeg'),
               ),
 
             ),
@@ -36,7 +47,18 @@ class TherapistProfile extends StatelessWidget {
               child:Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Name: Shalini Yadav",
+                  "Name: ${userData['FirstName']}",
+                  style: TextStyle(fontSize: 13, fontFamily: "Comforta"),
+                ),
+              ),
+            ),
+            SizedBox(
+                height:10
+            ),Padding(padding: EdgeInsets.only(left:20),
+              child:Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Age: 25",
                   style: TextStyle(fontSize: 13, fontFamily: "Comforta"),
                 ),
               ),
@@ -47,7 +69,7 @@ class TherapistProfile extends StatelessWidget {
               child:Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Email: shaliniyadav0203@gmail.com",
+                  "Email: ${userData['Email']}",
                   style: TextStyle(fontSize: 13, fontFamily: "Comforta"),
                 ),
               ),

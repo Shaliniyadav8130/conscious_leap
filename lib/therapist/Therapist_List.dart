@@ -38,6 +38,8 @@ class _TherapistListState extends State<TherapistList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+      ),
       body: Container(
         child: StreamBuilder<QuerySnapshot>(
             stream: _usersStream,
@@ -48,7 +50,9 @@ class _TherapistListState extends State<TherapistList> {
               }
 
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Text("Loading");
+                return Center(
+                  child: CircularProgressIndicator(), // Show a circular loading indicator
+                );
               }
 
               var docs = snapshot.data!.docs;
@@ -142,8 +146,10 @@ class _TherapistListState extends State<TherapistList> {
                                   ListView.builder(
                                       shrinkWrap: true,
                                       physics: ClampingScrollPhysics(),
-                                      itemCount: docs[index]["expertise"]
-                                          .length,
+                                      itemCount: docs[index]["expertise"].length > 5 ? 5 : docs[index]["expertise"].length,
+
+                                      // itemCount: docs[index]["expertise"]
+                                      //     .length,
                                       itemBuilder: (context, subIndexd) {
                                         return
                                           Container(
@@ -167,6 +173,7 @@ class _TherapistListState extends State<TherapistList> {
                       SizedBox(height: 20,),
 
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Container(
 
@@ -210,7 +217,7 @@ class _TherapistListState extends State<TherapistList> {
                             height: 40,
                             child: ElevatedButton(
                               child: Text("Schedule Session", style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 10,
                                   color: Colors.white,
                                   fontFamily: 'Comforta')),
                               onPressed: () {

@@ -1,7 +1,6 @@
 import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
 import 'package:consciousleap/Questionnarie/Activity_page6.dart';
-import 'package:consciousleap/Questionnarie/Activity_page7.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 

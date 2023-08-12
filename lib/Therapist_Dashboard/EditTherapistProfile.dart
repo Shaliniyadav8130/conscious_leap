@@ -22,12 +22,12 @@ import 'package:consciousleap/models/UserModel.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 
 // Signup Page for a new User
-class EditProfile extends StatefulWidget {
+class EditTherapistProfile extends StatefulWidget {
   @override
-  State<EditProfile> createState() => _EditProfileState();
+  State<EditTherapistProfile> createState() => _EditTherapistProfileState();
 }
 
-class _EditProfileState extends State<EditProfile> {
+class _EditTherapistProfileState extends State<EditTherapistProfile> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
@@ -152,7 +152,7 @@ class _EditProfileState extends State<EditProfile> {
                               ),
                               SizedBox(width: 20),
                               Expanded(
-                               child: Padding(
+                                child: Padding(
                                   padding:EdgeInsets.only(right:20),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -211,19 +211,19 @@ class _EditProfileState extends State<EditProfile> {
                           ),
                           SizedBox(height: 20,),
                           Padding(padding: EdgeInsets.only(left:15,right:15),
-                          child:TextFormField(
-                            controller: _nameController,
-                            decoration: InputDecoration(
-                              hintText: "Your Name",
-                              hintStyle: TextStyle(
-                                fontFamily: 'Comforta',
-                              ),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Color(0xff6D6D6D)),
-                                borderRadius: BorderRadius.circular(11.0),
+                            child:TextFormField(
+                              controller: _nameController,
+                              decoration: InputDecoration(
+                                hintText: "Your Name",
+                                hintStyle: TextStyle(
+                                  fontFamily: 'Comforta',
+                                ),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xff6D6D6D)),
+                                  borderRadius: BorderRadius.circular(11.0),
+                                ),
                               ),
                             ),
-                          ),
 
                           ),
                           SizedBox(height:10),
@@ -320,47 +320,47 @@ class _EditProfileState extends State<EditProfile> {
               children: [
                 Expanded(child:
                 Padding(padding: EdgeInsets.only(left:20,right:20),
-                child:Container(
-                  width: 300,
-                  height: 190,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.white,
-                  ),
-                  child:Column(
-                    children: [
-                      SizedBox(height:10),
-                      Text(
-                        "Address",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Color(0xff4961AC),
-                        ),
-                      ),
-
-                      SizedBox(height: 20,),
-                      Row(
-                        children: [
-                          Expanded(
-                            child:Padding(padding: EdgeInsets.only(left:20,right:20,),
-
-                            child: Container(
-                              width:200,
-                              height:100,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8.0),
-                                color: Color(0xffD9D9D9),
-                              ),
-
-                            ),
-                ),
+                  child:Container(
+                    width: 300,
+                    height: 190,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      color: Colors.white,
+                    ),
+                    child:Column(
+                      children: [
+                        SizedBox(height:10),
+                        Text(
+                          "Address",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 25,
+                            color: Color(0xff4961AC),
                           ),
-                        ],
-                      ),
-                    ],
+                        ),
+
+                        SizedBox(height: 20,),
+                        Row(
+                          children: [
+                            Expanded(
+                              child:Padding(padding: EdgeInsets.only(left:20,right:20,),
+
+                                child: Container(
+                                  width:200,
+                                  height:100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    color: Color(0xffD9D9D9),
+                                  ),
+
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
                 ),
                 ),
               ],

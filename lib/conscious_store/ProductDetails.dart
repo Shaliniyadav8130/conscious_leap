@@ -1,4 +1,6 @@
 import 'package:consciousleap/Constants/images.dart';
+import 'package:consciousleap/conscious_store/ConsciousAddress.dart';
+import 'package:consciousleap/conscious_store/ConsciousStoreCart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -95,30 +97,76 @@ class _ProductDetailsState extends State<ProductDetails> {
                       "Fabric :".text.gray400.size(18).align(TextAlign.start).make(),
                       3.heightBox,
                       "AED95.00".text.size(28).blue600.make(),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
-                        onPressed: (){},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.shopping_cart,color: Colors.white,),
-                            10.widthBox,
-                            "Add to cart".text.center.white.semiBold.make()
-                          ],
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Set your desired background color here
+                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8), // Set a smaller border radius here
+                                    ),
+                                  ),
+                                ),
+                                onPressed: (){
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) =>ConsciousStoreCart()
+                                      ));
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.shopping_cart,color: Colors.white,),
+                                    10.widthBox,
+                                    "Add to cart".text.center.white.semiBold.make()
+                                  ],
+                                ),
+                              ),
+
+                          ),
+
+                          SizedBox(width:5),
+                          Expanded(
+                            child:ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Set your desired background color here
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8), // Set a smaller border radius here
+                                  ),
+                                ),
+                              ),
+                              onPressed: (){
+
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) =>ConsciousAddress()
+                                    ));
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  "Buy it now".text.white.semiBold.make()
+                                ],
+                              ),
+                            ),
+
+                          ),
+
+                        ],
                       ),
+
+
                       ElevatedButton(
-                        style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                        onPressed: (){},
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            "Buy it now".text.white.semiBold.make()
-                          ],
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Set your desired background color here
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8), // Set a smaller border radius here
+                            ),
+                          ),
                         ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
                         onPressed: (){},
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

@@ -5,6 +5,7 @@ import 'package:consciousleap/therapist/therapist_dash_option.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class login_therapist extends StatefulWidget {
   @override
@@ -26,10 +27,10 @@ class _login_therapistState extends State<login_therapist> {
         body:Form(
           key: _formKey,
           child: ListView(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.only(left:16.0,right:16),
             children: [
               Padding(
-                padding: EdgeInsets.only(bottom: 55.0),
+                padding: EdgeInsets.only(bottom: 50.0),
                 child:Text("Therapist Login" ,style: TextStyle(fontWeight: FontWeight.bold,color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
               ),
 
@@ -45,6 +46,10 @@ class _login_therapistState extends State<login_therapist> {
                         hintStyle: TextStyle(
                           fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                           fontSize: 16.0,
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 8.0, // Adjust the vertical padding
+                          horizontal: 16.0, // Adjust the horizontal padding
                         ),
                         border: GradientOutlineInputBorder(
                           width: 2,
@@ -78,6 +83,10 @@ class _login_therapistState extends State<login_therapist> {
                         hintStyle: TextStyle(
                           fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                           fontSize: 16.0,
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 8.0, // Adjust the vertical padding
+                          horizontal: 16.0, // Adjust the horizontal padding
                         ),
                         border: GradientOutlineInputBorder(
                           width: 2,
@@ -139,7 +148,20 @@ class _login_therapistState extends State<login_therapist> {
       UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Phone);
       print(userCredential);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfully")));
-      Navigator.push(context, MaterialPageRoute(builder: (context) => TherapistDashboard()));
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => TherapistDashboard()));
+      DocumentSnapshot userSnapshot = await FirebaseFirestore.instance.collection('doctor').doc(userCredential.user!.uid).get();
+      if (userSnapshot.exists) {
+        // Get the data and navigate to the dashboard
+        Map<String, dynamic> userData = userSnapshot.data() as Map<String, dynamic>;
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TherapistDashboard(user: userCredential.user,userData: userData),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("User data not found.")));
+      }
       // String? id = FirebaseAuth.instance.currentUser?.uid;
       // UserModel userModel=UserModel(id:id,firstName: firstname, lastName: lastname, email: email, password: password);
       // db.collection("doctor").doc(password).set(userModel.toJson());

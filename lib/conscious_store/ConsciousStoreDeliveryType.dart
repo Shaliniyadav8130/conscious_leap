@@ -1,3 +1,4 @@
+import 'package:consciousleap/conscious_store/ConsciousStorePayment.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -71,7 +72,11 @@ class _DeliveryTypeState extends State<DeliveryType> {
                 ],
               ),
               30.heightBox,
-              ElevatedButton(onPressed: (){}, child: "Continue to Payment".text.white.make(),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)).box.width(context.screenWidth*.8).make()
+              ElevatedButton(onPressed: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PaymentScreen()
+                    ));
+              }, child: "Continue to Payment".text.white.make(),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)).box.width(context.screenWidth*.8).make()
 
 
             ],

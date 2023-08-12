@@ -17,7 +17,7 @@ class GradientBorderButton extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Container(
-
+      height:40,
       width:300,
       margin: EdgeInsets.only(bottom: 20.0),
       decoration: BoxDecoration(
@@ -31,7 +31,7 @@ class GradientBorderButton extends StatelessWidget{
         style: ButtonStyle(
           overlayColor: MaterialStateProperty.all(Colors.transparent), // Set overlay color to transparent to remove the ripple effect
         ),
-        child: Text(btnName,style: TextStyle(fontSize:12,color: Colors.black,fontFamily:'Comforta'),),
+        child: Text(btnName,style: TextStyle(fontSize:10,color: Colors.black,fontFamily:'Comforta'),),
         onPressed:(){
           callBack!();
         },

@@ -7,11 +7,13 @@ class SessionWidget extends StatelessWidget{
 
   String name;
   String TherapistIcon;
+  final VoidCallback? callBack;
 
 
   SessionWidget({
     required this.name,
-    required this.TherapistIcon
+    required this.TherapistIcon,
+    this.callBack
   });
 
   @override

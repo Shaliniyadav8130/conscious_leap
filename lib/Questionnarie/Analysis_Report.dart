@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
+import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
@@ -203,7 +204,8 @@ class _Analysis_ReportState extends State<Analysis_Report> {
                                     child: Padding(
                                       padding: EdgeInsets.only(top: 40),
                                       child: Text(
-                                        '${percentage.toStringAsFixed(2)}%',
+                                        //'${percentage.toStringAsFixed(2)}%',
+                                        '${percentage.toInt()}%',
                                         style: TextStyle(
                                             fontSize: 22,
                                             fontFamily: 'Comforta',
@@ -260,21 +262,94 @@ class _Analysis_ReportState extends State<Analysis_Report> {
               },
               ),
             ),
-            Container(
-              width: 100,
-              height: 50,
-              decoration: BoxDecoration(
-                  color: Color(0xff4961AC),
-                  borderRadius: BorderRadius.circular(12)),
-              child: TextButton(
-                onPressed: navigateToQuestionnaire,
-                child: Text(
-                  'Reset',
-                  style:
-                  TextStyle(fontFamily: 'Comforta', color: Colors.white),
+            Row(
+              children: [
+                Expanded(
+                  child:Padding(
+                    padding: EdgeInsets.only(left:60,right:60),
+                    child:Container(
+                      width: 200,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: Color(0xff4961AC),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: TextButton(
+                        onPressed: navigateToQuestionnaire,
+                        child: Text(
+                          'Reset',
+                          style:
+                          TextStyle(fontFamily: 'Comforta', color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  )
                 ),
-              ),
+              ],
             ),
+
+            SizedBox(height:20),
+                      Row(
+                        children: [
+                          Expanded(
+                            child:Padding(
+                              padding: EdgeInsets.only(left:60,right:60),
+                              child:Container(
+                                width: 200,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    border: const GradientBoxBorder(
+                                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12)),
+                                child: TextButton(
+                                  onPressed: (){
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) =>TherapistList()
+                                        ));
+                                  },
+                                  child: Text(
+                                    'Proceed to Therapy',
+                                    style:
+                                    TextStyle(fontFamily: 'Comforta', color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+
+                      ),
+
+            SizedBox(height:25),
+
+            Row(
+              children: [
+                Expanded(child:
+                Padding(padding: EdgeInsets.only(left:15,right:15),
+                child:
+                    SizedBox(
+                      width:200,
+                    child:Text.rich(
+                        TextSpan(
+                            text: 'Disclaimer: ',
+                            style:TextStyle(fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "Comforta"),
+                            children: <InlineSpan>[
+                              TextSpan(
+                                text: 'This questionnaire is intended to provide a general assessment of mental health and should not be considered a substitute for professional evaluation or advice. The results of this questionnaire are based solely on the provided responses and should be interpreted with caution. It is important to consult with a qualified mental health professional for assessment and personalized guidance.',
+                                style: TextStyle(fontSize: 14,fontFamily: "Comforta",fontWeight: FontWeight.normal),
+                              )
+                            ]
+                        )
+                    ),
+                )
+                )
+                ),
+              ],
+            ),
+
+            SizedBox(height:20)
+
           ],
         ),
       ),

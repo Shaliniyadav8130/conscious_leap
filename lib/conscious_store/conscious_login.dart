@@ -29,7 +29,7 @@ class _consciousLoginState extends State<consciousLogin> {
               children: [
 
                 Center(
-                  child:Text("Conscious Store Login",style:TextStyle(fontSize: 25,fontFamily: "Comforta",color: Color(0xff4961AC),fontWeight: FontWeight.bold)),
+                  child:Text("Conscious Store Login",style:TextStyle(fontSize: 25,fontFamily: "Comforta",color: Color(0xff4961AC),fontWeight: FontWeight.bold),textAlign: TextAlign.center,),
                 ),
 
                 SizedBox(
@@ -71,7 +71,7 @@ class _consciousLoginState extends State<consciousLogin> {
                     Expanded(
                       child:Padding(padding: EdgeInsets.only(left: 15,right:15),
                         child: TextFormField(
-                          controller: email, // Assign the TextEditingController instance
+                          controller: phone, // Assign the TextEditingController instance
                           decoration: InputDecoration(
                             hintText: "Password",
                             hintStyle: TextStyle(

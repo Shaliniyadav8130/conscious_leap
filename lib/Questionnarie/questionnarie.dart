@@ -32,6 +32,7 @@ class QuestionnaireScreen extends StatefulWidget {
 
 class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
   bool isOptionSelected = false;
+  bool isButtonPressed = false;
   var db = FirebaseFirestore.instance;
   List<double> categoryPercentages = [];
   int currentCategoryIndex = 0;
@@ -42,14 +43,14 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
   List<List<int>> categoryRatings = [[0, 0, 0, 0], [0, 0, 0],[0, 0, 0],[0, 0, 0]];
   List<List<String>> categories = [
     [
-      'Environment',
+      'Environmental Mastery',
       'The demands of everyday life often get me down',
       'I do not fit very well with the people and the community around me',
       'I am quite good at managing the many responsibilities of my life',
       'I often feel overwhelmed by my responsibilities'
     ],
     [
-      'Purpose',
+      'Purpose in life',
       'I have a sense of direction and purpose in life',
       "I don't have a good sense of what it is I'm trying to accomplish in life",
       'My daily activities often seem trivial and unimportant to me',
@@ -239,12 +240,13 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
   }
 
   Widget buildQuestion() {
-    int currentQuestionNumber = currentQuestionIndex + 1;
-    int totalQuestions = totalQuestionsPerCategory[currentCategoryIndex];
-    String category = categories[currentCategoryIndex][0];
-    String question = categories[currentCategoryIndex][currentQuestionIndex + 1];
-    List<Map<String, dynamic>> options = ratings[currentRatingIndex].toList();
-    // print(ratings[currentRatingIndex]);
+     int currentQuestionNumber = currentQuestionIndex + 1;
+     int totalQuestions = totalQuestionsPerCategory[currentCategoryIndex];
+     String category = categories[currentCategoryIndex][0];
+     String question = categories[currentCategoryIndex][currentQuestionIndex + 1];
+     List<Map<String, dynamic>> options = ratings[currentRatingIndex].toList();
+     // print(ratings[currentRatingIndex]);
+
 
     return Scaffold(
       appBar: AppBar(
@@ -258,19 +260,38 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
 
               Padding(
 
+                padding: const EdgeInsets.all(14.0),
+                child: Text(
+                  category,
+                  style: TextStyle(fontSize: 14,fontFamily: 'Comforta',fontWeight: FontWeight.bold,decoration: TextDecoration.underline),textAlign: TextAlign.center,
+                ),
+              ),
+
+
+              Padding(
+
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   question,
-                  style: TextStyle(fontSize: 16,fontFamily: 'Comforta'),textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 14,fontFamily: 'Comforta'),textAlign: TextAlign.center,
                 ),
               ),
               Column(
                 children: options.map((option) {
+                  bool isSelected = option['rating'] == categoryRatings[currentCategoryIndex][currentQuestionIndex];
                   return Container(
                     width: 300,
+                    height:40,
                     margin: EdgeInsets.only(top: 20.0),
                     decoration: BoxDecoration(
-                      border: const GradientBoxBorder(
+                      border: isSelected
+                          ? const GradientBoxBorder(
+                        gradient: LinearGradient(
+                          colors: [Color(0xff4961AC), Color(0xffF2685D), Color(0xff4EC1BA)],
+                        ),
+                        width: 4,
+                      )
+                          : const GradientBoxBorder(
                         gradient: LinearGradient(
                           colors: [Color(0xff4961AC), Color(0xffF2685D), Color(0xff4EC1BA)],
                         ),
@@ -294,10 +315,11 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                   );
                 }).toList(),
               ),
+
               Padding(
                 padding:EdgeInsets.only(top:35),
                 child: Container(
-                  height: 50,
+                  height: 40,
                   width: 150,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(2), // Set the border radius here
@@ -315,6 +337,11 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                           }
                           return Color(0xff4961AC); // Default background color
                         },
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8), // Set a smaller border radius here
+                        ),
                       ),
                     ),
                     onPressed: isOptionSelected
@@ -338,13 +365,19 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                       }
                     }
                         : null, // Disable the button when no option is selected
-                    child: Text('Next', style: TextStyle(fontFamily: 'Comforta', color: Colors.white)),
+                    child: Text('Next', style: TextStyle(fontFamily: 'Comforta',fontSize: 15 ,color: Colors.white)),
                   ),
                 ),
 
               ),
-
-
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  '$currentQuestionNumber/$totalQuestions',
+                  style: TextStyle(fontSize: 14, fontFamily: 'Comforta'),
+                  textAlign: TextAlign.center,
+                ),
+              ),
 
             ],
           ),

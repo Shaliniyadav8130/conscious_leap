@@ -3,6 +3,8 @@ import 'package:consciousleap/user/components/JournalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class DailyAffirmation extends StatelessWidget {
 

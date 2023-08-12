@@ -1,3 +1,4 @@
+import 'package:consciousleap/widgets/ProgressIndicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
@@ -44,18 +45,11 @@ class ReviewsWidget extends StatelessWidget{
 
                 Text(Feelingname,style:TextStyle(fontSize:size,color:Color(0xff4961AC))),
 
-                Container(
-                  width: 20,
-                  height: 20,
-                  decoration: BoxDecoration(
-                      color:color,
-                      border: const GradientBoxBorder(
-                        gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
-                        width: 3,
-                      ),
-                      borderRadius: BorderRadius.circular(12)),
-                ),
-              ],
+                //Padding(padding: EdgeInsets.only(top:3,bottom:3),
+                //child: DynamicCircularProgressIndicator()
+                //),
+
+                              ],
             )
 
 

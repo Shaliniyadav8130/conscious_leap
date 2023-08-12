@@ -38,9 +38,11 @@ class Oneness extends StatelessWidget{
               Padding(padding: EdgeInsets.only(bottom: 20.0),
                 child:Text("How can I help you today?",style:TextStyle(fontFamily:'Comforta')),
               ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+
                   Container(
 
                     width:120,
@@ -149,7 +151,7 @@ class Oneness extends StatelessWidget{
                             child:Image.asset('assets/images/Shop-1.png'),
                           ),
                           SizedBox(height:4),
-                          Text("Conscious Store",style:TextStyle(color: Color(0xff4961AC),fontFamily: "Comforta",fontSize:13 )),
+                          Text("Conscious Store",style:TextStyle(color: Color(0xff4961AC),fontFamily: "Comforta",fontSize:14 ),textAlign: TextAlign.center,),
                         ],
                       ),
                     ),

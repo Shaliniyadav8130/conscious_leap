@@ -1,7 +1,6 @@
 import 'package:consciousleap/Questionnarie/questionnarie.dart';
 import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
-import 'package:consciousleap/Questionnarie/Activity_page7.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
@@ -25,13 +24,15 @@ class Activity_page6 extends StatelessWidget{
                 padding: EdgeInsets.only(bottom: 55.0),
                 child:SizedBox(
                     width:300,
+                    child:Center(
                     child:Text("I am not sure what I am going through",style:TextStyle(fontSize:16,fontFamily:'Comforta'),textAlign: TextAlign.center,)
+                ),
                 ),
 
 
               ),
 
-              GradientBorderButton(btnName: "Talk to a Tele-Therapist",
+              GradientBorderButton(btnName: "Talk to a Therapist",
                 callBack: (){
                    Navigator.push(context,
                        MaterialPageRoute(builder: (context) =>TherapistList()

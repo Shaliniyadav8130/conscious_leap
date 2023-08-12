@@ -29,6 +29,8 @@ class _DoctorProfileState extends State<DoctorProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+      ),
       body: Container(
         child: StreamBuilder<QuerySnapshot>(
             stream: _usersStream,
@@ -393,210 +395,6 @@ scroll(var docs, var id,BuildContext context) {
                         ),
 
 
-                // Container(
-                //   //width: MediaQuery.of(context).size.width,
-                //   //color: Colors.deepOrangeAccent
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //     children: [
-                //       Container(
-                //         width: 100,
-                //         height: 100,
-                //         decoration: BoxDecoration(
-                //             border: const GradientBoxBorder(
-                //               gradient: LinearGradient(colors: [
-                //                 Color(0xff4961AC),
-                //                 Color(0xffF2685D),
-                //                 Color(0xff4EC1BA)
-                //               ]),
-                //               width: 2,
-                //             ),
-                //             borderRadius: BorderRadius.circular(10)),
-                //         child: Column(
-                //           children: [
-                //
-                //             Container(
-                //               padding:EdgeInsets.only(bottom: 5,top: 5),
-                //               child: Text(
-                //                 "Experience",
-                //                 style: TextStyle(
-                //                     fontFamily: 'Comforta',
-                //                     fontSize: 12,
-                //                     color: Color(0xff4961AC)),
-                //               ),
-                //             ),
-                //             Container(
-                //               width: 110,
-                //               height: 2,
-                //               decoration: BoxDecoration(
-                //                 border: const GradientBoxBorder(
-                //                   gradient: LinearGradient(colors: [
-                //                     Color(0xff4961AC),
-                //                     Color(0xffF2685D),
-                //                     Color(0xff4EC1BA)
-                //                   ]),
-                //                   width: 2,
-                //                 ),
-                //                 //borderRadius: BorderRadius.circular(10)
-                //               ),
-                //             ),
-                //             Column(
-                //               mainAxisAlignment: MainAxisAlignment.center,
-                //               crossAxisAlignment: CrossAxisAlignment.center,
-                //               children: [
-                //
-                //                 Container(
-                //                   padding: EdgeInsets.only(top: 8),
-                //                   child: Center(
-                //                       child: Text(
-                //                     ""+docs[id]["experience"],
-                //                     style: TextStyle(
-                //                         fontSize: 14, fontFamily: 'Comforta'),
-                //                     textAlign: TextAlign.center,
-                //                   )),
-                //                 ),
-                //               ],
-                //             ),
-                //           ],
-                //         ),
-                //       ),
-                //       SizedBox(width: 8),
-                //       Container(
-                //         width: 105,
-                //         height: 100,
-                //         decoration: BoxDecoration(
-                //             border: const GradientBoxBorder(
-                //               gradient: LinearGradient(colors: [
-                //                 Color(0xff4961AC),
-                //                 Color(0xffF2685D),
-                //                 Color(0xff4EC1BA)
-                //               ]),
-                //               width: 2,
-                //             ),
-                //             borderRadius: BorderRadius.circular(10)),
-                //         child: Column(
-                //           children: [
-                //             Container(
-                //               padding: EdgeInsets.only(top: 5,bottom: 5),
-                //               child: Text(
-                //                 "Qualifications",
-                //                 style: TextStyle(fontFamily: 'Comforta', fontSize: 12, color: Color(0xff4961AC),),
-                //               ),
-                //             ),
-                //             Container(
-                //               width: 110,
-                //               height: 2,
-                //               decoration: BoxDecoration(
-                //                 border: const GradientBoxBorder(
-                //                   gradient: LinearGradient(colors: [
-                //                     Color(0xff4961AC),
-                //                     Color(0xffF2685D),
-                //                     Color(0xff4EC1BA)
-                //                   ]),
-                //                   width: 2,
-                //                 ),
-                //                 //borderRadius: BorderRadius.circular(10)
-                //               ),
-                //             ),
-                //             Container(
-                //               padding: EdgeInsets.only(left: 4,right: 4),
-                //               child: Column(
-                //                 crossAxisAlignment: CrossAxisAlignment.start,
-                //                 children: [
-                //                   Padding(
-                //                     padding: EdgeInsets.only(top: 5),
-                //                   ),
-                //                   Text(
-                //                     "\u2022 "+docs[id]["qualification"][0],
-                //                     style: TextStyle(
-                //                         fontSize: 10, fontFamily: 'Comforta'),
-                //                   ),
-                //                   Text(
-                //                     "\u2022 "+docs[id]["qualification"][1],
-                //                     style: TextStyle(
-                //                         fontSize: 10, fontFamily: 'Comforta'),
-                //                   )
-                //                 ],
-                //               ),
-                //             ),
-                //           ],
-                //         ),
-                //       ),
-                //       SizedBox(
-                //         width: 8,
-                //       ),
-                //       Container(
-                //
-                //         width: 100,
-                //         height: 100,
-                //         decoration: BoxDecoration(
-                //             border: const GradientBoxBorder(
-                //               gradient: LinearGradient(colors: [
-                //                 Color(0xff4961AC),
-                //                 Color(0xffF2685D),
-                //                 Color(0xff4EC1BA)
-                //               ]),
-                //               width: 2,
-                //             ),
-                //             borderRadius: BorderRadius.circular(10)),
-                //         child: Column(
-                //           crossAxisAlignment: CrossAxisAlignment.start,
-                //           children: [
-                //             Center(
-                //               child: Container(
-                //                 padding: EdgeInsets.only(top: 5,bottom: 5),
-                //                 child: Text(
-                //                   "Speaks",
-                //                   style: TextStyle(
-                //                       fontFamily: 'Comforta',
-                //                       fontSize: 12,
-                //                       color: Color(0xff4961AC)),
-                //                   textAlign: TextAlign.center,
-                //                 ),
-                //               ),
-                //             ),
-                //             Container(
-                //               width: 110,
-                //               height: 2,
-                //               decoration: BoxDecoration(
-                //                 border: const GradientBoxBorder(
-                //                   gradient: LinearGradient(colors: [
-                //                     Color(0xff4961AC),
-                //                     Color(0xffF2685D),
-                //                     Color(0xff4EC1BA)
-                //                   ]),
-                //                   width: 2,
-                //                 ),
-                //                 //borderRadius: BorderRadius.circular(10)
-                //               ),
-                //             ),
-                //             Padding(
-                //               padding: EdgeInsets.only(top: 5),
-                //             ),
-                //             Text(
-                //               "\u2022 Hindi",
-                //               style: TextStyle(
-                //                   fontSize: 12, fontFamily: 'Comforta'),
-                //               textAlign: TextAlign.left,
-                //             ),
-                //             Text(
-                //               "\u2022 English",
-                //               style: TextStyle(
-                //                   fontSize: 12, fontFamily: 'Comforta'),
-                //             ),
-                //             Expanded(
-                //                 child:SizedBox(
-                //                   width: 110,
-                //                   height: 100,
-                //                 ),
-                //
-                //             ),
-                //           ],
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
                 SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -622,7 +420,8 @@ scroll(var docs, var id,BuildContext context) {
                     ),
                     itemCount: docs[id]["expertise"].length,
                     itemBuilder: (context, index) {
-                      return Container(
+                      return
+                        Container(
                         decoration: BoxDecoration(
                             border: const GradientBoxBorder(
                               gradient: LinearGradient(colors: [

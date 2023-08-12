@@ -33,7 +33,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     children: [
                       Container(
                         width: 400,
-                        height: 328,
+                        height: 332,
                         decoration: BoxDecoration(
                           border: const GradientBoxBorder(
                             gradient: LinearGradient(
@@ -62,7 +62,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                               focusedDay: _focusedDay,
                               calendarFormat: _calendarFormat,
                               startingDayOfWeek: StartingDayOfWeek.monday,
-                              rowHeight: 28,
+                              rowHeight: 29,
                               daysOfWeekHeight: 60,
                               headerStyle: HeaderStyle(
                                 formatButtonVisible: false, // Hide the month changing option
@@ -73,8 +73,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                               calendarStyle: const CalendarStyle(
                                 weekendTextStyle: TextStyle(color: Colors.red),
                                 todayDecoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  shape: BoxShape.circle,
+                                  color: Color(0xff4961AC),
+                                  shape: BoxShape.rectangle,
                                 ),
                                 selectedDecoration: BoxDecoration(
                                   color: Colors.teal,
@@ -114,7 +114,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 324),
+                      padding: const EdgeInsets.only(top: 329),
                       child: Container(
                         width: 250,
                         height: 100,

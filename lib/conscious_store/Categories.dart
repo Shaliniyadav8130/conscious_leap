@@ -1,4 +1,6 @@
 import 'package:consciousleap/Constants/images.dart';
+import 'package:consciousleap/conscious_store/ConsciousStoreCart.dart';
+import 'package:consciousleap/conscious_store/ProductDetails.dart';
 import 'package:consciousleap/customWidgets/ConsciousStoreCard.dart';
 import 'package:consciousleap/user/components/ConsciousStore.dart';
 
@@ -51,7 +53,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
               child: GridView.builder(shrinkWrap: true,
                   itemCount: 15,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,mainAxisSpacing: 12,crossAxisSpacing: 12,mainAxisExtent: 300), itemBuilder: (context,index){
-                    return ConsciousStoreCard(
+                    return InkWell(
+                        onTap: (){
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) =>ProductDetails()
+                              ));
+                        },
+                      child:ConsciousStoreCard(
                       child: Column(
                         children: [
                           Stack(children:
@@ -101,8 +109,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                 Text("AED95.00",style: TextStyle(color: Colors.blueAccent)),
                                 10.heightBox,
                                 ElevatedButton(
-                                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),
-                                    onPressed: (){},
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Set your desired background color here
+                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8), // Set a smaller border radius here
+                                      ),
+                                    ),
+                                  ),
+                                    onPressed: (){
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) => ConsciousStoreCart()
+                                          ));
+                                    },
                                     child: Row(
                                   children: [
                                     Icon(Icons.shopping_cart,color: Colors.white,),
@@ -116,7 +135,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                             ),
                           ),
                         ],
+
                       ).box.white.rounded.clip(Clip.antiAlias).outerShadowSm.make(),
+                      )
                     );
                   }),
             ),

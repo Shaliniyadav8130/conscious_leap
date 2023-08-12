@@ -4,7 +4,9 @@ import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page3.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
 import 'package:consciousleap/controllers/signup_controllers.dart';
+import 'package:consciousleap/login.dart';
 import 'package:consciousleap/therapist/Therapist_List.dart';
+import 'package:consciousleap/user/TherapistReview.dart';
 import 'package:consciousleap/user/UserProfile.dart';
 import 'package:consciousleap/user/components/Blocks.dart';
 import 'package:consciousleap/user/components/ConsciousStore.dart';
@@ -22,9 +24,14 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'package:consciousleap/models/UserModel.dart';
 import 'package:gradient_borders/gradient_borders.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 // Signup Page for a new User
 class UserDashboard extends StatefulWidget {
+  final User? user; // Pass the User object from Firebase authentication
+  final Map<String, dynamic> userData; // Pass the user data fetched from Firestore
+
+  UserDashboard({this.user, required this.userData});
 
   // const UserDashboard({
   //   Key? key,
@@ -44,7 +51,17 @@ class _UserDashboardState extends State<UserDashboard> {
         backgroundColor: Color(0xffF0F0F0) ,
         title:  Text("Member",textAlign: TextAlign.center,style:TextStyle(fontSize:27,color: Color(0xff4961AC)),),
         centerTitle:true,
-        leading:Container(),
+        //leading:Container(),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), // Back button icon
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) =>
+                    login()
+                ));
+            // Navigate back to previous screen
+          },
+        ),
         actions: [
           Builder(
             builder: (context) => IconButton(
@@ -65,7 +82,7 @@ class _UserDashboardState extends State<UserDashboard> {
 
                   child:CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage('assets/images/doctor.jpg'),
+                    backgroundImage: AssetImage('assets/images/default.jpeg'),
                   ),
 
 
@@ -75,7 +92,7 @@ class _UserDashboardState extends State<UserDashboard> {
           ),
         ],
       ),
-      endDrawer: SidebarScreen(),
+      endDrawer: SidebarScreen(user: widget.user, userData: widget.userData),
       body: SingleChildScrollView(
         child:Column(
           children: [
@@ -120,7 +137,13 @@ class _UserDashboardState extends State<UserDashboard> {
               child:Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Therapy(icon:"assets/images/Asset 1@4x 3.png",name: "Therapist Review"),
+                  Therapy(icon:"assets/images/Asset 1@4x 3.png",name: "Therapist Review",
+                      callBack: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => TherapistReview()
+                            ));
+                      }
+                  ),
                   SizedBox(width: 5,),
                   Therapy(icon:"assets/images/Asset 1@4x 2.png",name: "Schedule a Session",
 

@@ -45,10 +45,10 @@ class _SignupViewState extends State<SignupView> {
       body:Form(
           key: _formKey,
             child: ListView(
-              padding: EdgeInsets.all(16.0),
+              padding: EdgeInsets.only(left:16,right:16),
               children: [
                         Padding(
-                          padding: EdgeInsets.only(bottom: 55.0,top:55.0),
+                          padding: EdgeInsets.only(bottom: 50.0),
                           child:Text("Therapy Sign-up" ,style: TextStyle(fontWeight:FontWeight.bold ,color: Color(0xff4961AC), fontSize: 25,fontFamily:'Comforta'),textAlign: TextAlign.center,),
                         ),
 
@@ -66,6 +66,10 @@ class _SignupViewState extends State<SignupView> {
                                   hintStyle: TextStyle(
                                     fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                                     fontSize: 16.0,
+                                  ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                    vertical: 8.0, // Adjust the vertical padding
+                                    horizontal: 16.0, // Adjust the horizontal padding
                                   ),
                                   border: GradientOutlineInputBorder(
                                     width: 2,
@@ -139,6 +143,10 @@ class _SignupViewState extends State<SignupView> {
                                     fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                                     fontSize: 16.0,
                                   ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                    vertical: 8.0, // Adjust the vertical padding
+                                    horizontal: 16.0, // Adjust the horizontal padding
+                                  ),
                                   border: GradientOutlineInputBorder(
                                     width: 2,
                                     gradient: LinearGradient(
@@ -177,6 +185,10 @@ class _SignupViewState extends State<SignupView> {
                                     fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                                     fontSize: 16.0,
                                   ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                    vertical: 8.0, // Adjust the vertical padding
+                                    horizontal: 16.0, // Adjust the horizontal padding
+                                  ),
                                   border: GradientOutlineInputBorder(
                                     width: 2,
                                     gradient: LinearGradient(
@@ -214,6 +226,10 @@ class _SignupViewState extends State<SignupView> {
                           hintStyle: TextStyle(
                             fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                             fontSize: 16.0,
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                            vertical: 8.0, // Adjust the vertical padding
+                            horizontal: 16.0, // Adjust the horizontal padding
                           ),
                           border: GradientOutlineInputBorder(
                             width: 2,
@@ -254,6 +270,10 @@ class _SignupViewState extends State<SignupView> {
                           hintStyle: TextStyle(
                             fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                             fontSize: 16.0,
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                            vertical: 8.0, // Adjust the vertical padding
+                            horizontal: 16.0, // Adjust the horizontal padding
                           ),
                           border: GradientOutlineInputBorder(
                             width: 2,

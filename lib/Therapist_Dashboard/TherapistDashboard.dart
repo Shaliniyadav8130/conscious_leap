@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page3.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
+import 'package:consciousleap/Therapist_Dashboard/SessionNotes.dart';
 import 'package:consciousleap/Therapist_Dashboard/TherapistProfile.dart';
 import 'package:consciousleap/Therapist_Dashboard/components/MyReviews.dart';
 import 'package:consciousleap/Therapist_Dashboard/components/SessionDetails.dart';
@@ -27,6 +28,11 @@ import 'package:gradient_borders/gradient_borders.dart';
 
 // Signup Page for a new User
 class TherapistDashboard extends StatefulWidget {
+  final User? user; // Pass the User object from Firebase authentication
+  final Map<String, dynamic> userData; // Pass the user data fetched from Firestore
+
+  TherapistDashboard({this.user, required this.userData});
+
 
   // const UserDashboard({
   //   Key? key,
@@ -67,7 +73,7 @@ class _TherapistDashboardState extends State<TherapistDashboard> {
 
                     child:CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('assets/images/doctor.jpg'),
+                      backgroundImage: AssetImage('assets/images/default.jpeg'),
                     ),
 
 
@@ -77,7 +83,7 @@ class _TherapistDashboardState extends State<TherapistDashboard> {
             ),
           ],
         ),
-        endDrawer: TherapistProfile(),
+        endDrawer: TherapistProfile(user: widget.user, userData: widget.userData),
         body: SingleChildScrollView(
           child:Column(
             children: [
@@ -106,7 +112,18 @@ class _TherapistDashboardState extends State<TherapistDashboard> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           SizedBox(width:30),
-                          SessionDetails(TherapistIcon:"assets/images/TherapistNotes.png",name: "Therapist Notes"),
+                          SessionDetails(TherapistIcon:"assets/images/TherapistNotes.png",name: "Therapist Notes",
+                            callBack: () {
+                              if (widget.user != null) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => SessionNotes(userId: widget.user!.uid)),
+                                );
+                              } else {
+                                print("Null user");
+                              }
+                            },
+                          ),
                           SizedBox(width: 30,),
                           SessionDetails(TherapistIcon:"assets/images/MyEarnings.png",name: "My Earnings"),
                            SizedBox(width: 30,),
