@@ -1,3 +1,5 @@
+import 'package:consciousleap/authentication/PhoneAuthentication.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -9,6 +11,9 @@ class VerifyCode extends StatefulWidget {
 }
 
 class _VerifyCodeState extends State<VerifyCode> {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  var otp='';
+
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -77,9 +82,11 @@ class _VerifyCodeState extends State<VerifyCode> {
                 // defaultPinTheme: defaultPinTheme,
                 // focusedPinTheme: focusedPinTheme,
                 // submittedPinTheme: submittedPinTheme,
-
+                onChanged: (value){
+                  otp=value;
+                },
                 showCursor: true,
-                onCompleted: (pin) => print(pin),
+                onCompleted: (pin) => {print(pin)},
               ),
               SizedBox(
                 height: 20,
@@ -92,7 +99,9 @@ class _VerifyCodeState extends State<VerifyCode> {
                         primary: Color(0xff4961AC),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5))),
-                    onPressed: () {},
+                    onPressed: () {
+                      VerifyOTP(otp);
+                    },
                     child: Text("Verify Phone Number",style: TextStyle(fontFamily: "Comforta",color: Colors.white),)),
               ),
                   TextButton(
@@ -115,4 +124,12 @@ class _VerifyCodeState extends State<VerifyCode> {
       ),
     );
   }
+
+void VerifyOTP(String otp) async{
+  PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: PhoneAuthentication.verify, smsCode: otp);
+
+  // Sign the user in (or link) with the credential
+  await auth.signInWithCredential(credential);
+  print(credential);
+}
 }
