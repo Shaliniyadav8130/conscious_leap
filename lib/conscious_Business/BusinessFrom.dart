@@ -4,6 +4,7 @@ import 'package:consciousleap/Activity_page3.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
 import 'package:consciousleap/Therapist_Dashboard/SessionNotes.dart';
 import 'package:consciousleap/controllers/signup_controllers.dart';
+import 'package:consciousleap/therapist/Thankyou.dart';
 import 'package:consciousleap/user/UserProfile.dart';
 import 'package:consciousleap/user/components/Blocks.dart';
 import 'package:consciousleap/user/components/ConsciousStore.dart';
@@ -29,15 +30,12 @@ class BusinessForm extends StatefulWidget {
 
 class _BusinessFormState extends State<BusinessForm> {
   final TextEditingController _NameController = TextEditingController();
-  final TextEditingController _AgeController = TextEditingController();
-  final TextEditingController _genderController = TextEditingController();
-  final TextEditingController _dateController = TextEditingController();
-  final TextEditingController _OccupationController = TextEditingController();
-  final TextEditingController _SessionNumberController = TextEditingController();
-  String? _selectedRelationshipStatus;
-  final TextEditingController _complaintsController = TextEditingController();
-  final TextEditingController _ThoughtController = TextEditingController();
-  final TextEditingController _HomeworkController = TextEditingController();
+  final TextEditingController _PhoneController = TextEditingController();
+  final TextEditingController _CompanyController = TextEditingController();
+  final TextEditingController _EmployeesController = TextEditingController();
+  final TextEditingController _IndustryController = TextEditingController();
+  final TextEditingController _CountryController = TextEditingController();
+  final TextEditingController _HearController = TextEditingController();
 
 
   @override
@@ -84,7 +82,7 @@ class _BusinessFormState extends State<BusinessForm> {
                 Text("Phone no", style: TextStyle(fontSize: 20, fontFamily: "Comforta", color: Colors.black)),
                 SizedBox(height: 10),
                 TextFormField(
-                  controller: _AgeController,
+                  controller: _PhoneController,
                   decoration: InputDecoration(
                     hintText: "Phone No.",
                     hintStyle: TextStyle(
@@ -107,7 +105,7 @@ class _BusinessFormState extends State<BusinessForm> {
                 Text("Company Name", style: TextStyle(fontSize: 20, fontFamily: "Comforta", color: Colors.black)),
                 SizedBox(height: 10),
                 TextFormField(
-                  controller: _genderController,
+                  controller: _CompanyController,
                   decoration: InputDecoration(
                     hintText: "Company Name",
                     hintStyle: TextStyle(
@@ -130,7 +128,7 @@ class _BusinessFormState extends State<BusinessForm> {
                 Text("No. of Employees", style: TextStyle(fontSize: 20, fontFamily: "Comforta", color: Colors.black)),
                 SizedBox(height: 10),
                 TextFormField(
-                  controller: _OccupationController,
+                  controller: _EmployeesController,
                   decoration: InputDecoration(
                     hintText: "No. of Employees",
                     hintStyle: TextStyle(
@@ -153,7 +151,7 @@ class _BusinessFormState extends State<BusinessForm> {
                 Text("Industry", style: TextStyle(fontSize: 20, fontFamily: "Comforta", color: Colors.black)),
                 SizedBox(height: 10),
                 TextFormField(
-                  controller: _SessionNumberController,
+                  controller: _IndustryController,
                   decoration: InputDecoration(
                     hintText: "Industry",
                     hintStyle: TextStyle(
@@ -176,7 +174,7 @@ class _BusinessFormState extends State<BusinessForm> {
                 Text("Country", style: TextStyle(fontSize: 20, fontFamily: "Comforta", color: Colors.black)),
                 SizedBox(height: 10),
                 TextFormField(
-                  controller: _SessionNumberController,
+                  controller: _CountryController,
                   decoration: InputDecoration(
                     hintText: "Country",
                     hintStyle: TextStyle(
@@ -199,7 +197,7 @@ class _BusinessFormState extends State<BusinessForm> {
                 Text("How did you hear about us?", style: TextStyle(fontSize: 20, fontFamily: "Comforta", color: Colors.black)),
                 SizedBox(height: 10),
                 TextFormField(
-                  controller: _ThoughtController,
+                  controller: _HearController,
                   maxLength: 200,
                   maxLines: 4,
                   decoration: InputDecoration(
@@ -232,9 +230,28 @@ class _BusinessFormState extends State<BusinessForm> {
                         style: TextStyle(fontSize: 17, color: Colors.white, fontFamily: 'Comforta'),
                       ),
                       onPressed: () async {
-                        //Navigator.push(context,
-                          //  MaterialPageRoute(builder: (context) => SessionNotes()
-                            //));
+                        try {
+                          final CollectionReference businessFormsCollection = FirebaseFirestore.instance.collection('ScheduleCall');
+
+                          await businessFormsCollection.add({
+                            'name': _NameController.text,
+                            'phoneNo': _PhoneController.text,
+                            'companyName': _CompanyController.text,
+                            'noOfEmployees': _EmployeesController.text,
+                            'industry': _IndustryController.text,
+                            'country': _CountryController.text,
+                            'howDidYouHear': _HearController.text,
+                            'timestamp': FieldValue.serverTimestamp(),
+                          });
+
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Form submitted successfully.")));
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => Thankyou()), // Replace 'YourNextScreen()' with the desired screen
+                          );
+                        } catch (error) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Error submitting form.")));
+                        }
                       },
                     ),
                   ),

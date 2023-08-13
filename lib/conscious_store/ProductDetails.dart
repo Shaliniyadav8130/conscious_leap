@@ -92,18 +92,18 @@ class _ProductDetailsState extends State<ProductDetails> {
                       15.heightBox,
                       "Fabric :".text.gray400.size(18).align(TextAlign.start).make(),
                       3.heightBox,
-                      "AED100.00".text.lineThrough.size(28).blue300.make(),
+                      "INR100.00".text.lineThrough.size(28).color(Color(0xff4961AC)).make(),
                       15.heightBox,
                       "Fabric :".text.gray400.size(18).align(TextAlign.start).make(),
                       3.heightBox,
-                      "AED95.00".text.size(28).blue600.make(),
+                      "INR95.00".text.size(28).color(Color(0xff4961AC)).make(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                               child: ElevatedButton(
                                 style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Set your desired background color here
+                                  backgroundColor: MaterialStateProperty.all<Color>(Color(0xff4961AC)), // Set your desired background color here
                                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8), // Set a smaller border radius here
@@ -131,7 +131,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           Expanded(
                             child:ElevatedButton(
                               style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Set your desired background color here
+                                backgroundColor: MaterialStateProperty.all<Color>(Color(0xff4961AC)), // Set your desired background color here
                                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8), // Set a smaller border radius here
@@ -160,7 +160,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
                       ElevatedButton(
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Set your desired background color here
+                          backgroundColor: MaterialStateProperty.all<Color>(Color(0xff4961AC)), // Set your desired background color here
                           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8), // Set a smaller border radius here

@@ -56,7 +56,7 @@ Widget MyCartCard(){
             children: [
               "Price".text.size(17).gray400.make(),
               
-              Icon(Icons.delete,color: Colors.blueAccent,)
+              Icon(Icons.delete,color: Color(0xff4961AC),)
             ],
           ),
           10.heightBox,

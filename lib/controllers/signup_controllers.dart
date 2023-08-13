@@ -15,6 +15,7 @@ class SignUpController extends GetxController{
   final password = TextEditingController();
   final phone=TextEditingController();
   final reTypePassword=TextEditingController();
+  bool acceptTerms = false;
 
   final userRepo = Get.put(UserRepository());
 
@@ -33,6 +34,7 @@ class SignUpController extends GetxController{
     password.clear();
     phone.clear();
     reTypePassword.clear();
+
   }
 
 }

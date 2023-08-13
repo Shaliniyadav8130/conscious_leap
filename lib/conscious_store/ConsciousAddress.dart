@@ -89,11 +89,23 @@ class ConsciousAddress extends StatelessWidget {
                   )
               ).box.border(color: Vx.gray500,width: 1).roundedSM.make(),
               10.heightBox,
-              ElevatedButton(onPressed: (){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DeliveryType()
-                    ));
-              }, child: "Continue to delivery".text.white.make(),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)).box.width(context.screenWidth*.8).make()
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DeliveryType(),
+                    ),
+                  );
+                },
+                child: "Continue to delivery".text.white.make(),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff4961AC),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0), // Adjust the radius as needed
+                  ),
+                ),
+              ).box.width(context.screenWidth * 0.8).make()
 
 
             ],

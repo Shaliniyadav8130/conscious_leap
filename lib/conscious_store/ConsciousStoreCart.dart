@@ -36,7 +36,7 @@ class ConsciousStoreCart extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     "Total".text.size(17).gray400.make(),
-                    "AAED9500.00".text.size(18).black.make()
+                    "INR9500.00".text.size(18).black.make()
                   ],
                 ),
                 8.heightBox,
@@ -46,17 +46,42 @@ class ConsciousStoreCart extends StatelessWidget {
 
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(flex: 1,child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(onPressed: (){}, child: "Back".text.make()),
-                    )),
-                    Expanded(flex: 1,child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ConsciousAddress()));
-
-                      }, child: "Continue".text.white.make(),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),),
-                    )),
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: "Back".text.black.make(),
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ConsciousAddress()),
+                            );
+                          },
+                          child: "Continue".text.white.make(),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xff4961AC),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0), // Adjust the radius as needed
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
 
                   ],
                 ),

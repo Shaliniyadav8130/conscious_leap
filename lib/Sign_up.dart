@@ -297,33 +297,44 @@ class _SignupViewState extends State<SignupView> {
 
                   ],
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Checkbox(
+                      value: controller.acceptTerms, // Use a boolean variable to track the checkbox state
+                      onChanged: (newValue) {
+                        setState(() {
+                          controller.acceptTerms = newValue ?? false;
+                        });
+                      },
+                    ),
+                    Text(
+                      "I accept the terms and conditions",
+                      style: TextStyle(fontFamily: 'Comforta', fontSize: 14.0),
+                    ),
+                  ],
+                ),
 
 
-                        Container(
+
+                Container(
                           width:200,
                           margin: EdgeInsets.only(top: 20.0),
                           child:ElevatedButton(
-                            child:Text("Sign-up" ,style:TextStyle(fontSize:12,color: Colors.white,fontFamily:'Comforta')),
-                            onPressed:(){
-                              if(_formKey.currentState!.validate()){
+                            child: Text("Sign-up", style: TextStyle(fontSize: 12, color: Colors.white, fontFamily: 'Comforta')),
+                            onPressed: controller.acceptTerms
+                                ? () {
+                              if (_formKey.currentState!.validate()) {
                                 setState(() {
-                                  email=controller.email.text.trim();
-                                  password=controller.reTypePassword.text.trim();
-                                  firstname=controller.firstName.text.trim();
-                                  phone=controller.phone.text.trim();
+                                  email = controller.email.text.trim();
+                                  password = controller.reTypePassword.text.trim();
+                                  firstname = controller.firstName.text.trim();
+                                  phone = controller.phone.text.trim();
                                 });
                                 signupUser();
                               }
-
-                              // final user = UserModel(
-                              //     firstName:controller.firstName.text.trim(),
-                              //    lastName:controller.lastName.text.trim(),
-                              //    email: controller.email.text.trim(),
-                              //    password: controller.password.text.trim(),
-                              // );
-                              //SignUpController.instance.createUser(user);
-
-                            },
+                            }
+                                : null, // Disable the button if terms are not accepted
                             style: ElevatedButton.styleFrom(
                               primary: Color(0xff4961AC),
                               shape: RoundedRectangleBorder(
@@ -331,7 +342,8 @@ class _SignupViewState extends State<SignupView> {
                               ),
                             ),
                           ),
-                        ),
+
+                ),
 
                       ],
                 ),
@@ -345,6 +357,11 @@ class _SignupViewState extends State<SignupView> {
   }
 
   void signupUser() async {
+    if (!controller.acceptTerms) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please accept the terms and conditions.")));
+      return;
+    }
+
     try{
       UserCredential userCredential=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
       print(userCredential);
@@ -370,7 +387,7 @@ class _SignupViewState extends State<SignupView> {
   void addUserData() async{
     try{
       String? id = FirebaseAuth.instance.currentUser?.uid;
-      UserModel userModel=UserModel(id:id,firstName: firstname, lastName: "lastname", email: email, password: password,phone: phone);
+      UserModel userModel=UserModel(id:id,firstName: firstname, lastName: "lastname", email: email, password: password,phone: phone,hasAcceptedTerms: controller.acceptTerms,);
       db.collection("User").doc(id).set(userModel.toJson());
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Registered succesfully")));
       Navigator.push(context, MaterialPageRoute(builder: (context) => Activity_page3()));

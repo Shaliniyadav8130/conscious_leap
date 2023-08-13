@@ -33,8 +33,7 @@ class Thankyou extends StatelessWidget{
               SizedBox(height: 35,),
 
               Text("Thank you!",style: TextStyle(fontSize: 25,fontFamily:"Comforta",fontWeight: FontWeight.bold,color: Color(0xff4961AC)),),
-              Text("for registering as a therapist.",style: TextStyle(fontSize: 20,fontFamily:"Comforta",color: Color(0xff4961AC)),),
-              SizedBox(height: 25,),
+              SizedBox(height: 20,),
               Text("We've received your request and ",style: TextStyle(fontSize: 20,fontFamily:"Comforta",color: Color(0xff4961AC)),),
               Text("we'll get back to you shortly",style: TextStyle(fontSize: 20,fontFamily:"Comforta",color: Color(0xff4961AC)),),
             ],

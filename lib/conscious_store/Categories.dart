@@ -104,13 +104,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("AED95.00",style: TextStyle(decoration: TextDecoration.lineThrough),
+                                Text("INR95.00",style: TextStyle(decoration: TextDecoration.lineThrough),
                                 ),
-                                Text("AED95.00",style: TextStyle(color: Colors.blueAccent)),
+                                Text("INR95.00",style: TextStyle(color: Color(0xff4961AC))),
                                 10.heightBox,
                                 ElevatedButton(
                                   style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all<Color>(Colors.blue), // Set your desired background color here
+                                    backgroundColor: MaterialStateProperty.all<Color>(Color(0xff4961AC)), // Set your desired background color here
                                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8), // Set a smaller border radius here

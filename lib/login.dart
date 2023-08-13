@@ -11,13 +11,12 @@ import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class LoginScreen extends StatefulWidget {
-  static String verify='';
+class login extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<login> createState() => _loginState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _loginState extends State<login> {
   //final controller = Get.put(SignUpController());
   final email = TextEditingController();
   final phone = TextEditingController();
@@ -26,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String Phone="";
   FirebaseAuth auth = FirebaseAuth.instance;
 
+  bool acceptTerms = false;
 
 
   @override
@@ -131,8 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Phone=phone.text.trim();
 
                           });
-                          // signinUser();
-                          SingnInWithOTP();
+                          signinUser();
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -155,7 +154,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
     try{
       UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Phone);
-
       print(userCredential);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfully")));
       // UserModel user = UserModel(
@@ -174,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => UserDashboard(userData: userData),
+            builder: (context) => UserDashboard(userData: userData,user: userCredential.user,),
           ),
         );
       } else {
@@ -204,22 +202,4 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void SingnInWithOTP() async{
-      await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '+919084000392',
-      verificationCompleted: (PhoneAuthCredential credential) {},
-      verificationFailed: (FirebaseAuthException e) {},
-      codeSent: (String verificationId, int? resendToken) {
-        LoginScreen.verify=verificationId;
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
-  }
-
-  // void VerifyOTP() async{
-  //   PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: LoginScreen.verify, smsCode: smsCode);
-  //
-  //   // Sign the user in (or link) with the credential
-  //   await auth.signInWithCredential(credential);
-  // }
 }

@@ -113,7 +113,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             "T- Shirt black * 1".text.size(17).black.fontFamily("Comforta").make(),
-                            "AED12355.00".text.size(18).fontFamily("Comforta").black.make()
+                            "INR12355.00".text.size(18).fontFamily("Comforta").black.make()
                           ],
                         ),
                         20.heightBox,
@@ -123,7 +123,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             "Subtotal".text.size(17).gray400.make(),
-                            "AAED9500.00".text.size(18).black.make()
+                            "INR9500.00".text.size(18).black.make()
                           ],
                         ),
                         8.heightBox,
@@ -131,7 +131,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             "Tax".text.size(17).gray400.make(),
-                            "AAED450.00".text.size(18).black.make()
+                            "INR450.00".text.size(18).black.make()
                           ],
                         ),
                         8.heightBox,
@@ -147,7 +147,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             "Total".text.size(17).gray400.make(),
-                            "AAED9500.00".text.size(18).black.make()
+                            "INR9500.00".text.size(18).black.make()
                           ],
                         ),
                         8.heightBox,
@@ -159,7 +159,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                 ),
                 30.heightBox,
-                ElevatedButton(onPressed: (){}, child: "Proceed".text.white.make(),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)).box.width(context.screenWidth*.8).make()
+                ElevatedButton(
+                  onPressed: () {},
+                  child: "Proceed".text.white.make(),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xff4961AC),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0), // Adjust the radius as needed
+                    ),
+                  ),
+                ).box.width(context.screenWidth * 0.8).make()
+
 
 
               ],

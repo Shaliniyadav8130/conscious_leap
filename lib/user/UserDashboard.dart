@@ -31,7 +31,9 @@ class UserDashboard extends StatefulWidget {
   final User? user; // Pass the User object from Firebase authentication
   final Map<String, dynamic> userData; // Pass the user data fetched from Firestore
 
-  UserDashboard({this.user, required this.userData});
+  UserDashboard({Key? key, required this.user, required this.userData})
+      : super(key: key);
+
 
   // const UserDashboard({
   //   Key? key,
@@ -42,6 +44,41 @@ class UserDashboard extends StatefulWidget {
 }
 
 class _UserDashboardState extends State<UserDashboard> {
+  Map<String, dynamic> _signupData = {};
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSignupData();
+  }
+
+  Future<void> _loadSignupData() async {
+    try {
+      if (widget.user?.uid != null) {
+        Map<String, dynamic> signupData =
+        await fetchSignupData(widget.user!.uid);
+
+        setState(() {
+          _signupData = signupData;
+        });
+      } else {
+        print("User ID is null. Cannot fetch signup data.");
+      }
+    } catch (e) {
+      print("Error fetching signup data: $e");
+    }
+  }
+
+  Future<Map<String, dynamic>> fetchSignupData(String userId) async {
+    DocumentSnapshot docSnapshot =
+    await FirebaseFirestore.instance.collection('User').doc(userId).get();
+
+    if (docSnapshot.exists) {
+      return docSnapshot.data() as Map<String, dynamic>;
+    } else {
+      return {};
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +94,7 @@ class _UserDashboardState extends State<UserDashboard> {
           onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) =>
-                    LoginScreen()
+                    login()
                 ));
             // Navigate back to previous screen
           },
@@ -130,7 +167,7 @@ class _UserDashboardState extends State<UserDashboard> {
             // ),
             Row(
               children: [
-                Heading(name: "Hi, Member, nice to see you again!"),
+                Heading(name: "Hi, ${_signupData['FirstName'] ?? 'N/A'}  nice to see you again!"),
               ],
             ),
             Padding(padding: EdgeInsets.only(left: 10,right: 10,top:17),

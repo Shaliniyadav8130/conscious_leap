@@ -36,7 +36,7 @@ class Activity_page2 extends StatelessWidget{
               GradientBorderButton(btnName: "I am an Existing Member",
                 callBack: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>LoginScreen()
+                      MaterialPageRoute(builder: (context) =>login()
                       ));
 
                 },),

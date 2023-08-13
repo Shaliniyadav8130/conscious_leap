@@ -45,9 +45,15 @@ class ReviewsWidget extends StatelessWidget{
 
                 Text(Feelingname,style:TextStyle(fontSize:size,color:Color(0xff4961AC))),
 
-                //Padding(padding: EdgeInsets.only(top:3,bottom:3),
-                //child: DynamicCircularProgressIndicator()
-                //),
+                  // Padding(
+                  //   padding: EdgeInsets.only(top: 3, bottom: 3),
+                  //   child: CircularPercentageIndicator(
+                  //     radius: 5,
+                  //     gradientColors: [Color(0xff4961AC), Color(0xffF2685D), Color(0xff4EC1BA)],
+                  //     percentage: 0.75, // Change this value to set the percentage
+                  //   ),
+                  // ),
+
 
                               ],
             )

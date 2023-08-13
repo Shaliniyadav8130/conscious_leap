@@ -81,6 +81,7 @@ class _SessionNotePageState extends State<SessionNotePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Form(
         child: SingleChildScrollView(
           child: Padding(
@@ -88,7 +89,7 @@ class _SessionNotePageState extends State<SessionNotePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 80,),
+                //SizedBox(height: 80,),
                 Center(
                   child: Text("Therapy Session Notes", style: TextStyle(fontSize: 25, fontFamily: "Comforta", color: Color(0xff4961AC)),textAlign: TextAlign.center,),
                 ),

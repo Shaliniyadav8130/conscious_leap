@@ -72,11 +72,23 @@ class _DeliveryTypeState extends State<DeliveryType> {
                 ],
               ),
               30.heightBox,
-              ElevatedButton(onPressed: (){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PaymentScreen()
-                    ));
-              }, child: "Continue to Payment".text.white.make(),style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent)).box.width(context.screenWidth*.8).make()
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PaymentScreen(),
+                    ),
+                  );
+                },
+                child: "Continue to Payment".text.white.make(),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff4961AC),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0), // Adjust the radius as needed
+                  ),
+                ),
+              ).box.width(context.screenWidth * 0.8).make()
 
 
             ],

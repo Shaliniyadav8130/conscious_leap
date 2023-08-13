@@ -54,15 +54,16 @@ class TherapistProfile extends StatelessWidget {
             ),
             SizedBox(
                 height:10
-            ),Padding(padding: EdgeInsets.only(left:20),
-              child:Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Age: 25",
-                  style: TextStyle(fontSize: 13, fontFamily: "Comforta"),
-                ),
-              ),
             ),
+            // Padding(padding: EdgeInsets.only(left:20),
+            //   child:Align(
+            //     alignment: Alignment.centerLeft,
+            //     child: Text(
+            //       "Age: 25",
+            //       style: TextStyle(fontSize: 13, fontFamily: "Comforta"),
+            //     ),
+            //   ),
+            // ),
 
             SizedBox(height: 10,),
             Padding(padding: EdgeInsets.only(left:20),

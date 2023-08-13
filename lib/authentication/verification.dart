@@ -12,7 +12,9 @@ class VerifyCode extends StatefulWidget {
 
 class _VerifyCodeState extends State<VerifyCode> {
   FirebaseAuth auth = FirebaseAuth.instance;
-  var otp='';
+  var otp = '';
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,9 @@ class _VerifyCodeState extends State<VerifyCode> {
               ),
               Text(
                 "Phone Verification",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold,fontFamily: "Comforta"),
+                style: TextStyle(fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Comforta"),
               ),
               SizedBox(
                 height: 10,
@@ -82,8 +86,8 @@ class _VerifyCodeState extends State<VerifyCode> {
                 // defaultPinTheme: defaultPinTheme,
                 // focusedPinTheme: focusedPinTheme,
                 // submittedPinTheme: submittedPinTheme,
-                onChanged: (value){
-                  otp=value;
+                onChanged: (value) {
+                  otp = value;
                 },
                 showCursor: true,
                 onCompleted: (pin) => {print(pin)},
@@ -102,22 +106,23 @@ class _VerifyCodeState extends State<VerifyCode> {
                     onPressed: () {
                       VerifyOTP(otp);
                     },
-                    child: Text("Verify Phone Number",style: TextStyle(fontFamily: "Comforta",color: Colors.white),)),
+                    child: Text("Verify Phone Number", style: TextStyle(
+                        fontFamily: "Comforta", color: Colors.white),)),
               ),
-                  TextButton(
-                      onPressed: () {
-                      },
-                      child: Text(
-                        "Didn't receive code?",
-                        style: TextStyle(color: Colors.black,fontFamily: "Comforta"),
-                      )),
-                  TextButton(
-                      onPressed: () {
-                      },
-                      child: Text(
-                        "Resend",
-                        style: TextStyle(color: Color(0xff4961AC),fontFamily: "Comforta"),
-                      ))
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Didn't receive code?",
+                    style: TextStyle(
+                        color: Colors.black, fontFamily: "Comforta"),
+                  )),
+              TextButton(
+                  onPressed: _codeSent ? null : resendCode,
+                  child: Text(
+                    "Resend",
+                    style: TextStyle(
+                        color: Color(0xff4961AC), fontFamily: "Comforta"),
+                  ))
             ],
           ),
         ),
@@ -125,11 +130,43 @@ class _VerifyCodeState extends State<VerifyCode> {
     );
   }
 
-void VerifyOTP(String otp) async{
-  PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: PhoneAuthentication.verify, smsCode: otp);
+  void VerifyOTP(String otp) async {
+    try {
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: PhoneAuthentication.verify,
+        smsCode: otp,
+      );
 
-  // Sign the user in (or link) with the credential
-  await auth.signInWithCredential(credential);
-  print(credential);
+      // Sign the user in (or link) with the credential
+      await auth.signInWithCredential(credential);
+      print("User signed in with OTP");
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("User signed in with OTP")));
+
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Invalid OTP")));
+    }
+  }
+
+  bool _codeSent = false; // Keep track of whether the code has been sent
+
+  // Function to resend the verification code
+  void resendCode() {
+    // Implement the logic to resend the verification code here
+    // You can call SingnInWithOTP again or any other suitable method
+    setState(() {
+      _codeSent = true; // Set _codeSent to true to indicate that the code has been resent
+    });
+  }
+
 }
-}
+
+// void VerifyOTP(String otp) async{
+//   PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: PhoneAuthentication.verify, smsCode: otp);
+//
+//   // Sign the user in (or link) with the credential
+//   await auth.signInWithCredential(credential);
+//   print(credential);
+// }
+// }

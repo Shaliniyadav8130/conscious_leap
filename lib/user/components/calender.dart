@@ -65,8 +65,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                               rowHeight: 29,
                               daysOfWeekHeight: 60,
                               headerStyle: HeaderStyle(
-                                formatButtonVisible: false, // Hide the month changing option
+                                formatButtonVisible: false,
+                                titleCentered: true, // Center the month name
                               ),
+                              // headerStyle: HeaderStyle(
+                              //   formatButtonVisible: false, // Hide the month changing option
+                              // ),
                               daysOfWeekStyle: const DaysOfWeekStyle(
                                 weekendStyle: TextStyle(color: Colors.red),
                               ),

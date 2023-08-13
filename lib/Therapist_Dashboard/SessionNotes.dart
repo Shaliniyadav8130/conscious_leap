@@ -59,10 +59,11 @@ class _SessionNotesState extends State<SessionNotes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child:Column(
           children: [
-            SizedBox(height: 90,),
+            //SizedBox(height: 90,),
             Padding(
               padding: EdgeInsets.only(left: 15,right: 15),
               child: Row(

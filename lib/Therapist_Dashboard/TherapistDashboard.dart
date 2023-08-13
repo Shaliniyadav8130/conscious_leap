@@ -9,6 +9,7 @@ import 'package:consciousleap/Therapist_Dashboard/components/MyReviews.dart';
 import 'package:consciousleap/Therapist_Dashboard/components/SessionDetails.dart';
 import 'package:consciousleap/Therapist_Dashboard/components/Tasks.dart';
 import 'package:consciousleap/controllers/signup_controllers.dart';
+import 'package:consciousleap/therapist/login_therapist.dart';
 import 'package:consciousleap/user/UserProfile.dart';
 import 'package:consciousleap/user/components/Blocks.dart';
 import 'package:consciousleap/user/components/ConsciousStore.dart';
@@ -52,7 +53,16 @@ class _TherapistDashboardState extends State<TherapistDashboard> {
           backgroundColor: Color(0xffF0F0F0) ,
           title:  Text("Therapist",textAlign: TextAlign.center,style:TextStyle(fontSize:27,color: Color(0xff4961AC)),),
           centerTitle:true,
-          leading:Container(),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back), // Back button icon
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) =>
+                      login_therapist()
+                  ));
+              // Navigate back to previous screen
+            },
+          ),
           actions: [
             Builder(
               builder: (context) => IconButton(
