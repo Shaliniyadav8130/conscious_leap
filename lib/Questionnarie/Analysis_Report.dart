@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:consciousleap/Questionnarie/questionnarie.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 // Analysis Report of Questionnarie Page
 
@@ -160,13 +161,10 @@ class _Analysis_ReportState extends State<Analysis_Report> {
                         Padding(
                           padding: EdgeInsets.only(bottom: 30),
                           child: ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxWidth: 370,
-                              maxHeight: 150,
-                            ),
+                            constraints: BoxConstraints(),
                             child: Container(
-                              width: 350,
-                              height: 125,
+                              margin: EdgeInsets.all(3),
+                              padding: EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   border: const GradientBoxBorder(
                                     gradient: LinearGradient(
@@ -179,7 +177,7 @@ class _Analysis_ReportState extends State<Analysis_Report> {
                                         end: Alignment.centerRight),
                                     width: 2,
                                   ),
-                                  borderRadius: BorderRadius.circular(65)),
+                                  borderRadius: BorderRadius.circular(context.screenHeight*.1)),
                               child: Row(
                                 children: [
                                   Padding(
@@ -191,18 +189,19 @@ class _Analysis_ReportState extends State<Analysis_Report> {
                                     ),
                                   ),
                                   Container(
-                                    width: 115,
-                                    height: 130,
+                                    alignment: Alignment.center,
+                                    width: context.screenWidth*.2,
+                                    height: context.screenWidth*.2,
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: Color(0xff4961AC),
                                         width: 2.0,
                                       ),
                                       borderRadius:
-                                      BorderRadius.circular(70.0),
+                                      BorderRadius.circular(context.screenWidth*.2),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.only(top: 40),
+                                      padding: EdgeInsets.only(top: 0),
                                       child: Text(
                                         //'${percentage.toStringAsFixed(2)}%',
                                         '${percentage.toInt()}%',
@@ -218,34 +217,39 @@ class _Analysis_ReportState extends State<Analysis_Report> {
                                   SizedBox(
                                     width: 3,
                                   ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Center(
-                                        child: Padding(
-                                          padding: EdgeInsets.all(10),
-                                          child: Text(
-                                            "${categoryName}",
-                                            style: TextStyle(
-                                                fontSize: 10,
-                                                fontFamily: 'Comforta',
-                                                fontWeight: FontWeight.bold),
+                                  Container(
+                                    width: context.screenWidth*.53,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Center(
+                                          child: Padding(
+                                            padding: EdgeInsets.all(10),
+                                            child: Text(
+                                              "${categoryName}",
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                  fontSize: 11,
+                                                  fontFamily: 'Comforta',
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Center(
-                                        child: SizedBox(
-                                          width: 165,
-                                          child: Text(
-                                            "${categoryText}",
-                                            style: TextStyle(
-                                                fontSize: 8,
-                                                fontFamily: 'Comforta'),
-                                            textAlign: TextAlign.center,
+                                        Center(
+                                          child: Padding(
+                                            padding: EdgeInsets.all(8),
+                                            child: Text(
+                                              "${categoryText}",
+                                              textAlign: TextAlign.justify,
+                                              style: TextStyle(
+                                                  fontSize: 10,
+                                                  fontFamily: 'Comforta'),
+
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
