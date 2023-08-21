@@ -1,10 +1,9 @@
-import 'package:consciousleap/user/components/FeelingWidget.dart';
-import 'package:consciousleap/user/components/JournalWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// Daily Affirmation Widget
 
 class DailyAffirmation extends StatelessWidget {
 

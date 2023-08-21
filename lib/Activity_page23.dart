@@ -1,12 +1,9 @@
-import 'package:consciousleap/Activity_page21.dart';
-import 'package:consciousleap/Activity_page3.dart';
-import 'package:consciousleap/login.dart';
 import 'package:consciousleap/therapist/login_therapist.dart';
 import 'package:consciousleap/therapist/signup_therapist.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
 
+// Select you are new therapist or existing
 
 class Activity_page23 extends StatelessWidget{
   @override

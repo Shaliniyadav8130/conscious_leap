@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
+// ConsciousStore user navigation from user Dashboard
+
 
 class ConsciousStore extends StatelessWidget{
 

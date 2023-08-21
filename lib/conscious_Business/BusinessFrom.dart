@@ -1,26 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:consciousleap/Activity_page1.dart';
-import 'package:consciousleap/Activity_page3.dart';
-import 'package:consciousleap/Questionnarie/Activity_page4.dart';
-import 'package:consciousleap/Therapist_Dashboard/SessionNotes.dart';
-import 'package:consciousleap/controllers/signup_controllers.dart';
 import 'package:consciousleap/therapist/Thankyou.dart';
-import 'package:consciousleap/user/UserProfile.dart';
-import 'package:consciousleap/user/components/Blocks.dart';
-import 'package:consciousleap/user/components/ConsciousStore.dart';
-import 'package:consciousleap/user/components/FeelingCheck.dart';
-import 'package:consciousleap/user/components/Heading.dart';
-import 'package:consciousleap/user/components/JournalCorner.dart';
-import 'package:consciousleap/user/components/Therapy.dart';
-import 'package:consciousleap/user/components/calender.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:get/get.dart';
-import 'package:consciousleap/models/UserModel.dart';
-import 'package:gradient_borders/gradient_borders.dart';
 
 // Signup Page for a new User
 class BusinessForm extends StatefulWidget {
@@ -41,6 +21,7 @@ class _BusinessFormState extends State<BusinessForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Form(
         child: SingleChildScrollView(
           child: Padding(
@@ -48,7 +29,7 @@ class _BusinessFormState extends State<BusinessForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 80,),
+               // SizedBox(height: 80,),
                 Center(
                   child: Text("Schedule a Call", style: TextStyle(fontSize: 25, fontFamily: "Comforta", color: Color(0xff4961AC)),textAlign: TextAlign.center,),
                 ),

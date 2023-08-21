@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
+// User's Feeling check Widget
+
 class FeelingCheck extends StatelessWidget {
   String name;
 

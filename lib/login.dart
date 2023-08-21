@@ -1,15 +1,12 @@
-import 'package:consciousleap/Activity_page1.dart';
-import 'package:consciousleap/Activity_page21.dart';
-import 'package:consciousleap/Activity_page3.dart';
-import 'package:consciousleap/Questionnarie/Analysis_Report.dart';
-import 'package:consciousleap/Questionnarie/questionnarie.dart';
-import 'package:consciousleap/models/UserModel.dart';
-import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:consciousleap/user/UserDashboard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
+
+// User Login
 
 class login extends StatefulWidget {
   @override
@@ -24,7 +21,7 @@ class _loginState extends State<login> {
   String Email="";
   String Phone="";
   FirebaseAuth auth = FirebaseAuth.instance;
-
+  var isObsecure = true.obs;
   bool acceptTerms = false;
 
 
@@ -48,6 +45,8 @@ class _loginState extends State<login> {
                     children: [
 
                       Expanded(
+                        child:Padding(
+                          padding: EdgeInsets.only(left:15,right:15),
                         child: TextFormField(
                           controller: email,
                           decoration: InputDecoration(
@@ -76,7 +75,7 @@ class _loginState extends State<login> {
                            },
                         ),
                       ),
-
+                      ),
                     ],
                   ),
                   SizedBox(height:20),
@@ -85,9 +84,23 @@ class _loginState extends State<login> {
                     children: [
 
                          Expanded(
-                           child:TextFormField(
+                           child:Padding(
+                            padding: EdgeInsets.only(left:15,right:15),
+                           child:Obx( ()=>TextFormField(
+                             obscureText: isObsecure.value,
                           controller: phone,
                            decoration: InputDecoration(
+                             suffixIcon: Obx(
+                                   ()=>GestureDetector(
+                                 onTap: (){
+                                   isObsecure.value = !isObsecure.value;
+                                 },
+                                 child: Icon(
+                                   isObsecure.value ? Icons.visibility_off : Icons.visibility,
+                                   color: Colors.black,
+                                 ),
+                               ),
+                             ),
                              hintText: "Password",
                              hintStyle: TextStyle(
                                fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
@@ -114,34 +127,46 @@ class _loginState extends State<login> {
                            },
                         ),
                  ),
+                         ),
+                         ),
                     ],
                   ),
 
 
+                  Row(
+                    children: [
+                      Expanded(
+                        child:Padding(
+                          padding:EdgeInsets.only(left:15,right:15),
 
-                  Container(
-                    width:340,
-                    margin: EdgeInsets.only(top: 20.0),
-                    child:ElevatedButton(
-                      child:Text("Login" ,style:TextStyle(fontSize:12,color: Colors.white,fontFamily:'Comforta')),
-                      onPressed: (){
-                        if(_formKey.currentState!.validate()){
-                          setState(() {
-                            Email=email.text.trim();
-                            Phone=phone.text.trim();
+                        child: Container(
+                          width:340,
+                          margin: EdgeInsets.only(top: 20.0),
+                          child:ElevatedButton(
+                            child:Text("Login" ,style:TextStyle(fontSize:15,color: Colors.white,fontFamily:'Comforta')),
+                            onPressed: (){
+                              if(_formKey.currentState!.validate()){
+                                setState(() {
+                                  Email=email.text.trim();
+                                  Phone=phone.text.trim();
 
-                          });
-                          signinUser();
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xff4961AC),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                                });
+                                signinUser();
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xff4961AC),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      ),
+                    ],
                   ),
+
 
             ],
           ),
@@ -156,15 +181,6 @@ class _loginState extends State<login> {
       UserCredential userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email:Email, password:Phone);
       print(userCredential);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login succesfully")));
-      // UserModel user = UserModel(
-      //   id: userCredential.user!.uid,
-      //   firstName: "", // Populate with actual data
-      //   lastName: "",  // Populate with actual data
-      //   email: Email,
-      //   password: Phone,
-      //   phone: Phone,
-      // );
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => UserDashboard(user: user)));//controller.email.clear();
       DocumentSnapshot userSnapshot = await FirebaseFirestore.instance.collection('User').doc(userCredential.user!.uid).get();
       if (userSnapshot.exists) {
         // Get the data and navigate to the dashboard

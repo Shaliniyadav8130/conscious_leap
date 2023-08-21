@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:consciousleap/widgets/CustomInputBorder.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+
+// Therapist Review Page
 
 class TherapistReviewPage extends StatefulWidget {
   final int id;

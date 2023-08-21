@@ -1,35 +1,33 @@
-class UserProfile {
-  final String firstName;
-  final String lastName;
-  final String email;
-  final String phone;
-  final String profileImage; // Add profile image field
 
-  UserProfile({
+class UserProfile {
+  final String? id;
+  final String firstName;
+  //final String? lastName;
+  final String email;
+  //final String? password;
+  //final String? phone;
+  //final bool? hasAcceptedTerms;
+
+  const UserProfile({
+    this.id,
     required this.firstName,
-    required this.lastName,
+    //required this.lastName,
     required this.email,
-    required this.phone,
-    required this.profileImage,
+    //required this.password,
+    //required this.phone,
+    //required this.hasAcceptedTerms,
   });
 
-  Map<String, dynamic> toJson() {
-    return {
-      'firstName': firstName,
-      'lastName': lastName,
-      'email': email,
-      'phone': phone,
-      'profileImage': profileImage,
+  toJson(){
+    return{
+      "Uid":id,
+      "FirstName":firstName,
+      //"LastName":lastName,
+      "Email":email,
+      //"Mobile":phone,
+      //"password":password,
+      //"HasAcceptedTerms": hasAcceptedTerms,
     };
   }
 
-  factory UserProfile.fromJson(Map<String, dynamic> json) {
-    return UserProfile(
-      firstName: json['firstName'],
-      lastName: json['lastName'],
-      email: json['email'],
-      phone: json['phone'],
-      profileImage: json['profileImage'],
-    );
-  }
 }

@@ -1,209 +1,182 @@
 import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Chatbot/Faq_or_chatbot.dart';
-import 'package:consciousleap/Chatbot/oneness_screen.dart';
+import 'package:consciousleap/authentication/PhoneAuthentication.dart';
+import 'package:consciousleap/conscious_Business/BusinessSelection.dart';
 import 'package:consciousleap/conscious_Business/businessLogin.dart';
 import 'package:consciousleap/conscious_store/conscious_login.dart';
+import 'package:consciousleap/userprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-
-class Oneness extends StatelessWidget{
+class Oneness extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      //appBar: AppBar(),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          double screenWidth = constraints.maxWidth;
 
-      ),
-      body:Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Column(
+          return SingleChildScrollView(
+            child:
+              Center(
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(padding: EdgeInsets.only(bottom: 20.0),
-              child:Text("Hi,",style:TextStyle(fontFamily:'Comforta')),),
-              Text("I am oneness",style:TextStyle(fontFamily:'Comforta')),
+              Padding(
+                padding: EdgeInsets.only(bottom: 20.0,top:60),
+                child: Text("Hi,", style: TextStyle(fontFamily: 'Comforta')),
+              ),
+              Text("I am oneness", style: TextStyle(fontFamily: 'Comforta')),
               Container(
-                width:150,
-                height:150,
-                child:Image.asset('assets/images/oneness_avatar.png'),
+                width: 150,
+                height: 150,
+                child: Image.asset('assets/images/oneness_avatar.png'),
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 20.0),
-                child:Container(
-                  width:250,
-                  child:Text("your ever-mindful companion in your well-being journey at consciousleap",textAlign: TextAlign.center,style:TextStyle(fontFamily:'Comforta')),
+                child: Container(
+                  width: 0.8 * screenWidth,
+                  child: Text(
+                    "your ever-mindful companion in your well-being journey at consciousleap",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontFamily: 'Comforta'),
+                  ),
                 ),
               ),
-              Padding(padding: EdgeInsets.only(bottom: 20.0),
-                child:Text("How can I help you today?",style:TextStyle(fontFamily:'Comforta')),
+              Padding(
+                padding: EdgeInsets.only(bottom: 20.0),
+                child: Text(
+                  "How can I help you today?",
+                  style: TextStyle(fontFamily: 'Comforta'),
+                ),
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
-                  Container(
-
-                    width:120,
-                    height:120,
-                    margin: EdgeInsets.only(bottom: 20.0),
-                    decoration: BoxDecoration(
-                        border: const GradientBoxBorder(
-                          gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
-                          width: 2,
+                  _buildOptionButton(
+                    context,
+                    screenWidth,
+                    'Therapy',
+                    'assets/images/Therapy.png',
+                        () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Activity_page1(),
                         ),
-                        borderRadius: BorderRadius.circular(12)),
-
-                    child:InkWell(
-                      onTap: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) =>Activity_page1()
-                            ));
-                      },
-                        child:Container(
-                          child:Column(
-                             mainAxisAlignment: MainAxisAlignment.center,
-                             children: [
-                              SizedBox(
-                               width:70,
-                              height:70,
-                                child:Image.asset('assets/images/Therapy.png'),
-                          ),
-                              Text("Therapy",style: TextStyle(fontSize: 14,fontFamily: "Comforta",color: Color(0xff4961AC)),),
-                        ],
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                  ),
-
-                  SizedBox(
-                    width:20,
-                  ),
-                  Container(
-
-                    width:120,
-                    height:120,
-                    margin: EdgeInsets.only(bottom: 20.0),
-                    decoration: BoxDecoration(
-                        border: const GradientBoxBorder(
-                          gradient: LinearGradient(colors: [Color(0xff4961AC),Color(0xffF2685D),Color(0xff4EC1BA)]),
-                          width: 2,
+                  SizedBox(width: 20),
+                  _buildOptionButton(
+                    context,
+                    screenWidth,
+                    'consciousleap for Business',
+                    'assets/images/Handshake.png',
+                        () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BusinessSelection(),
                         ),
-                        borderRadius: BorderRadius.circular(12)),
-
-                    child:InkWell(
-                      onTap: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) =>businessLogin()
-                            ));
-                      },
-
-
-                      child:Container(
-
-                          child:Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height:60,
-                            width:60,
-                            child:Image.asset('assets/images/Handshake.png'),
-                          ),
-                          Text("consciousleap for Business",style:TextStyle(color: Color(0xff4961AC),fontFamily: "Comforta",fontSize: 13,),textAlign:TextAlign.center,),
-                        ],
-                      ),
-                        ),
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),
-
+              SizedBox(height: 15),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-
-                    width:120,
-                    height:120,
-                    margin: EdgeInsets.only(bottom: 20.0),
-                    decoration: BoxDecoration(
-                        border: const GradientBoxBorder(
-                          gradient: LinearGradient(colors: [Color(0xff4961AC),Color(0xffF2685D),Color(0xff4EC1BA)]),
-                          width: 2,
+                  _buildOptionButton(
+                    context,
+                    screenWidth,
+                    'Conscious Store',
+                    'assets/images/Shop-1.png',
+                        () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => consciousLogin(),
                         ),
-                        borderRadius: BorderRadius.circular(12)),
-
-                        child:InkWell(
-                        onTap: (){
-                        Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>consciousLogin()
-                        ));
-                        },
-
-
-                        child:Container(
-                      child:Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width:50,
-                            height:50,
-                            child:Image.asset('assets/images/Shop-1.png'),
-                          ),
-                          SizedBox(height:4),
-                          Text("Conscious Store",style:TextStyle(color: Color(0xff4961AC),fontFamily: "Comforta",fontSize:14 ),textAlign: TextAlign.center,),
-                        ],
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                  ),
-
-                  SizedBox(
-                    width:20,
-                  ),
-                  Container(
-
-                    width:120,
-                    height:120,
-                    margin: EdgeInsets.only(bottom: 20.0),
-                    decoration: BoxDecoration(
-                        border: const GradientBoxBorder(
-                          gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
-                          width: 2,
+                  SizedBox(width: 20),
+                  _buildOptionButton(
+                    context,
+                    screenWidth,
+                    'oneness',
+                    'assets/images/oneness_avatar.png',
+                        () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Faq_or_chatbot(),
                         ),
-                        borderRadius: BorderRadius.circular(12)),
-
-                      child:InkWell(
-                       onTap: (){
-                         Navigator.push(context,
-                        MaterialPageRoute(builder: (context) =>Faq_or_chatbot()
-                          ));
-                         },
-                        child:Container(
-
-                         child:Column(
-                             mainAxisAlignment: MainAxisAlignment.center,
-                             children: [
-                          SizedBox(
-                            height:70,
-                            width:70,
-                            child:Image.asset('assets/images/oneness_avatar.png')
-                          ),
-                          Text("oneness",style: TextStyle(color: Color(0xff4961AC),fontSize: 14,fontFamily: "Comforta"),),
-                        ],
-                      ),
-                    ),
-                  ),
+                      );
+                    },
                   ),
                 ],
               ),
-
 
             ],
           ),
-        ],
+              ),
+          );
+
+        },
       ),
     );
   }
 
+  Widget _buildOptionButton(
+      BuildContext context,
+      double screenWidth,
+      String title,
+      String imagePath,
+      VoidCallback onTap,
+      ) {
+    return Container(
+      width: 0.40 * screenWidth,
+      height: 140,
+      margin: EdgeInsets.only(bottom: 20.0),
+      decoration: BoxDecoration(
+        border: const GradientBoxBorder(
+          gradient: LinearGradient(
+            colors: [Color(0xff4961AC), Color(0xffF2685D), Color(0xff4EC1BA)],
+          ),
+          width: 2,
+        ),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 60,
+                height: 60,
+                child: Image.asset(imagePath),
+              ),
+              SizedBox(height: 4),
+              Text(
+                title,
+                style: TextStyle(
+                  color: Color(0xff4961AC),
+                  fontFamily: "Comforta",
+                  fontSize: 13,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
+// User Dashboard main heading
+
 class Heading extends StatelessWidget {
   final String name;
 

@@ -1,18 +1,12 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:consciousleap/Activity_page1.dart';
 import 'package:consciousleap/Activity_page3.dart';
-import 'package:consciousleap/Questionnarie/Activity_page4.dart';
 import 'package:consciousleap/controllers/signup_controllers.dart';
-import 'package:consciousleap/customWidgets/CustomInput.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'package:consciousleap/models/UserModel.dart';
 import 'package:gradient_borders/gradient_borders.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 // Signup Page for a new User
 class SignupView extends StatefulWidget {
@@ -33,7 +27,8 @@ class _SignupViewState extends State<SignupView> {
   String phone="";
   var db = FirebaseFirestore.instance;
   String password = "";
-
+  var isObsecure = true.obs;
+  var confirmObsecure = true.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -58,35 +53,38 @@ class _SignupViewState extends State<SignupView> {
                           children: [
 
                             Expanded(
+                              child:Padding(
+                                padding:EdgeInsets.only(left:15,right:15),
+                                          child: TextFormField(
+                                          controller: controller.firstName,
+                                          decoration: InputDecoration(
+                                            hintText: "Name",
+                                            hintStyle: TextStyle(
+                                              fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                                              fontSize: 16.0,
+                                            ),
+                                            contentPadding: EdgeInsets.symmetric(
+                                              vertical: 8.0, // Adjust the vertical padding
+                                              horizontal: 16.0, // Adjust the horizontal padding
+                                            ),
+                                            border: GradientOutlineInputBorder(
+                                              width: 2,
+                                              gradient: LinearGradient(
+                                                colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                                              ),
+                                              borderRadius: BorderRadius.circular(5.0),
+                                            ),
+                                          ),
+                                          validator: (value){
+                                            if(value == null || value.isEmpty){
+                                              return 'Please enter name';
+                                            }
+                                            return null;
+                                          },
 
-                              child: TextFormField(
-                                controller: controller.firstName,
-                                decoration: InputDecoration(
-                                  hintText: "Name",
-                                  hintStyle: TextStyle(
-                                    fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
-                                    fontSize: 16.0,
-                                  ),
-                                  contentPadding: EdgeInsets.symmetric(
-                                    vertical: 8.0, // Adjust the vertical padding
-                                    horizontal: 16.0, // Adjust the horizontal padding
-                                  ),
-                                  border: GradientOutlineInputBorder(
-                                    width: 2,
-                                    gradient: LinearGradient(
-                                      colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
-                                    ),
-                                    borderRadius: BorderRadius.circular(5.0),
-                                  ),
-                                ),
-                                 validator: (value){
-                                  if(value == null || value.isEmpty){
-                                     return 'Please enter name';
-                                   }
-                                   return null;
-                                 },
-
+                                        ),
                               ),
+
                             ),
 
                           ],
@@ -94,39 +92,6 @@ class _SignupViewState extends State<SignupView> {
                         SizedBox(
                           height: 20,
                         ),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     Text("Last Name",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-                        //     SizedBox(
-                        //       width: 10,
-                        //     ),
-                        //     Expanded(
-                        //
-                        //       child:
-                        //       TextFormField(
-                        //         controller:controller.lastName,
-                        //         decoration: InputDecoration(
-                        //           border: GradientOutlineInputBorder(
-                        //             width: 2,
-                        //             gradient: LinearGradient(
-                        //               colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
-                        //             ),
-                        //             borderRadius: BorderRadius.circular(8.0),
-                        //           ),
-                        //         ),
-                        //          validator: (value){
-                        //            if(value == null || value.isEmpty){
-                        //              return 'Please enter last name';
-                        //            }
-                        //            return null;
-                        //          },
-                        //
-                        //       ),
-                        //     ),
-                        //
-                        //   ],
-                        // ),
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -134,37 +99,40 @@ class _SignupViewState extends State<SignupView> {
 
                             Expanded(
 
-                              child:
-                              TextFormField(
-                                controller: controller.email,
-                                decoration: InputDecoration(
-                                  hintText: "Email",
-                                  hintStyle: TextStyle(
-                                    fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
-                                    fontSize: 16.0,
-                                  ),
-                                  contentPadding: EdgeInsets.symmetric(
-                                    vertical: 8.0, // Adjust the vertical padding
-                                    horizontal: 16.0, // Adjust the horizontal padding
-                                  ),
-                                  border: GradientOutlineInputBorder(
-                                    width: 2,
-                                    gradient: LinearGradient(
-                                      colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                              child:Padding(
+                                padding: EdgeInsets.only(left:15,right:15),
+                                child: TextFormField(
+                                  controller: controller.email,
+                                  decoration: InputDecoration(
+                                    hintText: "Email",
+                                    hintStyle: TextStyle(
+                                      fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                                      fontSize: 16.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(5.0),
+                                    contentPadding: EdgeInsets.symmetric(
+                                      vertical: 8.0, // Adjust the vertical padding
+                                      horizontal: 16.0, // Adjust the horizontal padding
+                                    ),
+                                    border: GradientOutlineInputBorder(
+                                      width: 2,
+                                      gradient: LinearGradient(
+                                        colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                                      ),
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
                                   ),
+                                  validator: (value){
+                                    if(value == null || value.isEmpty){
+                                      return 'Please enter email';
+                                    }
+                                    else if(!value.contains('@')){
+                                      return 'Please enter valid email';
+                                    }
+                                    return null;
+                                  },
                                 ),
-                                 validator: (value){
-                                   if(value == null || value.isEmpty){
-                                     return 'Please enter email';
-                                   }
-                                   else if(!value.contains('@')){
-                                     return 'Please enter valid email';
-                                   }
-                                   return null;
-                                 },
                               ),
+
                             ),
 
                           ],
@@ -176,34 +144,37 @@ class _SignupViewState extends State<SignupView> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Expanded(
-
-                              child: TextFormField(
-                                controller: controller.phone,
-                                decoration: InputDecoration(
-                                  hintText: "Mobile",
-                                  hintStyle: TextStyle(
-                                    fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
-                                    fontSize: 16.0,
-                                  ),
-                                  contentPadding: EdgeInsets.symmetric(
-                                    vertical: 8.0, // Adjust the vertical padding
-                                    horizontal: 16.0, // Adjust the horizontal padding
-                                  ),
-                                  border: GradientOutlineInputBorder(
-                                    width: 2,
-                                    gradient: LinearGradient(
-                                      colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                              child:Padding(
+                                padding: EdgeInsets.only(left:15,right:15),
+                                child: TextFormField(
+                                  controller: controller.phone,
+                                  decoration: InputDecoration(
+                                    hintText: "Mobile",
+                                    hintStyle: TextStyle(
+                                      fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                                      fontSize: 16.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(5.0),
+                                    contentPadding: EdgeInsets.symmetric(
+                                      vertical: 8.0, // Adjust the vertical padding
+                                      horizontal: 16.0, // Adjust the horizontal padding
+                                    ),
+                                    border: GradientOutlineInputBorder(
+                                      width: 2,
+                                      gradient: LinearGradient(
+                                        colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                                      ),
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
                                   ),
+                                  validator: (value){
+                                    if(value == null || value.isEmpty){
+                                      return 'Please enter mobile number';
+                                    }
+                                    return null;
+                                  },
                                 ),
-                                 validator: (value){
-                                   if(value == null || value.isEmpty){
-                                     return 'Please enter mobile number';
-                                   }
-                                   return null;
-                                 },
                               ),
+
                             ),
 
                           ],
@@ -217,36 +188,52 @@ class _SignupViewState extends State<SignupView> {
 
                     Expanded(
 
-                      child:
-                      TextFormField(
-                        obscureText: true,
-                        controller:controller.password,
-                        decoration: InputDecoration(
-                          hintText: "Password",
-                          hintStyle: TextStyle(
-                            fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
-                            fontSize: 16.0,
-                          ),
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 8.0, // Adjust the vertical padding
-                            horizontal: 16.0, // Adjust the horizontal padding
-                          ),
-                          border: GradientOutlineInputBorder(
-                            width: 2,
-                            gradient: LinearGradient(
-                              colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                      child:Padding(
+                        padding: EdgeInsets.only(left:15,right:15),
+                        child:Obx( ()=>TextFormField(
+                          //obscureText: true,
+                          obscureText: isObsecure.value,
+                          controller:controller.password,
+                          decoration: InputDecoration(
+                            suffixIcon: Obx(
+                                  ()=>GestureDetector(
+                                onTap: (){
+                                  isObsecure.value = !isObsecure.value;
+                                },
+                                child: Icon(
+                                  isObsecure.value ? Icons.visibility_off : Icons.visibility,
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(5.0),
+                            hintText: "Password",
+                            hintStyle: TextStyle(
+                              fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
+                              fontSize: 16.0,
+                            ),
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 8.0, // Adjust the vertical padding
+                              horizontal: 16.0, // Adjust the horizontal padding
+                            ),
+                            border: GradientOutlineInputBorder(
+                              width: 2,
+                              gradient: LinearGradient(
+                                colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
+                              ),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
                           ),
+                          validator: (value){
+                            password=value!;
+                            if(value == null || value.isEmpty){
+                              return 'Please enter password';
+                            }
+                            return null;
+                          },
                         ),
-                        validator: (value){
-                          password=value!;
-                          if(value == null || value.isEmpty){
-                            return 'Please enter password';
-                          }
-                          return null;
-                        },
+                        ),
                       ),
+
                     ),
 
                   ],
@@ -258,14 +245,25 @@ class _SignupViewState extends State<SignupView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
                     Expanded(
-                      child:
-                      TextFormField(
+                    child:Padding(
+                      padding: EdgeInsets.only(left:15,right:15),
+                      child:Obx( ()=>TextFormField(
 
-                        obscureText: true,
+                        obscureText: confirmObsecure.value,
                         controller: controller.reTypePassword,
                         decoration: InputDecoration(
+                          suffixIcon: Obx(
+                                ()=>GestureDetector(
+                              onTap: (){
+                                confirmObsecure.value = !confirmObsecure.value;
+                              },
+                              child: Icon(
+                                confirmObsecure.value ? Icons.visibility_off : Icons.visibility,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
                           hintText: "Confirm Password",
                           hintStyle: TextStyle(
                             fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
@@ -293,6 +291,9 @@ class _SignupViewState extends State<SignupView> {
                           return null;
                         },
                       ),
+
+                    ),
+                    ),
                     ),
 
                   ],
@@ -316,12 +317,16 @@ class _SignupViewState extends State<SignupView> {
                 ),
 
 
-
-                Container(
+                Row(
+                  children: [
+                    Expanded(
+                      child:Padding(
+                        padding: EdgeInsets.only(left:15,right:15),
+                        child:Container(
                           width:200,
                           margin: EdgeInsets.only(top: 20.0),
                           child:ElevatedButton(
-                            child: Text("Sign-up", style: TextStyle(fontSize: 12, color: Colors.white, fontFamily: 'Comforta')),
+                            child: Text("Sign-up", style: TextStyle(fontSize: 15, color: Colors.white, fontFamily: 'Comforta')),
                             onPressed: controller.acceptTerms
                                 ? () {
                               if (_formKey.currentState!.validate()) {
@@ -343,8 +348,13 @@ class _SignupViewState extends State<SignupView> {
                             ),
                           ),
 
-                ),
+                        ),
 
+
+                      ),
+                    ),
+                  ],
+                ),
                       ],
                 ),
 

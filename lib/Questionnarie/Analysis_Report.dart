@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:consciousleap/Activity_page3.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
+import 'package:consciousleap/login.dart';
 import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:consciousleap/Questionnarie/questionnarie.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 // Analysis Report of Questionnarie Page
 
@@ -56,7 +57,17 @@ class _Analysis_ReportState extends State<Analysis_Report> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        // leading: IconButton(
+        //   icon: Icon(Icons.arrow_back),
+        //   onPressed: () {
+        //     Navigator.push(
+        //       context,
+        //       MaterialPageRoute(builder: (context) => login()),
+        //     );
+        //   },
+        // ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -161,10 +172,13 @@ class _Analysis_ReportState extends State<Analysis_Report> {
                         Padding(
                           padding: EdgeInsets.only(bottom: 30),
                           child: ConstrainedBox(
-                            constraints: BoxConstraints(),
+                            constraints: BoxConstraints(
+                              maxWidth: 370,
+                              maxHeight: 150,
+                            ),
                             child: Container(
-                              margin: EdgeInsets.all(3),
-                              padding: EdgeInsets.all(10),
+                              width: 350,
+                              height: 125,
                               decoration: BoxDecoration(
                                   border: const GradientBoxBorder(
                                     gradient: LinearGradient(
@@ -177,7 +191,7 @@ class _Analysis_ReportState extends State<Analysis_Report> {
                                         end: Alignment.centerRight),
                                     width: 2,
                                   ),
-                                  borderRadius: BorderRadius.circular(context.screenHeight*.1)),
+                                  borderRadius: BorderRadius.circular(65)),
                               child: Row(
                                 children: [
                                   Padding(
@@ -189,19 +203,18 @@ class _Analysis_ReportState extends State<Analysis_Report> {
                                     ),
                                   ),
                                   Container(
-                                    alignment: Alignment.center,
-                                    width: context.screenWidth*.2,
-                                    height: context.screenWidth*.2,
+                                    width: 115,
+                                    height: 130,
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         color: Color(0xff4961AC),
                                         width: 2.0,
                                       ),
                                       borderRadius:
-                                      BorderRadius.circular(context.screenWidth*.2),
+                                      BorderRadius.circular(70.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.only(top: 0),
+                                      padding: EdgeInsets.only(top: 40),
                                       child: Text(
                                         //'${percentage.toStringAsFixed(2)}%',
                                         '${percentage.toInt()}%',
@@ -217,39 +230,34 @@ class _Analysis_ReportState extends State<Analysis_Report> {
                                   SizedBox(
                                     width: 3,
                                   ),
-                                  Container(
-                                    width: context.screenWidth*.53,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Center(
-                                          child: Padding(
-                                            padding: EdgeInsets.all(10),
-                                            child: Text(
-                                              "${categoryName}",
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                  fontSize: 11,
-                                                  fontFamily: 'Comforta',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Center(
+                                        child: Padding(
+                                          padding: EdgeInsets.all(10),
+                                          child: Text(
+                                            "${categoryName}",
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                fontFamily: 'Comforta',
+                                                fontWeight: FontWeight.bold),
                                           ),
                                         ),
-                                        Center(
-                                          child: Padding(
-                                            padding: EdgeInsets.all(8),
-                                            child: Text(
-                                              "${categoryText}",
-                                              textAlign: TextAlign.justify,
-                                              style: TextStyle(
-                                                  fontSize: 10,
-                                                  fontFamily: 'Comforta'),
-
-                                            ),
+                                      ),
+                                      Center(
+                                        child: SizedBox(
+                                          width: 165,
+                                          child: Text(
+                                            "${categoryText}",
+                                            style: TextStyle(
+                                                fontSize: 8,
+                                                fontFamily: 'Comforta'),
+                                            textAlign: TextAlign.center,
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -269,61 +277,61 @@ class _Analysis_ReportState extends State<Analysis_Report> {
             Row(
               children: [
                 Expanded(
+                    child:Padding(
+                      padding: EdgeInsets.only(left:60,right:60),
+                      child:Container(
+                        width: 200,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            color: Color(0xff4961AC),
+                            borderRadius: BorderRadius.circular(12)),
+                        child: TextButton(
+                          onPressed: navigateToQuestionnaire,
+                          child: Text(
+                            'Reset',
+                            style:
+                            TextStyle(fontFamily: 'Comforta', color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    )
+                ),
+              ],
+            ),
+
+            SizedBox(height:20),
+            Row(
+              children: [
+                Expanded(
                   child:Padding(
                     padding: EdgeInsets.only(left:60,right:60),
                     child:Container(
                       width: 200,
                       height: 50,
                       decoration: BoxDecoration(
-                          color: Color(0xff4961AC),
+                          border: const GradientBoxBorder(
+                            gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
+                            width: 2,
+                          ),
                           borderRadius: BorderRadius.circular(12)),
                       child: TextButton(
-                        onPressed: navigateToQuestionnaire,
+                        onPressed: (){
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) =>TherapistList()
+                              ));
+                        },
                         child: Text(
-                          'Reset',
+                          'Proceed to Therapy',
                           style:
-                          TextStyle(fontFamily: 'Comforta', color: Colors.white),
+                          TextStyle(fontFamily: 'Comforta', color: Colors.black),
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ),
               ],
+
             ),
-
-            SizedBox(height:20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child:Padding(
-                              padding: EdgeInsets.only(left:60,right:60),
-                              child:Container(
-                                width: 200,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: const GradientBoxBorder(
-                                      gradient: LinearGradient(colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)]),
-                                      width: 2,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12)),
-                                child: TextButton(
-                                  onPressed: (){
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) =>TherapistList()
-                                        ));
-                                  },
-                                  child: Text(
-                                    'Proceed to Therapy',
-                                    style:
-                                    TextStyle(fontFamily: 'Comforta', color: Colors.black),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-
-                      ),
 
             SizedBox(height:25),
 
@@ -331,22 +339,22 @@ class _Analysis_ReportState extends State<Analysis_Report> {
               children: [
                 Expanded(child:
                 Padding(padding: EdgeInsets.only(left:15,right:15),
-                child:
+                    child:
                     SizedBox(
                       width:200,
-                    child:Text.rich(
-                        TextSpan(
-                            text: 'Disclaimer: ',
-                            style:TextStyle(fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "Comforta"),
-                            children: <InlineSpan>[
-                              TextSpan(
-                                text: 'This questionnaire is intended to provide a general assessment of mental health and should not be considered a substitute for professional evaluation or advice. The results of this questionnaire are based solely on the provided responses and should be interpreted with caution. It is important to consult with a qualified mental health professional for assessment and personalized guidance.',
-                                style: TextStyle(fontSize: 14,fontFamily: "Comforta",fontWeight: FontWeight.normal),
-                              )
-                            ]
-                        )
-                    ),
-                )
+                      child:Text.rich(
+                          TextSpan(
+                              text: 'Disclaimer: ',
+                              style:TextStyle(fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "Comforta"),
+                              children: <InlineSpan>[
+                                TextSpan(
+                                  text: 'This questionnaire is intended to provide a general assessment of mental health and should not be considered a substitute for professional evaluation or advice. The results of this questionnaire are based solely on the provided responses and should be interpreted with caution. It is important to consult with a qualified mental health professional for assessment and personalized guidance.',
+                                  style: TextStyle(fontSize: 14,fontFamily: "Comforta",fontWeight: FontWeight.normal),
+                                )
+                              ]
+                          )
+                      ),
+                    )
                 )
                 ),
               ],

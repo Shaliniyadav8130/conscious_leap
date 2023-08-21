@@ -1,8 +1,4 @@
-import 'package:consciousleap/Activity_page3.dart';
-import 'package:consciousleap/Infographic_dashboard.dart';
-import 'package:consciousleap/login.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
 
 

@@ -33,6 +33,9 @@ class _SignupTherapistState extends State<SignupTherapist> {
   var db = FirebaseFirestore.instance;
   String password = "";
   String phone="";
+  var isObsecure = true.obs;
+  var confirmObsecure = true.obs;
+
 
 
 
@@ -59,7 +62,8 @@ class _SignupTherapistState extends State<SignupTherapist> {
               children: [
 
                 Expanded(
-
+                  child:Padding(
+                padding: EdgeInsets.only(left:15,right:15),
                   child: TextFormField(
                     controller: controller.firstName,
                     decoration: InputDecoration(
@@ -89,52 +93,21 @@ class _SignupTherapistState extends State<SignupTherapist> {
 
                   ),
                 ),
+                )
 
               ],
             ),
             SizedBox(
               height: 20,
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     Text("Last Name",style: TextStyle(color: Colors.black,fontFamily:'Comforta'),),
-            //     SizedBox(
-            //       width: 10,
-            //     ),
-            //     Expanded(
-            //
-            //       child:
-            //       TextFormField(
-            //         controller:controller.lastName,
-            //         decoration: InputDecoration(
-            //           border: GradientOutlineInputBorder(
-            //             width: 2,
-            //             gradient: LinearGradient(
-            //               colors: [Color(0xff4961AC), Color(0xffF2685D),Color(0xff4EC1BA)],  // Replace with your desired gradient colors
-            //             ),
-            //             borderRadius: BorderRadius.circular(8.0),
-            //           ),
-            //         ),
-            //          validator: (value){
-            //            if(value == null || value.isEmpty){
-            //              return 'Please enter last name';
-            //            }
-            //            return null;
-            //          },
-            //
-            //       ),
-            //     ),
-            //
-            //   ],
-            // ),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
 
                 Expanded(
-
+                  child:Padding(
+                padding: EdgeInsets.only(left:15,right:15),
                   child:
                   TextFormField(
                     controller: controller.email,
@@ -167,7 +140,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
                     },
                   ),
                 ),
-
+                ),
               ],
             ),
             SizedBox(
@@ -177,6 +150,8 @@ class _SignupTherapistState extends State<SignupTherapist> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
+                  child:Padding(
+                padding: EdgeInsets.only(left:15,right:15),
 
                   child: TextFormField(
                     controller: controller.phone,
@@ -206,7 +181,7 @@ class _SignupTherapistState extends State<SignupTherapist> {
                     },
                   ),
                 ),
-
+                ),
               ],
             ),
             SizedBox(
@@ -217,13 +192,25 @@ class _SignupTherapistState extends State<SignupTherapist> {
               children: [
 
                 Expanded(
-
+                  child:Padding(
+                padding: EdgeInsets.only(left:15,right:15),
                   child:
-                  TextFormField(
-                    obscureText: true,
+                  Obx( ()=>TextFormField(
+                    obscureText: isObsecure.value,
                     controller:controller.password,
                     decoration: InputDecoration(
                       hintText: "Password",
+                      suffixIcon: Obx(
+                            ()=>GestureDetector(
+                          onTap: (){
+                            isObsecure.value = !isObsecure.value;
+                          },
+                          child: Icon(
+                            isObsecure.value ? Icons.visibility_off : Icons.visibility,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                       hintStyle: TextStyle(
                         fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                         fontSize: 16.0,
@@ -249,6 +236,8 @@ class _SignupTherapistState extends State<SignupTherapist> {
                     },
                   ),
                 ),
+                ),
+                ),
 
               ],
             ),
@@ -261,13 +250,26 @@ class _SignupTherapistState extends State<SignupTherapist> {
               children: [
 
                 Expanded(
+                  child:Padding(
+                padding: EdgeInsets.only(left:15,right:15),
                   child:
-                  TextFormField(
+                  Obx( ()=>TextFormField(
 
-                    obscureText: true,
+                    obscureText: confirmObsecure.value,
                     controller: controller.reTypePassword,
                     decoration: InputDecoration(
                       hintText: "Confirm Password",
+                      suffixIcon: Obx(
+                            ()=>GestureDetector(
+                          onTap: (){
+                            confirmObsecure.value = !confirmObsecure.value;
+                          },
+                          child: Icon(
+                            confirmObsecure.value ? Icons.visibility_off : Icons.visibility,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                       hintStyle: TextStyle(
                         fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
                         fontSize: 16.0,
@@ -295,7 +297,8 @@ class _SignupTherapistState extends State<SignupTherapist> {
                     },
                   ),
                 ),
-
+                ),
+                ),
               ],
             ),
             Row(
@@ -316,35 +319,44 @@ class _SignupTherapistState extends State<SignupTherapist> {
               ],
             ),
 
+            Row(
+              children: [
+                Expanded(
+                  child:Padding(
+                    padding: EdgeInsets.only(left:15,right:15),
+                    child:Container(
+                      width:200,
+                      margin: EdgeInsets.only(top: 20.0),
+                      child:ElevatedButton(
+                        child: Text("Sign-up", style: TextStyle(fontSize: 15, color: Colors.white, fontFamily: 'Comforta')),
+                        onPressed: controller.acceptTerms
+                            ? () {
+                          if (_formKey.currentState!.validate()) {
+                            setState(() {
+                              email = controller.email.text.trim();
+                              password = controller.reTypePassword.text.trim();
+                              firstname = controller.firstName.text.trim();
+                              phone = controller.phone.text.trim();
+                            });
+                            signupUser();
+                          }
+                        }
+                            : null, // Disable the button if terms are not accepted
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xff4961AC),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
 
+                    ),
 
-            Container(
-              width:200,
-              margin: EdgeInsets.only(top: 20.0),
-              child:ElevatedButton(
-                child: Text("Sign-up", style: TextStyle(fontSize: 12, color: Colors.white, fontFamily: 'Comforta')),
-                onPressed: controller.acceptTerms
-                    ? () {
-                  if (_formKey.currentState!.validate()) {
-                    setState(() {
-                      email = controller.email.text.trim();
-                      password = controller.reTypePassword.text.trim();
-                      firstname = controller.firstName.text.trim();
-                      phone = controller.phone.text.trim();
-                    });
-                    signupUser();
-                  }
-                }
-                    : null, // Disable the button if terms are not accepted
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xff4961AC),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
-              ),
-
+              ],
             ),
+
 
           ],
         ),

@@ -1,13 +1,11 @@
 import 'package:consciousleap/Activity_page2.dart';
 import 'package:consciousleap/Activity_page23.dart';
 import 'package:consciousleap/therapist/Therapist_List.dart';
+import 'package:consciousleap/widgets/SchedulingSessionWidget.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-// I want to talk to a therapist
-// or
-// I am a Therapist Page
 
 class BusinessOptions extends StatelessWidget{
   @override
@@ -48,7 +46,7 @@ class BusinessOptions extends StatelessWidget{
                   child:GradientBorderButton(btnName: "Schedule a Session",
                     callBack: (){
                        Navigator.push(context,
-                           MaterialPageRoute(builder: (context) =>TherapistList()
+                           MaterialPageRoute(builder: (context) =>SchedulingSessionWidget()
                            ));
                     },)
               ),

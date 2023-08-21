@@ -5,10 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:consciousleap/widgets/Text_button.dart';
 
-// Select the option
-// I am a new member or
-// I am an existing member
-
+// Thankyou Screen
 
 class Thankyou extends StatelessWidget{
   @override

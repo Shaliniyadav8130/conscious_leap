@@ -1,9 +1,4 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:consciousleap/Activity_page1.dart';
-import 'package:consciousleap/Activity_page3.dart';
-import 'package:consciousleap/Questionnarie/Activity_page4.dart';
-import 'package:consciousleap/controllers/signup_controllers.dart';
 import 'package:consciousleap/login.dart';
 import 'package:consciousleap/therapist/Therapist_List.dart';
 import 'package:consciousleap/user/TherapistReview.dart';
@@ -16,17 +11,16 @@ import 'package:consciousleap/user/components/Heading.dart';
 import 'package:consciousleap/user/components/JournalCorner.dart';
 import 'package:consciousleap/user/components/Therapy.dart';
 import 'package:consciousleap/user/components/calender.dart';
+import 'package:consciousleap/widgets/SchedulingSessionWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:get/get.dart';
-import 'package:consciousleap/models/UserModel.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-// Signup Page for a new User
+// User Dashboard
+
 class UserDashboard extends StatefulWidget {
   final User? user; // Pass the User object from Firebase authentication
   final Map<String, dynamic> userData; // Pass the user data fetched from Firestore
@@ -183,7 +177,12 @@ class _UserDashboardState extends State<UserDashboard> {
                   ),
                   SizedBox(width: 5,),
                   Therapy(icon:"assets/images/Asset 1@4x 2.png",name: "Schedule a Session",
-
+                    callBack: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => SchedulingSessionWidget()
+                          ));
+                    }
                   ),
                   SizedBox(width: 5,),
                   Therapy(icon:"assets/images/Asset 1@4x 1.png",name: "Find New Therapist",

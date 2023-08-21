@@ -1,11 +1,12 @@
-import 'package:consciousleap/Activity_page1.dart';
-import 'package:consciousleap/Activity_page21.dart';
 import 'package:consciousleap/Therapist_Dashboard/TherapistDashboard.dart';
 import 'package:consciousleap/therapist/therapist_dash_option.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
+
+// Existing Therapist
 
 class login_therapist extends StatefulWidget {
   @override
@@ -18,6 +19,7 @@ class _login_therapistState extends State<login_therapist> {
   final _formKey = GlobalKey<FormState>();
   String Email="";
   String Phone="";
+  var isObsecure = true.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,8 @@ class _login_therapistState extends State<login_therapist> {
                 children: [
 
                   Expanded(
+                    child:Padding(
+                     padding: EdgeInsets.only(left:15,right:15),
                     child: TextFormField(
                       controller: email,
                       decoration: InputDecoration(
@@ -67,7 +71,7 @@ class _login_therapistState extends State<login_therapist> {
                       },
                     ),
                   ),
-
+                  ),
                 ],
               ),
               SizedBox(height:20),
@@ -76,9 +80,24 @@ class _login_therapistState extends State<login_therapist> {
                 children: [
 
                   Expanded(
-                    child:TextFormField(
+                    child:Padding(
+                  padding: EdgeInsets.only(left:15,right:15),
+                    child:
+                    Obx( ()=>TextFormField(
                       controller: phone,
+                      obscureText: isObsecure.value,
                       decoration: InputDecoration(
+                        suffixIcon: Obx(
+                              ()=>GestureDetector(
+                            onTap: (){
+                              isObsecure.value = !isObsecure.value;
+                            },
+                            child: Icon(
+                              isObsecure.value ? Icons.visibility_off : Icons.visibility,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
                         hintText: "Password",
                         hintStyle: TextStyle(
                           fontFamily: 'Comforta', // Use the font family name declared in pubspec.yaml
@@ -105,33 +124,44 @@ class _login_therapistState extends State<login_therapist> {
                       },
                     ),
                   ),
+                  ),
+                  ),
                 ],
               ),
 
 
+              Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(left:15,right:15),
+                      child:Container(
+                        width:340,
+                        margin: EdgeInsets.only(top: 20.0),
+                        child:ElevatedButton(
+                          child:Text("Login" ,style:TextStyle(fontSize:15,color: Colors.white,fontFamily:'Comforta')),
+                          onPressed: (){
+                            if(_formKey.currentState!.validate()){
+                              setState(() {
+                                Email=email.text.trim();
+                                Phone=phone.text.trim();
 
-              Container(
-                width:340,
-                margin: EdgeInsets.only(top: 20.0),
-                child:ElevatedButton(
-                  child:Text("Login" ,style:TextStyle(fontSize:12,color: Colors.white,fontFamily:'Comforta')),
-                  onPressed: (){
-                    if(_formKey.currentState!.validate()){
-                      setState(() {
-                        Email=email.text.trim();
-                        Phone=phone.text.trim();
+                              });
+                              signinUser();
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xff4961AC),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                        ),
+                      ),
 
-                      });
-                      signinUser();
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xff4961AC),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
                     ),
                   ),
-                ),
+                ],
               ),
 
             ],

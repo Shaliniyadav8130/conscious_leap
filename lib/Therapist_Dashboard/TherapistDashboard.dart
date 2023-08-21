@@ -1,8 +1,3 @@
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:consciousleap/Activity_page1.dart';
-import 'package:consciousleap/Activity_page3.dart';
-import 'package:consciousleap/Questionnarie/Activity_page4.dart';
 import 'package:consciousleap/Therapist_Dashboard/SessionNotes.dart';
 import 'package:consciousleap/Therapist_Dashboard/TherapistProfile.dart';
 import 'package:consciousleap/Therapist_Dashboard/components/MyReviews.dart';
@@ -22,12 +17,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:get/get.dart';
-import 'package:consciousleap/models/UserModel.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 
-// Signup Page for a new User
+// Therapist Dashboard
+
 class TherapistDashboard extends StatefulWidget {
   final User? user; // Pass the User object from Firebase authentication
   final Map<String, dynamic> userData; // Pass the user data fetched from Firestore

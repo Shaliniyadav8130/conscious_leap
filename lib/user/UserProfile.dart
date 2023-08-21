@@ -1,9 +1,13 @@
+import 'package:consciousleap/Questionnarie/Analysis_Report.dart';
 import 'package:consciousleap/Questionnarie/questionnarie.dart';
 import 'package:consciousleap/models/UserModel.dart';
 import 'package:consciousleap/user/EditProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+// User Sidebar Screen
 
 
 class SidebarScreen extends StatelessWidget {
@@ -118,17 +122,44 @@ class SidebarScreen extends StatelessWidget {
                 overlayColor: MaterialStateProperty.all(Colors.transparent), // Set overlay color to transparent to remove the ripple effect
               ),
               child: Text("Questionnarie",style: TextStyle(fontSize:15,color: Color(0xff4961AC),fontFamily:'Comforta'),),
-              onPressed:(){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>QuestionnaireScreen()
-                    ));
-              },
-            ),
+              onPressed: () async {
+                bool hasGivenQuestionnaire = await checkQuestionnaireStatus();
+                if (hasGivenQuestionnaire) {
+                  // Navigate to Analysis Report
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Analysis_Report(),
+                    ),
+                  );
+                } else {
+                  // Navigate to Questionnaire
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QuestionnaireScreen(),
+                    ),
+                  );
+                }
+              },            ),
 
 
           ),
         ],
       )
     );
+  }
+
+
+  Future<bool> checkQuestionnaireStatus() async {
+    String? userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId != null) {
+      var snapshot = await FirebaseFirestore.instance
+          .collection('userReport')
+          .doc(userId)
+          .get();
+      return snapshot.exists;
+    }
+    return false;
   }
 }

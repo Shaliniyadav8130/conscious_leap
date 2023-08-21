@@ -1,5 +1,3 @@
-import 'package:consciousleap/Activity_page22.dart';
-import 'package:consciousleap/Infographic_dashboard.dart';
 import 'package:consciousleap/therapist/RequestCall.dart';
 import 'package:consciousleap/therapist/UploadResume.dart';
 import 'package:flutter/material.dart';

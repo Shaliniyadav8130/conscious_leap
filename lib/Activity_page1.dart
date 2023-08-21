@@ -1,5 +1,4 @@
 import 'package:consciousleap/Activity_page2.dart';
-import 'package:consciousleap/Activity_page21.dart';
 import 'package:consciousleap/Activity_page23.dart';
 import 'package:consciousleap/Questionnarie/Activity_page4.dart';
 import 'package:consciousleap/therapist/Therapist_List.dart';
@@ -9,8 +8,8 @@ import 'package:consciousleap/widgets/Text_button.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 // Select the option
-// Recommended Questionnarie or
-// Skip to Tele-Therapy
+// I want to talk to therapist
+// I am a therapist
 
 class Activity_page1 extends StatelessWidget{
   @override

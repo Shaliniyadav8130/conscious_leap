@@ -16,6 +16,9 @@ class SignUpController extends GetxController{
   final phone=TextEditingController();
   final reTypePassword=TextEditingController();
   bool acceptTerms = false;
+  var isObsecure = true.obs;
+  var confirmObsecure = true.obs;
+
 
   final userRepo = Get.put(UserRepository());
 

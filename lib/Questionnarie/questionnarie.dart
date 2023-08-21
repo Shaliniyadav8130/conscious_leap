@@ -8,22 +8,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'dart:math';
 
-// void main() {
-//   runApp(QuestionnaireApp());
-// }
-
-// class QuestionnaireApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Questionnaire App',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: QuestionnaireScreen(),
-//     );
-//   }
-// }
 
 class QuestionnaireScreen extends StatefulWidget {
   @override
@@ -258,14 +242,14 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
 
-              Padding(
-
-                padding: const EdgeInsets.all(14.0),
-                child: Text(
-                  category,
-                  style: TextStyle(fontSize: 14,fontFamily: 'Comforta',fontWeight: FontWeight.bold,decoration: TextDecoration.underline),textAlign: TextAlign.center,
-                ),
-              ),
+              // Padding(
+              //
+              //   padding: const EdgeInsets.all(14.0),
+              //   child: Text(
+              //     category,
+              //     style: TextStyle(fontSize: 14,fontFamily: 'Comforta',fontWeight: FontWeight.bold,decoration: TextDecoration.underline),textAlign: TextAlign.center,
+              //   ),
+              // ),
 
 
               Padding(

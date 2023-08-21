@@ -1,9 +1,9 @@
-import 'package:consciousleap/Activity_page1.dart';
-import 'package:consciousleap/Activity_page21.dart';
 import 'package:consciousleap/conscious_store/Conscious_Categories.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
+
+// Conscious store login
 
 class consciousLogin extends StatefulWidget {
   @override
